@@ -1,0 +1,19 @@
+// vite.config.js
+import { defineConfig } from "file:///C:/data/wishlist/node_modules/vite/dist/node/index.js";
+import laravel from "file:///C:/data/wishlist/node_modules/laravel-vite-plugin/dist/index.mjs";
+import react from "file:///C:/data/wishlist/node_modules/@vitejs/plugin-react/dist/index.mjs";
+var ASSET_URL = process.env.ASSET_URL || "/";
+var vite_config_default = defineConfig({
+  base: `${ASSET_URL}`,
+  plugins: [
+    react(),
+    laravel({
+      input: ["resources/js/app.jsx"],
+      refresh: true
+    })
+  ]
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJDOlxcXFxkYXRhXFxcXHdpc2hsaXN0XCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCJDOlxcXFxkYXRhXFxcXHdpc2hsaXN0XFxcXHZpdGUuY29uZmlnLmpzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9DOi9kYXRhL3dpc2hsaXN0L3ZpdGUuY29uZmlnLmpzXCI7aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAndml0ZSc7XG5pbXBvcnQgbGFyYXZlbCBmcm9tICdsYXJhdmVsLXZpdGUtcGx1Z2luJztcbmltcG9ydCByZWFjdCBmcm9tICdAdml0ZWpzL3BsdWdpbi1yZWFjdCdcblxuY29uc3QgQVNTRVRfVVJMID0gcHJvY2Vzcy5lbnYuQVNTRVRfVVJMIHx8ICcvJztcblxuXG5leHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoe1xuICAgIGJhc2U6IGAke0FTU0VUX1VSTH1gLFxuICAgIHBsdWdpbnM6IFtcbiAgICAgICAgcmVhY3QoKSxcbiAgICAgICAgbGFyYXZlbCh7XG4gICAgICAgICAgICBpbnB1dDogWydyZXNvdXJjZXMvanMvYXBwLmpzeCddLFxuICAgICAgICAgICAgcmVmcmVzaDogdHJ1ZSxcbiAgICAgICAgfSksXG4gICAgXSxcbn0pO1xuIl0sCiAgIm1hcHBpbmdzIjogIjtBQUF3TyxTQUFTLG9CQUFvQjtBQUNyUSxPQUFPLGFBQWE7QUFDcEIsT0FBTyxXQUFXO0FBRWxCLElBQU0sWUFBWSxRQUFRLElBQUksYUFBYTtBQUczQyxJQUFPLHNCQUFRLGFBQWE7QUFBQSxFQUN4QixNQUFNLEdBQUcsU0FBUztBQUFBLEVBQ2xCLFNBQVM7QUFBQSxJQUNMLE1BQU07QUFBQSxJQUNOLFFBQVE7QUFBQSxNQUNKLE9BQU8sQ0FBQyxzQkFBc0I7QUFBQSxNQUM5QixTQUFTO0FBQUEsSUFDYixDQUFDO0FBQUEsRUFDTDtBQUNKLENBQUM7IiwKICAibmFtZXMiOiBbXQp9Cg==
