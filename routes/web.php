@@ -22,8 +22,8 @@ use App\Http\Controllers\HomeController;
 
 Route::middleware(['verify.shopify'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/about', [HomeController::class, 'about'])->name('about');
-    Route::get('/customer/{customer_id}/{wishlists}', [HomeController::class, 'wishlists'])->name('wishlists');
+    Route::get('/customer/{customer_id}/wishlists', [HomeController::class, 'wishlists'])->name('wishlists');
+    Route::get('/customer/{customer_id}/wishlist/{wishlist_id}', [HomeController::class, 'Products'])->name('wishlist.products');
 });
 
 

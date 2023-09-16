@@ -113,6 +113,18 @@ class ShopifyServices{
         return $response;
     }
 
+    function getProducts() {
+        $response = [];
+        $shopDomain = $this->shop->name;
+        $params = $this->getParams();
+        $products = $this->shop->api()->rest('GET', '/admin/api/2023-07/products.json', $params);
+        if($products['status'] == 200){
+            $products = $products['body']['products'];
+        }
+
+        return $products;
+    }
+
     function addTagIntotags($tags, $value) {
         if(empty($tags)){
             return $value;

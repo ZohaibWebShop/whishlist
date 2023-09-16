@@ -40,9 +40,8 @@ Route::post('/update-expiration', [WishlistController::class, 'updateWishlistExp
 Route::post('/clear-all', [WishlistController::class, 'clearAllWishlist']);
 
 
-Route::middleware(['verify.shopify'])->group(function () {
-    Route::prefix('front')->group(function(){
-        Route::get('/customers', [FrontWishlistController::class, 'GetCustomers'])->name('front.customer');
-        Route::get('/customer/{customer_id}/wishlists', [FrontWishlistController::class, 'getWishlists'])->name('front.customer.wishlist');
-    });
+Route::prefix('front')->group(function(){
+    Route::get('/customers', [FrontWishlistController::class, 'GetCustomers'])->name('front.customer');
+    Route::get('/customer/{customer_id}/wishlists', [FrontWishlistController::class, 'getWishlists'])->name('front.customer.wishlist');
+    Route::get('/customer/{customer_id}/wishlist/{wishlist_id}', [FrontWishlistController::class, 'getProducts'])->name('front.customer.wishlist.products');
 });

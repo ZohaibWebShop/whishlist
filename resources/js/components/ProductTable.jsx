@@ -14,7 +14,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, sortFilter, searchFilter, setApi }) {
+  function ProductTable({ products, pageInfo, isLoading, sortFilter, searchFilter, setApi }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -53,16 +53,16 @@ import {
 
 
     const resourceName = {
-      singular: 'wishlists',
-      plural: 'wishlists',
+      singular: 'products',
+      plural: 'products',
     };
 
     const {selectedResources, allResourcesSelected, handleSelectionChange} =
-      useIndexResourceState(wishlist);
+      useIndexResourceState(products);
 
-    const rowMarkup = wishlist.map(
+    const rowMarkup = products.map(
       (
-        {id, name, isDefault, products, created_at },
+        {id, product, created_at },
         index,
       ) => (
         <IndexTable.Row
@@ -79,14 +79,11 @@ import {
               <HorizontalStack align="space-between">
 
                  <Text as="span" variant="bodyMd" fontWeight="semibold">
-                        <Link href={`/customer/${customerId}/wishlist/${id}`}>
-                            {name} {isDefault?'( Default )':''}
+                        <Link href={`https://${user.name}/products/${product?.id}`}>
+                            {product?.name}
                          </Link>
                  </Text>
 
-                <Text as="span" variant="bodyMd">
-                  Products ( {products} )
-                </Text>
               </HorizontalStack>
             </VerticalStack>
           </div>
@@ -98,7 +95,7 @@ import {
 
     return (
       <div style={{width: '100%'}}>
-        <LegacyCard title="Wishlists">
+        <LegacyCard title="Products">
           <>
 
             {isLoading?(
@@ -131,7 +128,7 @@ import {
                 />
                 <IndexTable
                     resourceName={resourceName}
-                    itemCount={wishlist.length}
+                    itemCount={products.length}
                     selectedItemsCount={allResourcesSelected ? 'All' : selectedResources.length}
                     condensed
                     onSelectionChange={handleSelectionChange}
@@ -172,4 +169,4 @@ import {
   }
 
 
-export default WishlistTable;
+export default ProductTable;

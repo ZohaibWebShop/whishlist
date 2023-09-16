@@ -3,27 +3,27 @@ import { useEffect, useMemo, useState } from '~/react';
 import useComon from '@hook/useComon';
 import NProgress from '~/nprogress'
 import { usePage } from '~/@inertiajs/react';
+import useURL from './useURL';
 
 
 
-function useWishlist(customer_id){
-    const [wishlists, setWishlist] = useState([]);
+function useProducts(customer_id, wishlist_id){
+
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { formatDateToCustomFormat, axiosHttp } = useComon();
     const { user, base_url,  } = usePage().props;
-    const [api, setApi] = useState(`${base_url}/api/front/customer/${customer_id}/wishlists?shop=${user.name}`);
+    const [api, setApi] = useState(`${base_url}api/front/customer/${customer_id}/wishlist/${wishlist_id}?shop=${user.name}`);
 
-    const getWishlist  = useMemo(()=>{
-        return wishlists.map((wishlist)=>{
+    const getProducts  = useMemo(()=>{
+        return products.map((product)=>{
             return {
-                id:wishlist?.id,
-                name:wishlist?.name,
-                isDefault:wishlist?.default?true:false,
-                products:wishlist?.products?.length,
-                created_at: formatDateToCustomFormat(wishlist?.created_at),
+                id:product?.id,
+                product:product?.product,
+                created_at: formatDateToCustomFormat(product?.created_at),
             };
         });
-    }, [wishlists]);
+    }, [products]);
 
 
     const sortfilter = (sort) =>{
@@ -52,7 +52,7 @@ function useWishlist(customer_id){
         NProgress.start()
         axiosHttp.get(api)
         .then(function(res){
-            setWishlist(res.data.data);
+            setProducts(res.data.data);
             setLoading(false);
             setPageInfo({
                 ...pageInfo,
@@ -76,7 +76,7 @@ function useWishlist(customer_id){
         NProgress.start()
         axiosHttp.get(api)
         .then(function(res){
-            setWishlist(res.data.data);
+            setProducts(res.data.data);
             setLoading(false);
             setPageInfo({
                 ...pageInfo,
@@ -100,7 +100,7 @@ function useWishlist(customer_id){
     }
 
     return {
-        getWishlist,
+        getProducts,
         loading,
         pageInfo,
         setApi,
@@ -112,4 +112,4 @@ function useWishlist(customer_id){
 }
 
 
-export default useWishlist;
+export default useProducts;

@@ -23,4 +23,11 @@ class HomeController extends Controller
         ]);
      }
 
+     function Products($customer_id, $wishlist_id) {
+        return Inertia::render('Products', [
+            'customer_id'=>$customer_id,
+            'wishlist_id'=>$wishlist_id
+        ]);
+     }
+
 }

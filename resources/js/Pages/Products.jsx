@@ -1,25 +1,24 @@
 import Page from '@components/Page';
 import React from '~/react'
 import Layout from '@components/Layout';
-import useWishlist from '@hook/useWishlist';
-import WishlistTable from '@components/WishlistTable'
-import useComon from '@hook/useComon';
+import useProducts from '@hook/useProducts';
+import ProductTable from '@components/ProductTable'
 import { router } from '~/@inertiajs/react';
 
-function Wishlists({ customer_id }) {
-    const { loading, getWishlist, pageInfo, sortfilter, searchFilter, setLoading, setApi } = useWishlist(customer_id);
+function Products({ customer_id,  wishlist_id }) {
+    const { loading, getProducts, pageInfo, sortfilter, searchFilter, setLoading, setApi } = useProducts(customer_id, wishlist_id);
 
     return (
      <Page
-        title="Wishlists"
+        title="Products"
         backAction={{content:'Home', onAction:()=>{
-            router.visit('/')
+            router.visit(`/customer/${customer_id}/wishlists`)
         }}}>
-       <WishlistTable
+       <ProductTable
               isLoading={loading}
               pageInfo={pageInfo}
               setLoading={setLoading}
-              wishlist={getWishlist}
+              products={getProducts}
               sortFilter={sortfilter}
               searchFilter={searchFilter}
               customerId={customer_id}
@@ -28,7 +27,7 @@ function Wishlists({ customer_id }) {
   )
 }
 
-Wishlists.layout = page => <Layout children={page}  />
+Products.layout = page => <Layout children={page}  />
 
 
-export default Wishlists
+export default Products
