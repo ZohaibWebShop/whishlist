@@ -17,6 +17,8 @@ class ShopifyServices{
 
     protected $params = [];
 
+    protected $currency = 'CAD';
+
     public $wishlist_id = null;
 
 
@@ -33,6 +35,11 @@ class ShopifyServices{
 
     function setParams($param) {
         $this->params = $param;
+        return $this;
+    }
+
+    function setCurrency($currency) {
+        $this->currency = $currency;
         return $this;
     }
 
@@ -67,6 +74,38 @@ class ShopifyServices{
         return $response;
     }
 
+    function getMinPrice($variants){
+        $variantCollection = collect($variants);
+
+          $minPrice =   $variantCollection->filter(function ($variant) {
+                return $variant['inventory_quantity'] > 0;
+            })
+            ->min('price');
+
+            if(!is_null($minPrice)){
+                $variant = $variantCollection->where('price', $minPrice)->values()->first();
+            }else{
+                $variant = $variantCollection->first();
+            }
+
+            return $variant;
+    }
+
+
+    function getMaxPrice($variants){
+        $variantCollection = collect($variants);
+
+          $minPrice =   $variantCollection->max('price');
+
+            if(!is_null($minPrice)){
+                $variant = $variantCollection->where('price', $minPrice)->values()->first();
+            }else{
+                $variant = $variantCollection->first();
+            }
+
+            return $variant;
+    }
+
 
     function getProductByIds() {
         $response = [];
@@ -77,21 +116,7 @@ class ShopifyServices{
             $products = $products['body']['products'];
             foreach($products as $product){
 
-                $variantCollection = collect($product['variants']);
-
-                $minPrice =   $variantCollection->filter(function ($variant) {
-                        return $variant['inventory_quantity'] > 0;
-                    })
-                    ->min('price');
-
-                    $variant = null;
-                    if(!is_null($minPrice)){
-                        $variant = $variantCollection->where('price', $minPrice)->values()->first();
-                    }else{
-                        $variant = $variantCollection->first();
-                    }
-
-                    $varCol = collect($variant);
+                    $varCol = $this->getMinPrice($product['variants']);
 
                     $response[] = [
                         'id'=>$product['id'],
@@ -99,13 +124,15 @@ class ShopifyServices{
                         'handle'=>$product['handle'],
                         'image'=>$product['image']['src'],
                         'url'=>"/products/{$product['handle']}",
-                        'variant_id'=>$varCol->get('id'),
-                        'sku'=>$varCol->get('sku'),
-                        "price"=>$varCol->get('price'),
-                        "compare_at_price"=>$varCol->get('compare_at_price'),
-                        "available"=>$varCol->get('inventory_quantity') > 0 ? true:false,
+                        'variant_id'=>$varCol->id,
+                        'sku'=>$varCol->sku,
+                        "price"=>$this->converter($varCol->price),
+                        "compare_at_price"=>$this->converter($varCol->compare_at_price),
+                        "available"=>$varCol->inventory_quantity > 0 ? true:false,
                     ];
             }
+
+            return $response;
         }else{
             $this->error = $products;
         }
@@ -145,6 +172,8 @@ class ShopifyServices{
             $products = $products['body']['products'];
             $shopDomain = $this->shop->name;
             foreach($products as $key => $product){
+
+
                 if(!is_null($this->wishlist_id)){
                     $wishlist = WishlistProduct::where('wishlist_id', $this->wishlist_id)->where('product_id', $product['id'])->first();
                     $product['wishlist_created_at'] = date('Y-m-d H:i:s', strtotime($wishlist->created_at));
@@ -152,23 +181,36 @@ class ShopifyServices{
 
                 $product['url'] = "/products/{$product['handle']}";
                 $variants = collect($product['variants'])->toArray();
-                $product['min_price'] = min(array_column($variants, "price"));
-                $product['max_price'] = max(array_column($variants, "price"));
-
-                foreach($product['variants'] as $variant){
+                $minVar = $this->getMinPrice($product['variants']);
+                $maxVar = $this->getMaxPrice($product['variants']);
+                $product['min_price'] = $this->converter($minVar['price']);
+                $product['max_price'] = $this->converter($maxVar['price']);
+                $product['available'] = collect($product['variants'])->sum('inventory_quantity') > 0 ? true:false;
+                $variants_genrated = [];
+                foreach($product['variants'] as $key => $variant){
                     if($this->textContain($variant['title'], 'Boxed')){
                         if(!str_contains($product['tags'], 'boxed')){
                             $product['tags'] = $this->addTagIntotags($product['tags'], 'boxed');
                         }
                     }
 
+
                     if($this->textContain($variant['title'], 'Decant')){
                         if(!str_contains($product['tags'], 'decant')){
                             $product['tags'] = $this->addTagIntotags($product['tags'], 'decant');
                         }
                     }
+
+
                 }
 
+                $variant_r = collect($variants)->map(function ($variant) {
+                    // Calculate the total price based on your logic
+                    $variant['price'] = $this->converter($variant['price']);
+                    $variant['compare_at_price'] = $this->converter($variant['compare_at_price']); // Example calculation
+                    return $variant;
+                })->all();
+                $product['variants'] = $variant_r;
                 $response[] = $product;
             }
         }else{
@@ -202,5 +244,24 @@ class ShopifyServices{
         }
     }
 
+
+    function getShop(){
+        $shop = $this->shop->api()->rest('GET', "/admin/api/2023-07/shop.json");
+        if($shop['status'] == 200){
+            return $shop['body']['shop'];
+        }else{
+            return $shop;
+        }
+    }
+
+
+
+    function converter($price){
+        if($this->currency == 'USD'){
+           return number_format(round((floatval($price) / 1.333) / 0.95), 2, '.', '');
+        }else{
+            return $price;
+        }
+    }
 
 }

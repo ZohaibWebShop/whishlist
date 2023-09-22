@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from '~/react'
 import { Page as PolarisPage }  from '~/@shopify/polaris';
 import { AppContext } from '@context/AppContextProvider';
+import { Layout, Spinner } from '@shopify/polaris';
 
 
 function Page({ title, loading, children,backAction, pageNext, pagePrev  }) {
@@ -10,18 +11,30 @@ function Page({ title, loading, children,backAction, pageNext, pagePrev  }) {
   return (
     <>
         {app_loading?(
-           <h1>Loading</h1>
+          <PolarisPage
+            fullWidth
+            title={title}
+            backAction={backAction}
+            >
+            <Layout>
+                <Layout.Section>
+                    <div style={{ textAlign:'center', padding:'30px 0px' }}>
+                        <Spinner />
+                    </div>
+                </Layout.Section>
+            </Layout>
+        </PolarisPage>
         ):(
             <PolarisPage
                 fullWidth
                 title={title}
                 backAction={backAction}
-                pagination={{
-                    hasPrevious: pageNext?true:false,
-                    hasNext: pagePrev?true:false,
-                }}
                 >
-                {children}
+                <Layout>
+                    <Layout.Section>
+                        {children}
+                    </Layout.Section>
+                </Layout>
             </PolarisPage>
         )}
     </>

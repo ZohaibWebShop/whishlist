@@ -13,7 +13,7 @@ function useProducts(customer_id, wishlist_id){
     const [loading, setLoading] = useState(true);
     const { formatDateToCustomFormat, axiosHttp } = useComon();
     const { user, base_url,  } = usePage().props;
-    const [api, setApi] = useState(`${base_url}api/front/customer/${customer_id}/wishlist/${wishlist_id}?shop=${user.name}`);
+    const [api, setApi] = useState(`${base_url}/api/front/customer/${customer_id}/wishlist/${wishlist_id}?shop=${user.name}`);
 
     const getProducts  = useMemo(()=>{
         return products.map((product)=>{
@@ -34,6 +34,10 @@ function useProducts(customer_id, wishlist_id){
         setTimeout(()=>{
             useFilter(`${api}&query=${search}`);
         }, 2000);
+    }
+
+    const resetFilter = () =>{
+         useFilter(api);
     }
 
 
@@ -107,6 +111,7 @@ function useProducts(customer_id, wishlist_id){
         setLoading,
         searchFilter,
         sortfilter,
+        resetFilter,
         paginate
     };
 }

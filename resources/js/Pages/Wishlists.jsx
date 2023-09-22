@@ -7,7 +7,7 @@ import useComon from '@hook/useComon';
 import { router } from '~/@inertiajs/react';
 
 function Wishlists({ customer_id }) {
-    const { loading, getWishlist, pageInfo, sortfilter, searchFilter, setLoading, setApi } = useWishlist(customer_id);
+    const { loading, getWishlist, pageInfo, sortfilter, resetFilter, searchFilter } = useWishlist(customer_id);
 
     return (
      <Page
@@ -18,12 +18,11 @@ function Wishlists({ customer_id }) {
        <WishlistTable
               isLoading={loading}
               pageInfo={pageInfo}
-              setLoading={setLoading}
               wishlist={getWishlist}
               sortFilter={sortfilter}
               searchFilter={searchFilter}
-              customerId={customer_id}
-              setApi={setApi} />
+              resetFilter={resetFilter}
+              customerId={customer_id} />
      </Page>
   )
 }

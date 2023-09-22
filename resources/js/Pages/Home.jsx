@@ -1,22 +1,22 @@
 import Page from '@components/Page';
-import React from '~/react'
+import React, { useEffect } from '~/react'
 import Layout from '@components/Layout';
 import useWishlistToken from '@hook/useWishlistToken';
 import Table from '@components/Table'
 
 function Home() {
-    const { loading, getWishlist, pageInfo, sortfilter, searchFilter, setLoading, setApi } = useWishlistToken();
+    const { getWishlist, pageInfo, loading, sortfilter, searchFilter, resetFilter } = useWishlistToken();
+
 
   return (
      <Page title="Wishlists">
        <Table
               isLoading={loading}
               pageInfo={pageInfo}
-              setLoading={setLoading}
               wishlist={getWishlist}
               sortFilter={sortfilter}
               searchFilter={searchFilter}
-              setApi={setApi} />
+              resetFilter={resetFilter} />
      </Page>
   )
 }

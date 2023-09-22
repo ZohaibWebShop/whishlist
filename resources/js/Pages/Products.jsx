@@ -6,7 +6,7 @@ import ProductTable from '@components/ProductTable'
 import { router } from '~/@inertiajs/react';
 
 function Products({ customer_id,  wishlist_id }) {
-    const { loading, getProducts, pageInfo, sortfilter, searchFilter, setLoading, setApi } = useProducts(customer_id, wishlist_id);
+    const { loading, getProducts, pageInfo, resetFilter, sortfilter, searchFilter, } = useProducts(customer_id, wishlist_id);
 
     return (
      <Page
@@ -17,12 +17,11 @@ function Products({ customer_id,  wishlist_id }) {
        <ProductTable
               isLoading={loading}
               pageInfo={pageInfo}
-              setLoading={setLoading}
               products={getProducts}
+              resetFilter={resetFilter}
               sortFilter={sortfilter}
               searchFilter={searchFilter}
-              customerId={customer_id}
-              setApi={setApi} />
+              customerId={customer_id} />
      </Page>
   )
 }

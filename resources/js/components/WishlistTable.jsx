@@ -14,7 +14,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, sortFilter, searchFilter, setApi }) {
+  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter, setApi }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -30,10 +30,15 @@ import {
     }
 
     const {mode, setMode} = useSetIndexFiltersMode();
-    const onHandleCancel = () => {};
-
-
     const [queryValue, setQueryValue] = useState('');
+
+    const onHandleCancel = () => {
+        resetFilter();
+        setQueryValue(' ');
+    };
+
+
+
 
 
     const handleFiltersQueryChange = useCallback(
@@ -81,12 +86,10 @@ import {
                  <Text as="span" variant="bodyMd" fontWeight="semibold">
                         <Link href={`/customer/${customerId}/wishlist/${id}`}>
                             {name} {isDefault?'( Default )':''}
-                         </Link>
+                         </Link> - Products ( {products} )
                  </Text>
 
-                <Text as="span" variant="bodyMd">
-                  Products ( {products} )
-                </Text>
+                <Button destructive> Delete </Button>
               </HorizontalStack>
             </VerticalStack>
           </div>
@@ -117,8 +120,8 @@ import {
                     onSort={onSortHandler}
                     cancelAction={{
                     onAction: onHandleCancel,
-                    disabled: false,
-                    loading: false,
+                        disabled: false,
+                        loading: false,
                     }}
                     tabs={[]}
                     selected={selected}

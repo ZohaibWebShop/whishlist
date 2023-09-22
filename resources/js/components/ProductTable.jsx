@@ -14,7 +14,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function ProductTable({ products, pageInfo, isLoading, sortFilter, searchFilter, setApi }) {
+  function ProductTable({ products, pageInfo, isLoading, resetFilter, sortFilter, searchFilter, setApi }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -47,9 +47,7 @@ import {
     const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
     const handleFiltersClearAll = useCallback(() => {
       handleQueryValueRemove();
-    }, [
-      handleQueryValueRemove,
-    ]);
+    }, [ handleQueryValueRemove ]);
 
 
     const resourceName = {
@@ -74,13 +72,13 @@ import {
           <div style={{padding: '12px 16px', width: '100%'}}>
             <VerticalStack gap="1">
               <Text as="span" variant="bodySm" color="subdued">
-                #{id} • {created_at}
+                #{product.id} • {created_at}
               </Text>
               <HorizontalStack align="space-between">
 
                  <Text as="span" variant="bodyMd" fontWeight="semibold">
-                        <Link href={`https://${user.name}/products/${product?.id}`}>
-                            {product?.name}
+                        <Link href={`https://${user.name}/products/${product?.handle}`} target="blank">
+                            {product?.title}
                          </Link>
                  </Text>
 
@@ -107,16 +105,7 @@ import {
                  <IndexFilters
                     sortOptions={sortOptions}
                     sortSelected={sortSelected}
-                    queryValue={queryValue}
-                    queryPlaceholder="Searching in all"
-                    onQueryChange={handleFiltersQueryChange}
-                    onQueryClear={() => {}}
                     onSort={onSortHandler}
-                    cancelAction={{
-                    onAction: onHandleCancel,
-                    disabled: false,
-                    loading: false,
-                    }}
                     tabs={[]}
                     selected={selected}
                     onSelect={setSelected}

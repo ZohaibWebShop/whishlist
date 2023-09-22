@@ -25,6 +25,34 @@ function useComon() {
         return newURLWithParams;
     }
 
+
+    const chunkArray = (arr, chunkSize)  => {
+        const chunkedArray = [];
+        let index = 0;
+        if(arr.length > 0){
+            while (index < arr.length) {
+                chunkedArray.push(arr.slice(index, index + chunkSize));
+                index += chunkSize;
+            }
+        }
+
+        return chunkedArray;
+    }
+
+    const next = (arr, i) =>{
+        if(i >= 0 && i < arr.length - 1){
+            return i++;
+        }
+        return null;
+    }
+
+    const prev = (arr, i) =>{
+        if(i >= 0 && i > arr.length - 1){
+            return i++;
+        }
+        return null;
+    }
+
       const baseUrl = window.origin;
       const axiosHttp = axios.create({
         baseURL: baseUrl, // Replace with your API's base URL
@@ -35,7 +63,7 @@ function useComon() {
       });
 
 
-    return { makeUrl, axiosHttp, formatDateToCustomFormat };
+    return { makeUrl, axiosHttp, formatDateToCustomFormat, chunkArray, next };
 }
 
 export default useComon

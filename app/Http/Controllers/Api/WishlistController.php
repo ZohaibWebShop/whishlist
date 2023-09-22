@@ -7,12 +7,14 @@ use App\Models\Wishlist;
 use App\Models\WishlistProduct;
 use App\Models\WishlistToken;
 use App\Services\ShopifyServices;
+use App\Services\ProductFilterService;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SebastianBergmann\Type\TrueType;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use AmrShawky\LaravelCurrency\Facade\Currency;
 
 class WishlistController extends Controller
 {
@@ -26,6 +28,7 @@ class WishlistController extends Controller
                 if(count($wishlist->products) > 0){
                     $productIds = $this->getWishlistProductId($wishlist->products);
                     $shopify = new ShopifyServices($request->shop);
+                    $shopify->setCurrency($request->currency);
                     $shopify->setParams(['ids'=> $productIds,'fields'=>'id,title,handle,image,variants']);
                     $products = $shopify->getProductByIds();
                     $Wishlist[] = [
@@ -70,6 +73,7 @@ class WishlistController extends Controller
                     $productIds = $this->getWishlistProductId($wishlist->products);
                     $shopify = new ShopifyServices($request->shop);
                     $shopify->setParams(['ids'=>$productIds]);
+                    $shopify->setCurrency($request->currency);
                     $products = $shopify->getProductByIdsFull();
                     $Wishlist[] = [
                        'id'=>$wishlist->id,
@@ -380,150 +384,16 @@ class WishlistController extends Controller
     }
 
     function wishlistFilter(Request $request){
-        $token = $request->token;
-        $wishlist_id = $request->wishlist_id;
-        $vendor = $request->vendor;
-        $type = $request->type;
-        $gender = $request->gender;
-        $stock = (int)$request->stock;
-        $sort = (int)$request->sort;
-        $minPrice = $request->min_price;
-        $maxPrice = $request->max_price;
-
-        $shop = $request->shop;
-
-        $isToken = WishlistToken::where('wishlist_token', $token)->first();
-
-        if($isToken){
-            $wishlist = $isToken->wishlists()->where('id', $wishlist_id)->first();
-            if($wishlist){
-                if(count($wishlist->products) > 0){
-                    $params = [];
-                    $productIds = $this->getWishlistProductId($wishlist->products);
-                    $params['ids'] = $productIds;
-
-                    $shopify = new ShopifyServices($request->shop);
-                    $shopify->setParams($params);
-                    $shopify->wishlistId($wishlist_id);
-                    $products = collect($shopify->getProductByIdsFull());
-
-                    if(!is_null($vendor) && count($vendor) > 0 && count($products) > 0){
-                        $products = $this->filterByVendor($products, $vendor);
-                    }
-
-                    if(!is_null($type) && count($type) > 0 && count($products) > 0){
-                        $products = $this->filterByType(collect($products), $type);
-                    }
-
-
-                    if($gender && count($products) > 0){
-                        $products = $this->filterByGender(collect($products), $this->getGender($gender));
-                    }
-
-                    if($request->has('stock') && count($products) > 0 && ($stock == 1 || $stock == 0)){
-                        $products = $this->FilterStock(collect($products), $stock, $request->stock);
-                    }
-
-                    if($request->has('price_min') && $request->has('price_max') && !empty($request->price_min) && !empty($request->price_max) && count($products) > 0){
-                        $products = $this->priceRangeFilter(collect($products), (int)$request->price_min, (int)$request->price_max);
-                    }
-
-                    if($request->has('sort') && !empty($sort) && count($products) > 0){
-                        $products = $this->sort(collect($products), $sort);
-                    }
-
-
-                     return $products;
-                }
-
-                return response()->json([
-                    "errors"=>true,
-                    "message"=>"Wishlist not attached with this token"
-                ], 200);
-            }
-
-            return response()->json([
-                "errors"=>true,
-                "message"=>"Wishlist not attached with this token"
-            ], 200);
-        }
-
-        return response()->json([
-            "errors"=>true,
-            "message"=>"Token is not register in our database"
-        ], 200);
+        $productService = new ProductFilterService($request);
+        return $productService->filterd();
     }
 
     function wishlistFilterTest(Request $request){
-        $token = $request->token;
-        $wishlist_id = $request->wishlist_id;
-        $vendor = $request->vendor;
-        $type = $request->type;
-        $gender = $request->gender;
-        $sort = (int)$request->sort;
-        $stock = (int)$request->stock;
-        $shop = $request->shop;
-
-        $isToken = WishlistToken::where('wishlist_token', $token)->first();
-
-        if($isToken){
-            $wishlist = $isToken->wishlists()->where('id', $wishlist_id)->first();
-            if($wishlist){
-                if(count($wishlist->products) > 0){
-                    $params = [];
-                    $productIds = $this->getWishlistProductId($wishlist->products);
-                    $params['ids'] = $productIds;
-
-                    $shopify = new ShopifyServices($request->shop);
-                    $shopify->setParams($params);
-                    $shopify->wishlistId($wishlist_id);
-                    $products = collect($shopify->getProductByIdsFull());
-
-                    if(!is_null($vendor) && count($vendor) > 0 && count($products) > 0){
-                        $products = $this->filterByVendor($products, $vendor);
-                    }
-
-                    if(!is_null($type) && count($type) > 0 && count($products) > 0){
-                        $products = $this->filterByType(collect($products), $type);
-                    }
-
-
-                    if($gender && count($products) > 0){
-                        $products = $this->filterByGender(collect($products), $this->getGender($gender));
-                    }
-
-                    if($request->has('sort') && !empty($sort) && count($products) > 0){
-                        $products = $this->sort(collect($products), $sort);
-                    }
-
-                    if($request->has('stock') && !empty($stock) && count($products) > 0){
-                        $products = $this->FilterStock(collect($products), $sort);
-                    }
-
-                    $response = [];
-                    foreach($products as $product){
-                        $response[] = collect($product)->only(['id', 'wishlist_created_at', 'title']);
-                    }
-                     return $response;
-                }
-
-                return response()->json([
-                    "errors"=>true,
-                    "message"=>"Wishlist not attached with this token"
-                ], 200);
-            }
-
-            return response()->json([
-                "errors"=>true,
-                "message"=>"Wishlist not attached with this token"
-            ], 200);
-        }
-
-        return response()->json([
-            "errors"=>true,
-            "message"=>"Token is not register in our database"
-        ], 200);
+        $productService = new ProductFilterService($request);
+        return $productService->filterd();
     }
+
+
 
     function priceRangeFilter($products, $min, $max) {
         return $products->whereBetween('min_price', [$min, $max])->values()->toArray();
@@ -563,13 +433,16 @@ class WishlistController extends Controller
 
 
     function FilterStock($products, $stock, $request) {
-        if($stock == 1){
-            return $this->inStockProducts($products);
-        }else if($stock == 0 && !is_null($request)){
-            return $this->outOfStockProducts($products);
+        if(!empty($stock)){
+            if($stock == 1){
+                return $this->inStockProducts($products);
+            }else if($stock == 0 && !is_null($request)){
+                return $this->outOfStockProducts($products);
+            }
         }else{
             return $products->toArray();
         }
+
     }
 
 
