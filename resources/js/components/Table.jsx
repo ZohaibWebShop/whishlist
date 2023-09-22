@@ -1,4 +1,4 @@
-import { Button } from '@shopify/polaris';
+import { Button } from '~/@shopify/polaris';
 import { Link, usePage } from '~/@inertiajs/react';
 import {
     IndexTable,

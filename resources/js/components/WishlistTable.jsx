@@ -1,3 +1,4 @@
+import { Button } from '~/@shopify/polaris';
 import { Link, usePage } from '~/@inertiajs/react';
 import {
     IndexTable,
@@ -14,7 +15,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter, setApi }) {
+  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -160,11 +161,13 @@ import {
             <Pagination
                 hasPrevious={pageInfo?.prev?true:false}
                 onPrevious={() => {
-                    setApi(`${pageInfo?.prev}&shop=${user.name}`);
+                    // setApi(`${pageInfo?.prev}&shop=${user.name}`);
+                    console.log('prev');
                 }}
                 hasNext={pageInfo?.next?true:false}
                 onNext={() => {
-                    setApi(`${pageInfo?.next}&shop=${user.name}`);
+                    console.log('next');
+                    // setApi(`${pageInfo?.next}&shop=${user.name}`);
                 }}
             />
         </div>
