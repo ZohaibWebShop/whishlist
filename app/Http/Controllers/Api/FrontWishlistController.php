@@ -48,20 +48,26 @@ class FrontWishlistController extends Controller
 
     function getProducts(Request $request, $customer_id, $wishlist_id) {
         $isRegisterd = WishlistToken::where('customer_id', $customer_id)->first();
-        if($isRegisterd){
-            $query = WishlistProduct::where('wishlist_id', $wishlist_id);
-            if($request->has('sort')){
-                $query->orderBy('id', str_replace('order ', '', $request->sort));
-            }
+        $products = WishlistProduct::where('wishlist_id', $wishlist_id)->get();
+        $shopifySerivice = new ShopifyServices($request->shop);
+        $product_ids_array = $products->map(function($product){
+                return $product['product_id'];
+        });
 
-            if($request->has('query')){
-                $searchTerm = $request->input('query');
-                $query->where('name',  'LIKE', '%' . $searchTerm . '%');
-            }
-            return new WishlistProductCollection($query->paginate());
-        }
+        $product_ids = implode(',', collect($product_ids_array)->toArray());
+        $shopifySerivice->setParams(['ids'=>$product_ids,'fields'=>"id,title,handle"]);
+        $shop_products = collect($shopifySerivice->getProducts());
 
-        return [];
+        $products->transform(function ($item) use($shop_products) {
+            $product_id =  $item['product_id'];
+
+            $item['product'] = $shop_products->filter(function($product) use($product_id){
+                return $product['id'] == $product_id;
+            })->values()->first();
+                return $item;
+        });
+
+        return $products;
     }
 
 }
