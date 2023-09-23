@@ -66,7 +66,7 @@ import {
     const {selectedResources, allResourcesSelected, handleSelectionChange} =
       useIndexResourceState(wishlist);
 
-    const rowMarkup = wishlist.map(
+    const rowMarkup = wishlist?.map(
       (
         {id, name, isDefault, products, created_at },
         index,
@@ -135,7 +135,7 @@ import {
                 />
                 <IndexTable
                     resourceName={resourceName}
-                    itemCount={wishlist.length}
+                    itemCount={wishlist?.length}
                     selectedItemsCount={allResourcesSelected ? 'All' : selectedResources.length}
                     condensed
                     onSelectionChange={handleSelectionChange}

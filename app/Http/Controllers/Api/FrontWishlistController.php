@@ -123,7 +123,7 @@ class FrontWishlistController extends Controller
 
         return \response()->json([
             'errors' =>true,
-            "message"=>"Product not exist"
+            "message"=>"Product not exist",
          ]);
     }
 

@@ -5,9 +5,13 @@ import useWishlist from '@hook/useWishlist';
 import WishlistTable from '@components/WishlistTable'
 import useComon from '@hook/useComon';
 import { router } from '~/@inertiajs/react';
+import { useEffect } from 'react';
 
 function Wishlists({ customer_id }) {
     const { loading, getWishlist, pageInfo, sortfilter, resetFilter, searchFilter, nextPage, prevPage, deleteWishlist } = useWishlist(customer_id);
+
+
+
 
     return (
      <Page
@@ -18,7 +22,7 @@ function Wishlists({ customer_id }) {
        <WishlistTable
               isLoading={loading}
               pageInfo={pageInfo}
-              wishlist={getWishlist}
+              wishlist={getWishlist || []}
               sortFilter={sortfilter}
               searchFilter={searchFilter}
               resetFilter={resetFilter}

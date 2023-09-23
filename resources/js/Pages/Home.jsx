@@ -13,7 +13,7 @@ function Home() {
        <Table
               isLoading={loading}
               pageInfo={pageInfo}
-              wishlist={getWishlist}
+              wishlist={getWishlist || []}
               sortFilter={sortfilter}
               searchFilter={searchFilter}
               resetFilter={resetFilter}

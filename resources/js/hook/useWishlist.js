@@ -72,32 +72,32 @@ function useWishlist(customer_id){
     }
 
     const getWishlist  = useMemo(()=>{
+            let filteredArray = data?[...data]:[];
 
-        let filteredArray = [...data];
+            if (searchQuery.trim() !== '') {
+                filteredArray = chunkArray(wishlists?.filter((wishlist) =>
+                    wishlist.name?.toLowerCase()?.includes(searchQuery.toLowerCase())
+                ), 10)[0] || [];
+            }
 
-        if (searchQuery.trim() !== '') {
-            filteredArray = chunkArray(wishlists.filter((wishlist) =>
-                wishlist.name?.toLowerCase().includes(searchQuery.toLowerCase())
-            ), 10)[0] || [];
-        }
+            const sortedArray = filteredArray?[...filteredArray]:[];
 
-        const sortedArray = [...filteredArray];
+            if (sort === 'asc') {
+                sortedArray?.sort((a, b) => a.id - b.id);
+            } else {
+                sortedArray?.sort((a, b) => b.id - a.id);
+            }
 
-        if (sort === 'asc') {
-            sortedArray.sort((a, b) => a.id - b.id);
-        } else {
-            sortedArray.sort((a, b) => b.id - a.id);
-        }
 
-        return sortedArray.map((wishlist)=>{
-            return {
-                id:wishlist?.id,
-                name:wishlist?.name,
-                isDefault:wishlist?.default?true:false,
-                products:wishlist?.products?.length,
-                created_at: formatDateToCustomFormat(wishlist?.created_at),
-            };
-        });
+                return sortedArray?.map((wishlist) => {
+                  return {
+                    id: wishlist?.id,
+                    name: wishlist?.name,
+                    isDefault: wishlist?.default ? true : false,
+                    products: wishlist?.products?.length,
+                    created_at: formatDateToCustomFormat(wishlist?.created_at),
+                  };
+                });
     }, [data, sort, searchQuery, wishlists]);
 
 

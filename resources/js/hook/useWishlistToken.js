@@ -72,25 +72,25 @@ function useWishlistToken(){
     }
 
   const getWishlist = useMemo(()=>{
-    let filteredArray = [...data];
+    let filteredArray = data?[...data]:[];
 
     if (searchQuery.trim() !== '') {
         filteredArray = chunkArray(wishlists.filter((wishlist) =>
-            `${wishlist.customer?.first_name} ${wishlist.customer?.last_name}`.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            wishlist.customer?.email.toLowerCase().includes(searchQuery.toLowerCase())
+            `${wishlist.customer?.first_name} ${wishlist.customer?.last_name}`?.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
+            wishlist.customer?.email?.toLowerCase()?.includes(searchQuery.toLowerCase())
         ), 10)[0] || [];
       }
 
 
-    const sortedArray = [...filteredArray]; // Create a copy of the data to avoid mutating it
+    const sortedArray = filteredArray?[...filteredArray]:[]; // Create a copy of the data to avoid mutating it
 
     if (sort === 'asc') {
-      sortedArray.sort((a, b) => a.id - b.id);
+      sortedArray?.sort((a, b) => a.id - b.id);
     } else {
-      sortedArray.sort((a, b) => b.id - a.id);
+      sortedArray?.sort((a, b) => b.id - a.id);
     }
 
-    return sortedArray.map((wishlist) => ({
+    return sortedArray?.map((wishlist) => ({
         id: wishlist?.id,
         customer: wishlist?.customer,
         customer_id: wishlist?.customer_id,

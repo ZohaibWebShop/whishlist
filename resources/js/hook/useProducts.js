@@ -58,26 +58,41 @@ function useProducts(customer_id, wishlist_id){
         setSearchQuery(search);
     }
 
+    const deleteProduct = (id) =>{
+        setLoading(true);
+        axios.get(`${base_url}/api/front/product/delete/${id}`)
+        .then((res)=>{
+            const filteredArray = products.filter(product => product.id !== id);
+            setProducts(filteredArray);
+            const array = chunkArray(filteredArray, 10);
+            setProductsChunk(array);
+            setData(array[0]);
+            setLoading(false);
+        }).catch((err)=>{
+            setLoading(false);
+        });
+    }
+
     const getProducts  = useMemo(()=>{
-        let filteredArray = [...data];
+        let filteredArray = data?[...data]:[];
 
 
         if (searchQuery.trim() !== '') {
-            filteredArray = chunkArray(products.filter((product) =>
-                product?.product?.title?.toLowerCase().includes(searchQuery.toLowerCase())
+            filteredArray = chunkArray(products?.filter((product) =>
+                product?.product?.title?.toLowerCase()?.includes(searchQuery.toLowerCase())
             ), 10)[0] || [];
         }
 
 
-        const sortedArray = [...filteredArray];
+        const sortedArray = filteredArray?[...filteredArray]:[];
 
         if (sort === 'asc') {
-            sortedArray.sort((a, b) => a.id - b.id);
+            sortedArray?.sort((a, b) => a.id - b.id);
         } else {
-            sortedArray.sort((a, b) => b.id - a.id);
+            sortedArray?.sort((a, b) => b.id - a.id);
         }
 
-        return sortedArray.map((product)=>{
+        return sortedArray?.map((product)=>{
             return {
                 id:product?.id,
                 product:product?.product,
@@ -126,7 +141,8 @@ function useProducts(customer_id, wishlist_id){
         sortfilter,
         resetFilter,
         nextPage,
-        prevPage
+        prevPage,
+        deleteProduct
     };
 }
 

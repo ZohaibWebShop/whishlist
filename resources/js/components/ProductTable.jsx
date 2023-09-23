@@ -15,7 +15,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function ProductTable({ products, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter,  nextPage, prevPage }) {
+  function ProductTable({ products, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter,  nextPage, prevPage, deleteProduct }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -90,7 +90,7 @@ import {
                          </a>
                  </Text>
 
-                <Button destructive> Delete </Button>
+                <Button onClick={()=> deleteProduct(id)} destructive> Delete </Button>
               </HorizontalStack>
             </VerticalStack>
           </div>
