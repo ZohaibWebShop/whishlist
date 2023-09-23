@@ -70,4 +70,25 @@ class FrontWishlistController extends Controller
         return $products;
     }
 
+    function deleteCustomer($id) {
+        $wishlistToken = WishlistToken::find($id);
+        if($wishlistToken){
+            $wishlists = $wishlistToken->Wishlists;
+            foreach($wishlists as $wishlist){
+                $wishlist->products()->delete();
+                $wishlist->delete();
+            }
+            $wishlistToken->delete();
+            return \response()->json([
+               'errors' =>false,
+               "message"=>"wishlist deleted Successfully"
+            ]);
+        }
+
+        return \response()->json([
+            'errors' =>true,
+            "message"=>"Wishlist not exist"
+         ]);
+    }
+
 }
