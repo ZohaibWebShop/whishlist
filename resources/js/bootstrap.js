@@ -50,3 +50,32 @@ function keepRetrievingToken(app) {
 retrieveToken(app);
 keepRetrievingToken(app);
 
+
+Array.prototype.first = function(){
+    return this[0];
+};
+
+Array.prototype.first = function(){
+    return this[0];
+};
+
+Array.prototype.get = function(index){
+    return this[index] || false;
+};
+
+Array.prototype.last = function(){
+    return this[this.length-1];
+};
+
+Array.prototype.next = function(currentIndex){
+    return this[currentIndex+1]?currentIndex+1:false;
+};
+
+Array.prototype.prev = function(currentIndex){
+    return this[currentIndex-1]?currentIndex-1:false;
+};
+
+Array.prototype.last_index = function(){
+    return this.length-1;
+};
+

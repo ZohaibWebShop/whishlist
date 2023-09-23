@@ -6,7 +6,7 @@ import ProductTable from '@components/ProductTable'
 import { router } from '~/@inertiajs/react';
 
 function Products({ customer_id,  wishlist_id }) {
-    const { loading, getProducts, pageInfo, resetFilter, sortfilter, searchFilter, } = useProducts(customer_id, wishlist_id);
+    const { loading, getProducts, pageInfo, resetFilter, sortfilter, searchFilter, nextPage, prevPage } = useProducts(customer_id, wishlist_id);
 
     return (
      <Page
@@ -21,6 +21,8 @@ function Products({ customer_id,  wishlist_id }) {
               resetFilter={resetFilter}
               sortFilter={sortfilter}
               searchFilter={searchFilter}
+              nextPage={nextPage}
+              prevPage={prevPage}
               customerId={customer_id} />
      </Page>
   )

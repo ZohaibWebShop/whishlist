@@ -15,7 +15,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function Table({ wishlist, pageInfo, isLoading, resetFilter, sortFilter, searchFilter, setApi }) {
+  function Table({ wishlist, pageInfo, isLoading, resetFilter, sortFilter, searchFilter, nextPage, prevPage }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -164,13 +164,13 @@ import {
                 padding:'20px 10px'
             }}>
             <Pagination
-                hasPrevious={pageInfo?.prev?true:false}
+                hasPrevious={pageInfo?.prev_page !== false?true:false}
                 onPrevious={() => {
-                    console.log('next');
+                    nextPage(pageInfo.prev_page);
                 }}
-                hasNext={pageInfo?.next?true:false}
+                hasNext={pageInfo?.next_page !== false ?true:false}
                 onNext={() => {
-                    console.log('prev');
+                    prevPage(pageInfo.next_page);
                 }}
             />
         </div>

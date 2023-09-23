@@ -1,3 +1,4 @@
+import { Button } from '~/@shopify/polaris';
 import { Link, usePage } from '~/@inertiajs/react';
 import {
     IndexTable,
@@ -14,7 +15,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function ProductTable({ products, pageInfo, isLoading, resetFilter, sortFilter, searchFilter, setApi }) {
+  function ProductTable({ products, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter,  nextPage, prevPage }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -30,10 +31,15 @@ import {
     }
 
     const {mode, setMode} = useSetIndexFiltersMode();
-    const onHandleCancel = () => {};
-
-
     const [queryValue, setQueryValue] = useState('');
+
+    const onHandleCancel = () => {
+        resetFilter();
+        setQueryValue(' ');
+    };
+
+
+
 
 
     const handleFiltersQueryChange = useCallback(
@@ -47,12 +53,14 @@ import {
     const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
     const handleFiltersClearAll = useCallback(() => {
       handleQueryValueRemove();
-    }, [ handleQueryValueRemove ]);
+    }, [
+      handleQueryValueRemove,
+    ]);
 
 
     const resourceName = {
-      singular: 'products',
-      plural: 'products',
+      singular: 'Products',
+      plural: 'Products',
     };
 
     const {selectedResources, allResourcesSelected, handleSelectionChange} =
@@ -71,17 +79,18 @@ import {
         >
           <div style={{padding: '12px 16px', width: '100%'}}>
             <VerticalStack gap="1">
-              <Text as="span" variant="bodySm" color="subdued">
+            <Text as="span" variant="bodySm" color="subdued">
                 #{product.id} • {created_at}
               </Text>
               <HorizontalStack align="space-between">
 
                  <Text as="span" variant="bodyMd" fontWeight="semibold">
-                        <Link href={`https://${user.name}/products/${product?.handle}`} target="blank">
+                        <Link href={`https://${user.name}/products/${product?.handle}`} target="_blank">
                             {product?.title}
                          </Link>
                  </Text>
 
+                <Button destructive> Delete </Button>
               </HorizontalStack>
             </VerticalStack>
           </div>
@@ -105,7 +114,16 @@ import {
                  <IndexFilters
                     sortOptions={sortOptions}
                     sortSelected={sortSelected}
+                    queryValue={queryValue}
+                    queryPlaceholder="Searching in all"
+                    onQueryChange={handleFiltersQueryChange}
+                    onQueryClear={() => {}}
                     onSort={onSortHandler}
+                    cancelAction={{
+                    onAction: onHandleCancel,
+                        disabled: false,
+                        loading: false,
+                    }}
                     tabs={[]}
                     selected={selected}
                     onSelect={setSelected}
@@ -141,13 +159,13 @@ import {
                 padding:'20px 10px'
             }}>
             <Pagination
-                hasPrevious={pageInfo?.prev?true:false}
+                hasPrevious={pageInfo?.prev_page !== false?true:false}
                 onPrevious={() => {
-                    setApi(`${pageInfo?.prev}&shop=${user.name}`);
+                    nextPage(pageInfo.prev_page);
                 }}
-                hasNext={pageInfo?.next?true:false}
+                hasNext={pageInfo?.next_page !== false?true:false}
                 onNext={() => {
-                    setApi(`${pageInfo?.next}&shop=${user.name}`);
+                    prevPage(pageInfo.next_page);
                 }}
             />
         </div>
