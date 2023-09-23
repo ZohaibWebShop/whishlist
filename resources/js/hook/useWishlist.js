@@ -44,6 +44,8 @@ function useWishlist(customer_id){
         })
     }
 
+
+
     const prevPage = (index) =>{
         setData(wishlistsChunk[index]);
         setPageInfo({

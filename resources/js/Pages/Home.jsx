@@ -5,7 +5,7 @@ import useWishlistToken from '@hook/useWishlistToken';
 import Table from '@components/Table'
 
 function Home() {
-    const { getWishlist, pageInfo, loading, sortfilter, searchFilter, resetFilter, nextPage, prevPage } = useWishlistToken();
+    const { getWishlist, pageInfo, loading, sortfilter, searchFilter, resetFilter, nextPage, prevPage, deleteCustomer } = useWishlistToken();
 
 
   return (
@@ -18,7 +18,8 @@ function Home() {
               searchFilter={searchFilter}
               resetFilter={resetFilter}
               nextPage={nextPage}
-              prevPage={prevPage} />
+              prevPage={prevPage}
+              deleteCustomer={deleteCustomer} />
      </Page>
   )
 }
