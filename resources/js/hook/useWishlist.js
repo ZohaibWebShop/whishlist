@@ -34,6 +34,26 @@ function useWishlist(customer_id){
         setSearchQuery(search);
     }
 
+    const nextPage = (index) =>{
+        setData(wishlistsChunk[index]);
+        setPageInfo({
+            ...pageInfo,
+            next_page:wishlistsChunk.next(index),
+            prev_page:wishlistsChunk.prev(index),
+            current_page:index,
+        })
+    }
+
+    const prevPage = (index) =>{
+        setData(wishlistsChunk[index]);
+        setPageInfo({
+            ...pageInfo,
+            next_page:wishlistsChunk.next(index),
+            prev_page:wishlistsChunk.prev(index),
+            current_page:index,
+        })
+    }
+
     const getWishlist  = useMemo(()=>{
 
         let filteredArray = [...data];
@@ -80,8 +100,9 @@ function useWishlist(customer_id){
             setLoading(false);
             setPageInfo({
                 ...pageInfo,
-                next_page:next(array, 1),
-                last_page:array.length -1,
+                next_page:array.next(0),
+                prev_page:array.prev(0),
+                last_page:array.last_index(),
                 current_page:0,
                 total:array.length,
             });
@@ -104,6 +125,8 @@ function useWishlist(customer_id){
         searchFilter,
         sortfilter,
         resetFilter,
+        nextPage,
+        prevPage
     };
 }
 

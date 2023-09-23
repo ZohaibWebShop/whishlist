@@ -85,9 +85,9 @@ import {
               <HorizontalStack align="space-between">
 
                  <Text as="span" variant="bodyMd" fontWeight="semibold">
-                        <Link href={`https://${user.name}/products/${product?.handle}`} target="_blank">
+                        <a href={`https://${user.name}/products/${product?.handle}`} target="_blank">
                             {product?.title}
-                         </Link>
+                         </a>
                  </Text>
 
                 <Button destructive> Delete </Button>

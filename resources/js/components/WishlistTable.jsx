@@ -15,7 +15,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter }) {
+  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter, nextPage, prevPage  }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -159,15 +159,13 @@ import {
                 padding:'20px 10px'
             }}>
             <Pagination
-                hasPrevious={pageInfo?.prev?true:false}
+                hasPrevious={pageInfo?.prev_page !== false?true:false}
                 onPrevious={() => {
-                    // setApi(`${pageInfo?.prev}&shop=${user.name}`);
-                    console.log('prev');
+                    nextPage(pageInfo.prev_page);
                 }}
-                hasNext={pageInfo?.next?true:false}
+                hasNext={pageInfo?.next_page !== false ?true:false}
                 onNext={() => {
-                    console.log('next');
-                    // setApi(`${pageInfo?.next}&shop=${user.name}`);
+                    prevPage(pageInfo.next_page);
                 }}
             />
         </div>
