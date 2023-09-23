@@ -45,4 +45,6 @@ Route::prefix('front')->group(function(){
     Route::get('/customer/{customer_id}/wishlists', [FrontWishlistController::class, 'getWishlists'])->name('front.customer.wishlist');
     Route::get('/customer/{customer_id}/wishlist/{wishlist_id}', [FrontWishlistController::class, 'getProducts'])->name('front.customer.wishlist.products');
     Route::get('/customer/delete/{id}', [FrontWishlistController::class, 'deleteCustomer'])->name('front.customer.delete');
+    Route::get('/wishlist/delete/{id}', [FrontWishlistController::class, 'deleteWishlist'])->name('front.wishlist.delete');
+    Route::get('/product/delete/{id}', [FrontWishlistController::class, 'deleteProduct'])->name('front.product.delete');
 });

@@ -57,7 +57,7 @@ function useWishlistToken(){
 
     const deleteCustomer = (id) =>{
         setLoading(true);
-        axios.get(`https://${base_url}/api/front/customer/delete/${id}`)
+        axios.get(`${base_url}/api/front/customer/delete/${id}`)
         .then((res)=>{
             const filteredArray = wishlists.filter(wishlist => wishlist.id !== id);
             setWishlists(filteredArray);
@@ -65,7 +65,6 @@ function useWishlistToken(){
             setWishlistsChunk(array);
             setData(array[0]);
             setLoading(false);
-            console.log(res);
         }).catch((err)=>{
             setLoading(false);
             console.log(err);

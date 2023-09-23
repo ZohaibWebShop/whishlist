@@ -44,6 +44,21 @@ function useWishlist(customer_id){
         })
     }
 
+    const deleteWishlist = (id) =>{
+        setLoading(true);
+        axios.get(`${base_url}/api/front/wishlist/delete/${id}`)
+        .then((res)=>{
+            const filteredArray = wishlists.filter(wishlist => wishlist.id !== id);
+            setWishlists(filteredArray);
+            const array = chunkArray(filteredArray, 10);
+            setWishlistsChunk(array);
+            setData(array[0]);
+            setLoading(false);
+        }).catch((err)=>{
+            setLoading(false);
+        });
+    }
+
 
 
     const prevPage = (index) =>{
@@ -128,7 +143,8 @@ function useWishlist(customer_id){
         sortfilter,
         resetFilter,
         nextPage,
-        prevPage
+        prevPage,
+        deleteWishlist
     };
 }
 

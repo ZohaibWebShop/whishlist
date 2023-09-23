@@ -15,7 +15,7 @@ import {
 
   import {useState, useCallback } from '~/react';
 
-  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter, nextPage, prevPage  }) {
+  function WishlistTable({ wishlist, pageInfo, customerId, isLoading, resetFilter, sortFilter, searchFilter, nextPage, prevPage, deleteWishlist  }) {
     const { user } = usePage().props;
     const [selected, setSelected] = useState(0);
     const sortOptions = [
@@ -90,7 +90,7 @@ import {
                          </Link> - Products ( {products} )
                  </Text>
 
-                <Button destructive> Delete </Button>
+                <Button onClick={()=> deleteWishlist(id)} destructive> Delete </Button>
               </HorizontalStack>
             </VerticalStack>
           </div>

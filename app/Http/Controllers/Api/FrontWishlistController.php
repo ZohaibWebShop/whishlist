@@ -91,4 +91,40 @@ class FrontWishlistController extends Controller
          ]);
     }
 
+
+    function deleteWishlist($id) {
+        $wishlists = Wishlist::find($id);
+        if($wishlists){
+            $wishlists->products()->delete();
+            $wishlists->delete();
+
+            return \response()->json([
+               'errors' =>false,
+               "message"=>"wishlist deleted Successfully"
+            ]);
+        }
+
+        return \response()->json([
+            'errors' =>true,
+            "message"=>"Wishlist not exist"
+         ]);
+    }
+
+    function deleteProduct($id) {
+        $product = WishlistProduct::find($id);
+        if($product){
+            $product->delete();
+
+            return \response()->json([
+               'errors' =>false,
+               "message"=>"product deleted Successfully"
+            ]);
+        }
+
+        return \response()->json([
+            'errors' =>true,
+            "message"=>"Product not exist"
+         ]);
+    }
+
 }
