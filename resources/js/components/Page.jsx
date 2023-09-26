@@ -4,7 +4,7 @@ import { AppContext } from '@context/AppContextProvider';
 import { Layout, Spinner } from '@shopify/polaris';
 
 
-function Page({ title, loading, children,backAction, pageNext, pagePrev  }) {
+function Page({ title, children,primaryAction, backAction  }) {
 
   const { app_loading } = useContext(AppContext);
 
@@ -14,6 +14,7 @@ function Page({ title, loading, children,backAction, pageNext, pagePrev  }) {
           <PolarisPage
             fullWidth
             title={title}
+            primaryAction={primaryAction}
             backAction={backAction}
             >
             <Layout>
@@ -28,6 +29,7 @@ function Page({ title, loading, children,backAction, pageNext, pagePrev  }) {
             <PolarisPage
                 fullWidth
                 title={title}
+                primaryAction={primaryAction}
                 backAction={backAction}
                 >
                 <Layout>

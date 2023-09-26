@@ -161,16 +161,26 @@ class ShopifyServices{
         return $response;
     }
 
-    function getProducts() {
+    function getProducts($fulldata=false) {
         $response = [];
         $shopDomain = $this->shop->name;
         $params = $this->getParams();
-        $products = $this->shop->api()->rest('GET', '/admin/api/2023-07/products.json', $params);
-        if($products['status'] == 200){
-            $products = $products['body']['products'];
+        $products_r = $this->shop->api()->rest('GET', '/admin/api/2023-07/products.json', $params);
+        if($products_r['status'] == 200){
+            $product = [];
+            if($fulldata){
+                 return [
+                    "products"=>$products_r['body']['products'],
+                    "next_page"=>!is_null($products_r['link'])?$products_r['link']['next']:null,
+                 ];
+            }else{
+                return $products_r['body']['products'];
+
+            }
+        }else{
+            return $products_r;
         }
 
-        return $products;
     }
 
     function addTagIntotags($tags, $value) {
@@ -257,11 +267,19 @@ class ShopifyServices{
         }
     }
 
-    function getCustomers(){
+    function getCustomers($fulldata=false){
         $params = $this->getParams();
         $customer = $this->shop->api()->rest('GET', "/admin/api/2023-07/customers.json", $params);
         if($customer['status'] == 200){
-            return $customer['body']['customers'];
+            // return $customer['body']['customers'];
+            if($fulldata){
+                return [
+                   "customers"=>$customer['body']['customers'],
+                   "next_page"=>!is_null($customer['link'])?$customer['link']['next']:null,
+                ];
+           }else{
+               return $customer['body']['customers'];
+           }
         }else{
             return $customer;
         }

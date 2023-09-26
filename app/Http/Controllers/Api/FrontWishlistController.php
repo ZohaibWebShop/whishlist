@@ -127,4 +127,196 @@ class FrontWishlistController extends Controller
          ]);
     }
 
+    function getAllProducts(Request $request, $productIds){
+        $products = [];
+        $nextPage = null;
+        $isNextPage = false; // Initialize the next page token as null
+        $shopify = new ShopifyServices($request->shop);
+
+        do {
+            // Create a request to fetch products with optional pagination
+            $requestParams = [
+                'fields' => 'id,title',
+                'limit' => 50,
+            ];
+
+            if(!is_null($nextPage)){
+                $requestParams['page_info'] = $nextPage;
+            }else{
+                $requestParams['ids'] = implode(',', $productIds);
+            }
+
+            // Set the request parameters and make the API request
+            $getProducts = $shopify->setParams($requestParams)->getProducts(true);
+
+            // Add the fetched products to the $products array
+            $product_shop = collect($getProducts['products'])->toArray();
+            $products = array_merge($products, $product_shop);
+
+            // $products[] = $getProducts['next_page'];
+            // Check if there are more pages of products
+            $nextPage = isset($getProducts['next_page']) && !is_null($getProducts['next_page']) ? $getProducts['next_page'] : null;
+            $isNextPage = isset($getProducts['next_page']) && !is_null($getProducts['next_page']) ? true :false;
+
+        } while ($isNextPage);
+
+        return $products;
+    }
+
+    function getAllCustomers(Request $request, $customerIds){
+        $customers = [];
+        $nextPage = null; // Initialize the next page token as null
+        $isNextPage = false;
+        $shopify = new ShopifyServices($request->shop);
+
+        do {
+            $requestParams = [
+                'fields' => 'id,first_name,last_name,email',
+                'limit' => 50,
+            ];
+
+            if(!is_null($nextPage)){
+                $requestParams['page_info'] = $nextPage;
+            }else{
+                $requestParams['ids'] = implode(',', $customerIds);
+            }
+
+            $getCustomers = $shopify->setParams($requestParams)->getCustomers(true);
+
+            $shopCustomers = collect($getCustomers['customers'])->toArray();
+            $customers = array_merge($customers, $shopCustomers);
+
+            $nextPage = isset($getCustomers['next_page']) && !is_null($getCustomers['next_page']) ? $getCustomers['next_page'] : null;
+            $isNextPage = isset($getCustomers['next_page']) && !is_null($getCustomers['next_page']) ? true :false;
+
+        } while ($isNextPage);
+
+        return $customers;
+    }
+
+    function getCustomer(Request $request, $customerIds){
+        $shopify = new ShopifyServices($request->shop);
+        $getCustomers = $shopify->getCustomer($customerIds);
+        return $getCustomers;
+    }
+
+    function exportToCSV(Request $request) {
+        $wishlistTokens = WishlistToken::with('Wishlists.products')->get();
+
+        $customerIds = WishlistToken::pluck('customer_id')->toArray();
+        $productIds = WishlistProduct::pluck('product_id')->toArray();
+
+
+        $products = [];
+        $getProducts = collect($this->getAllProducts($request, $productIds));
+        $getCustomers = collect($this->getAllCustomers($request, $customerIds));
+
+
+        $csvFileName = 'exported_data.csv';
+        $csvFilePath = storage_path($csvFileName);
+        $csvFile = fopen($csvFilePath, 'w');
+
+        // // Write the CSV header
+        fputcsv($csvFile, [
+            'WishlistToken',
+            'CustomerID',
+            'CustomerName',
+            'CustomerEmail',
+            'RegisteredAt',
+            'WishlistName',
+            'DefaultWishlist',
+            'WishlistCreatedAt',
+            'ProductID',
+            'ProductTitle',
+            'ProductAddedAt',
+        ]);
+
+        foreach ($wishlistTokens as $wishlistToken) {
+            foreach ($wishlistToken->Wishlists as $wishlist) {
+                foreach ($wishlist->products as $product) {
+
+                    $shopifyProduct = $getProducts->where('id', $product->product_id)->first();
+                    $shopifyCustomer = $getCustomers->where('id', $wishlistToken->customer_id)->first();
+
+                    fputcsv($csvFile, [
+                        $wishlistToken->wishlist_token,
+                        $wishlistToken->customer_id,
+                        $shopifyCustomer->first_name." ".$shopifyCustomer->last_name,
+                        $shopifyCustomer->email,
+                        $wishlistToken->created_at,
+                        $wishlist->name,
+                        $wishlist->default,
+                        $wishlist->created_at,
+                        $product->id,
+                        $shopifyProduct->title,
+                        $product->created_at,
+                    ]);
+                }
+            }
+        }
+
+        fclose($csvFile);
+
+        // // Download the CSV file
+        return response()->download($csvFilePath, $csvFileName)->deleteFileAfterSend();
+        // return $products;
+    }
+
+    function exportCustomer(Request $request) {
+        $wishlistToken = WishlistToken::with('Wishlists.products')->where('customer_id', $request->customer_id)->first();
+        // return $wishlistTokens;
+
+        $customer = WishlistToken::where('customer_id', $request->customer_id)->first();
+        $productIds = WishlistProduct::pluck('product_id')->toArray();
+
+        $customer = $this->getCustomer($request, $request->customer_id);
+        $getProducts = collect($this->getAllProducts($request, $productIds));
+
+
+        $csvFileName = 'exported_data.csv';
+        $csvFilePath = storage_path($csvFileName);
+        $csvFile = fopen($csvFilePath, 'w');
+
+        // Write the CSV header
+        fputcsv($csvFile, [
+            'WishlistToken',
+            'CustomerID',
+            'CustomerName',
+            'CustomerEmail',
+            'RegisteredAt',
+            'WishlistName',
+            'DefaultWishlist',
+            'WishlistCreatedAt',
+            'ProductID',
+            'ProductTitle',
+            'ProductAddedAt',
+        ]);
+
+         foreach ($wishlistToken->Wishlists as $wishlist) {
+            foreach ($wishlist->products as $product) {
+
+                    $shopifyProduct = $getProducts->where('id', $product->product_id)->first();
+
+                    fputcsv($csvFile, [
+                        $wishlistToken->wishlist_token,
+                        $wishlistToken->customer_id,
+                        $customer->first_name." ".$customer->last_name,
+                        $customer->email,
+                        $wishlistToken->created_at,
+                        $wishlist->name,
+                        $wishlist->default,
+                        $wishlist->created_at,
+                        $product->id,
+                        $shopifyProduct->title,
+                        $product->created_at,
+                    ]);
+            }
+         }
+
+        fclose($csvFile);
+
+        // // // Download the CSV file
+        return response()->download($csvFilePath, $csvFileName)->deleteFileAfterSend();
+    }
+
 }

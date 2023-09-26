@@ -49,4 +49,6 @@ Route::prefix('front')->group(function(){
     Route::get('/customer/delete/{id}', [FrontWishlistController::class, 'deleteCustomer'])->name('front.customer.delete');
     Route::get('/wishlist/delete/{id}', [FrontWishlistController::class, 'deleteWishlist'])->name('front.wishlist.delete');
     Route::get('/product/delete/{id}', [FrontWishlistController::class, 'deleteProduct'])->name('front.product.delete');
+    Route::get('/wishlists/export', [FrontWishlistController::class, 'exportToCSV'])->name('front.wishlist.export');
+    Route::get('/customers/export', [FrontWishlistController::class, 'exportCustomer'])->name('front.customers.export');
 });
