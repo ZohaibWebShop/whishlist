@@ -33,7 +33,7 @@ class WishlistController extends Controller
                     $shopify = new ShopifyServices($request->shop);
                     $products = $shopify->setCurrency($request->currency)
                             ->setCurrencyRate($request->rate)
-                            ->setParams(['ids'=> $productIds,'fields'=>'id,title,handle,image,variants'])
+                            ->setParams(['ids'=> $productIds,'fields'=>'id,title,handle,image,variants', "limit"=>250])
                             ->getPriceList()
                             ->getProductByIds();
 
@@ -108,7 +108,7 @@ class WishlistController extends Controller
                 if(count($wishlist->products) > 0){
                     $productIds = $this->getWishlistProductId($wishlist->products);
                     $shopify = new ShopifyServices($request->shop);
-                    $products = $shopify->setParams(['ids'=>$productIds])
+                    $products = $shopify->setParams(['ids'=>$productIds,"limit"=>250])
                             ->setCurrency($request->currency)
                             ->setCurrencyRate($request->rate)
                             ->getPriceList()

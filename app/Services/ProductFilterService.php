@@ -147,12 +147,14 @@ class ProductFilterService{
     function getShopProducts($products) {
         $shopify = new ShopifyServices($this->getShop());
         $params['ids'] = $products;
+        $params['limit'] = 250;
         $products = $shopify->setParams($params)
                 ->setCurrency($this->getCurrency())
                 ->setCurrencyRate($this->request->rate)
                 ->wishlistId($this->getWishlistId())
                 ->getPriceList()
                 ->getProductByIdsFull();
+
         $this->vendors = collect($products)->pluck('vendor')->unique()->values()->all();
         $minPrice_array = collect($products)->map(function($product){
             return $product['min_price'];
