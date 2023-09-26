@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\WishlistToken;
+use App\Models\WishlistProduct;
 use App\Services\ShopifyServices;
 
 
@@ -18,6 +19,12 @@ class ProductFilterService{
     public $currency = 'USD';
 
     public $response = [];
+
+    public $vendors = [];
+
+    public $minPrice = 0;
+    public $maxPrice = 0;
+
 
     function __construct(Request $request)
     {
@@ -97,6 +104,32 @@ class ProductFilterService{
         return false;
     }
 
+    function per_page()  {
+        if($this->hasFilter('per_page')){
+            return (int)$this->request->per_page;
+        }
+
+        return 12;
+    }
+
+    function page_offset()  {
+        if($this->hasFilter('page')){
+            $page = (int)$this->request->page;
+            return ($page - 1) * $this->per_page();
+        }
+
+        return (1 - 1) * $this->per_page();
+    }
+
+    function current_page()  {
+        if($this->hasFilter('page')){
+            $page = (int)$this->request->page;
+            return $page;
+        }
+
+        return 1;
+    }
+
     function setResponse($data = []) {
         $this->response = $data;
     }
@@ -114,11 +147,24 @@ class ProductFilterService{
     function getShopProducts($products) {
         $shopify = new ShopifyServices($this->getShop());
         $params['ids'] = $products;
-        $shopify->setParams($params);
-        $shopify->setCurrency($this->getCurrency());
-        $shopify->wishlistId($this->getWishlistId());
-        return $shopify->getProductByIdsFull();
+        $products = $shopify->setParams($params)
+                ->setCurrency($this->getCurrency())
+                ->setCurrencyRate($this->request->rate)
+                ->wishlistId($this->getWishlistId())
+                ->getPriceList()
+                ->getProductByIdsFull();
+        $this->vendors = collect($products)->pluck('vendor')->unique()->values()->all();
+        $minPrice_array = collect($products)->map(function($product){
+            return $product['min_price'];
+        })->sort()->values();
+
+
+        $this->minPrice = ceil($minPrice_array->first());
+        $this->maxPrice = ceil($minPrice_array->last());
+
+        return $products;
     }
+
 
     function arrayToLoweCase($array) {
         Collection::macro('toLower', function () {
@@ -173,7 +219,7 @@ class ProductFilterService{
         }
     }
 
-    function filterByGender() {
+    function filterByGender($products) {
         $gender = $this->getGenderArray($this->getGender());
 
         if($this->hasFilter('gender')){
@@ -249,6 +295,42 @@ class ProductFilterService{
         return $products->toArray();
     }
 
+
+    function wishlistVendors() {
+        $isToken = $this->isWishlistToken($this->getToken());
+        if($isToken){
+            $wishlists = $this->getWishlistsByToken($isToken);
+            if($wishlists){
+                if(count($wishlists->products) > 0){
+                    $productIds = $this->getWishlistProductIds($wishlists->products);
+                    $params['ids'] = $productIds;
+                    $params['fields'] = "vendor";
+                    $shopify = new ShopifyServices($this->getShop());
+                    $products = $shopify->setParams($params)->getProducts();
+                    $products = collect($products);
+                    $uniqueVendors = $products->pluck('vendor')->unique()->values()->all();
+                    return $uniqueVendors;
+                }
+
+                return response()->json([
+                    'errors'=>true,
+                    'message'=>"wishlist dos'nt have products"
+                ]);
+            }
+
+            return response()->json([
+                'errors'=>true,
+                'message'=>"please recheck your wishlist and try again!"
+            ]);
+        }
+
+        return response()->json([
+            'errors'=>true,
+            'message'=>"please recheck your token and try again!"
+        ]);
+    }
+
+
     function filterd() {
         $isToken = $this->isWishlistToken($this->getToken());
         if($isToken){
@@ -256,18 +338,43 @@ class ProductFilterService{
 
             if($wishlists){
 
-
                 if(count($wishlists->products) > 0){
                     $productIds = $this->getWishlistProductIds($wishlists->products);
                     $products = $this->getShopProducts($productIds);
                     $products = $this->filterByVendor(collect($products));
                     $products = $this->filterByType(collect($products));
+                    $products = $this->filterByGender(collect($products));
                     $products = $this->filterByStock(collect($products));
                     $products = $this->filterByPrice(collect($products));
                     $products = $this->SortManual(collect($products));
-                    $this->setResponse($products);
+                    $collection = new Collection($products);
+                    $totalItems = $collection->count();
+
+                    $currentPageItems = $collection->slice($this->page_offset(), $this->per_page())->values();
+
+                    $this->setResponse([
+                        "token"=>$isToken->wishlist_token,
+                        "wishlist_id"=>$wishlists->id,
+                        "name"=>$wishlists->name,
+                        'total_products'=>$totalItems,
+                        "current_page"=>$this->current_page(),
+                        'total_pages' => ceil($totalItems /  $this->per_page()),
+                        "products"=>$currentPageItems,
+                        "vendors"=>$this->vendors,
+                        "min_price"=>$this->minPrice,
+                        "max_price"=>$this->maxPrice
+                    ]);
                 }else{
-                    $this->setResponse([]);
+                    $this->setResponse([
+                        "token"=>$isToken->wishlist_token,
+                        "wishlist_id"=>$wishlists->id,
+                        "name"=>$wishlists->name,
+                        'total_products'=>0,
+                        "current_page"=>$this->current_page(),
+                        'total_pages' =>1,
+                        "vendors"=>$this->vendors,
+                        "products"=>[]
+                    ]);
                 }
 
 

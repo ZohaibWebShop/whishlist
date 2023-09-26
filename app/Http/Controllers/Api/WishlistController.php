@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Wishlist;
 use App\Models\WishlistProduct;
 use App\Models\WishlistToken;
+use App\Models\User;
 use App\Services\ShopifyServices;
 use App\Services\ProductFilterService;
 use App\Services\UserService;
@@ -15,6 +16,8 @@ use SebastianBergmann\Type\TrueType;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use AmrShawky\LaravelCurrency\Facade\Currency;
+
+
 
 class WishlistController extends Controller
 {
@@ -28,9 +31,12 @@ class WishlistController extends Controller
                 if(count($wishlist->products) > 0){
                     $productIds = $this->getWishlistProductId($wishlist->products);
                     $shopify = new ShopifyServices($request->shop);
-                    $shopify->setCurrency($request->currency);
-                    $shopify->setParams(['ids'=> $productIds,'fields'=>'id,title,handle,image,variants']);
-                    $products = $shopify->getProductByIds();
+                    $products = $shopify->setCurrency($request->currency)
+                            ->setCurrencyRate($request->rate)
+                            ->setParams(['ids'=> $productIds,'fields'=>'id,title,handle,image,variants'])
+                            ->getPriceList()
+                            ->getProductByIds();
+
                     $Wishlist[] = [
                        'id'=>$wishlist->id,
                        'name'=>$wishlist->name,
@@ -64,6 +70,36 @@ class WishlistController extends Controller
         ];
     }
 
+
+    function getWishlishOny(Request $request) {
+        # get wishlist from wishlist table
+        $wishlistToken = WishlistToken::with('wishlists')->where('wishlist_token', $request->token)->first();
+        if($wishlistToken){
+            $wishlistWithProductsCount = [];
+            foreach($wishlistToken->wishlists as $wishlist){
+                $wishlistWithProductsCount[] = [
+                    'wishlist_id' => $wishlist->id,
+                    'name'=>$wishlist->name,
+                    'default'=>$wishlist->default,
+                    'product_count' => count($wishlist->products)
+                ];
+            }
+            return [
+                "errors"=>false,
+                "token"=>$request->token,
+                'data' => $wishlistWithProductsCount
+            ];
+        } else {
+            return [
+                'errors' => true,
+                'message' => "Token Not found"
+            ];
+        }
+
+
+
+    }
+
     function getWishlistAll(Request $request) {
         $isToken = WishlistToken::with('wishlists')->where('wishlist_token', $request->token)->first();
         if($isToken){
@@ -72,9 +108,11 @@ class WishlistController extends Controller
                 if(count($wishlist->products) > 0){
                     $productIds = $this->getWishlistProductId($wishlist->products);
                     $shopify = new ShopifyServices($request->shop);
-                    $shopify->setParams(['ids'=>$productIds]);
-                    $shopify->setCurrency($request->currency);
-                    $products = $shopify->getProductByIdsFull();
+                    $products = $shopify->setParams(['ids'=>$productIds])
+                            ->setCurrency($request->currency)
+                            ->setCurrencyRate($request->rate)
+                            ->getPriceList()
+                            ->getProductByIdsFull();
                     $Wishlist[] = [
                        'id'=>$wishlist->id,
                        'name'=>$wishlist->name,
@@ -368,161 +406,34 @@ class WishlistController extends Controller
         }
     }
 
-    function fillter(Request $request){
-        return [];
-    }
 
-
-    function getGender($type=null) {
-        if(is_null($type) || strtolower($type) == 'man/woman' || strtolower($type) == 'woman/man'){
-            return ['For Man/Woman', 'For Man', 'For Woman'];
-        }elseif(strtolower($type) == "man"){
-            return ['For Man', 'For Man/Woman'];
-        }elseif(strtolower($type) == "woman"){
-            return ['For Woman', 'For Man/Woman'];
-        }
-    }
 
     function wishlistFilter(Request $request){
         $productService = new ProductFilterService($request);
         return $productService->filterd();
     }
 
-    function wishlistFilterTest(Request $request){
+    function wishlistVendors(Request $request){
         $productService = new ProductFilterService($request);
-        return $productService->filterd();
+        return $productService->wishlistVendors();
     }
 
-
-
-    function priceRangeFilter($products, $min, $max) {
-        return $products->whereBetween('min_price', [$min, $max])->values()->toArray();
-    }
-
-
-    function inStockProducts($products) {
-        return $products->filter(function ($product)  {
-
-            $varaints = $product->variants;
-            $variants_final = [];
-
-            foreach($varaints as $variant){
-                if($variant->inventory_quantity > 0){
-                    $variants_final[] = $variant;
-                }
-            }
-
-            if(count($variants_final) > 0){
-                $product->variants = $variants_final;
-                return $product;
-            }
-
-
-        })->values()->toArray();
-    }
-
-    function outOfStockProducts($products) {
-        return $products->filter(function ($product)  {
-            $varaints = collect($product->variants);
-            $quatity = $varaints->sum('inventory_quantity');
-            if($quatity == 0){
-                return $product;
-            }
-        })->values()->toArray();
-    }
-
-
-    function FilterStock($products, $stock, $request) {
-        if(!empty($stock)){
-            if($stock == 1){
-                return $this->inStockProducts($products);
-            }else if($stock == 0 && !is_null($request)){
-                return $this->outOfStockProducts($products);
-            }
-        }else{
-            return $products->toArray();
-        }
-
-    }
-
-
-    function getVendors(Request $request) {
-        $params = [
-            "fields"=>"vendor",
-            "limit"=>250
-        ];
+    function wishlistFilterTest(Request $request){
         $shopify = new ShopifyServices($request->shop);
-        $shopify->setParams($params);
-        $products = (array)$shopify->getProductByIdsFull()['container'];
-        $uniqueVendors = array_unique(array_column($products, 'vendor'));
-        $uniqueVendors = array_values($uniqueVendors);
-        return $uniqueVendors;
-    }
-    function extractVariantPrice($product) {
-        return floatval($product["variants"][0]["price"]);
-    }
-
-    function sort($products, $sortType) {
-        switch($sortType){
-            case 1:
-                $sortedByLatestProduct = $products->sortByDesc('min_price')->values();
-                return $sortedByLatestProduct->toArray();
-                break;
-             case 2:
-                $sortedByLatestProduct = $products->sortBy('min_price')->values();
-                return $sortedByLatestProduct->toArray();
-                break;
-             case 3:
-                return $products->sortByDesc('wishlist_created_at')->values()->toArray();
-                break;
-           case 4:
-                return $products->sortByDesc('published_at')->values()->toArray();
-                break;
-        };
+        $priceList = $shopify->marketByGeography('CA')['priceList'];
+        if(is_array($priceList) && array_key_exists('parent', $priceList)){
+            return (int)$priceList['parent']['adjustment']['value'];
+        }
+        return 0;
     }
 
 
-
-    function filterByGender($products, $genderToFilterBy) {
-        $filter = $products->filter(function ($product) use ($genderToFilterBy) {
-            return in_array($product['product_type'], $genderToFilterBy);
-        })->values();
-
-        return $filter->toArray();
-    }
-
-    function filterByVendor($products, $vendorToFilterBy){
-        $filter = $products->filter(function ($product) use ($vendorToFilterBy) {
-            return in_array($product['vendor'], $vendorToFilterBy);
-        })->values();
-
-        return $filter->toArray();
-    }
-
-    function doesAnyValueExistInSecondArray($firstArray, $secondArray) {
-        return false;
-    }
-
-    function filterByType($products, $typeToFilterBy){
-        $filter = $products->filter(function ($product) use($typeToFilterBy){
-            $tags = explode(",", $product['tags']);
-            $tagsToLower = $this->arrayToLoweCase($tags);
-            $typeToFilterByToLowercase = $this->arrayToLoweCase($typeToFilterBy);
-            $intersection = array_intersect($tagsToLower, $typeToFilterByToLowercase);
-            return !empty($intersection);
-        })->values();
-
-        return $filter->toArray();
-    }
-
-    function arrayToLoweCase($array) {
-        Collection::macro('toLower', function () {
-            return $this->map(function (string $value) {
-                return Str::lower(trim($value));
-            });
-        });
-        $collection = collect($array);
-        $upper = $collection->toLower()->toArray();
-        return $upper;
+    function getProduct(Request $request, $id)  {
+        $shopify = new ShopifyServices($request->shop);
+        $product = $shopify->setCurrency($request->currency)
+            ->setCurrencyRate($request->rate)
+            ->getPriceList()
+            ->getProductById($id);
+        return $product;
     }
 }

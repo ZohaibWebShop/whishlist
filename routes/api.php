@@ -27,9 +27,11 @@ Route::post('/deleteWishlistProduct', [WishlistController::class, 'wishlistProdu
 Route::post('/getWishlistFilter', [WishlistController::class, 'wishlistFilter']);
 Route::post('/filterWishlist', [WishlistController::class, 'wishlistFilter']);
 Route::post('/test/filterWishlist', [WishlistController::class, 'wishlistFilterTest']);
-Route::get('/vendors', [WishlistController::class, 'getVendors']);
 
 
+Route::get('/product/{id}', [WishlistController::class, 'getProduct']);
+Route::get('/wishlists', [WishlistController::class, 'getWishlishOny']);
+Route::get('/wishlists/vendors', [WishlistController::class, 'wishlistVendors']);
 Route::get('/getWishlistFull', [WishlistController::class, 'getWishlistAll']);
 Route::get('/getWishlists', [WishlistController::class, 'showAll']);
 Route::post('/createWishlist', [WishlistController::class, 'createWishlist']);

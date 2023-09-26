@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Models\WishlistProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class ShopifyServices{
 
@@ -18,6 +19,16 @@ class ShopifyServices{
     protected $params = [];
 
     protected $currency = 'CAD';
+
+    public $currencyRate = 0;
+
+    public $currencyToCountry = [
+        'USD' => 'US',
+        'CAD' => 'CA',
+    ];
+
+    protected $priceList = [];
+
 
     public $wishlist_id = null;
 
@@ -43,6 +54,11 @@ class ShopifyServices{
         return $this;
     }
 
+    function setCurrencyRate($rate) {
+        $this->currencyRate = \floatval($rate);
+        return $this;
+    }
+
     function wishlistId($id) {
         $this->wishlist_id = $id;
         return $this;
@@ -58,15 +74,20 @@ class ShopifyServices{
         $products = $this->shop->api()->rest('GET', "/admin/api/2023-07/products/{$id}.json");
         if($products['status'] == 200){
             $product = $products['body']['product'];
-            $response = [
-                'id'=>$product['id'],
-                'title'=>$product['title'],
-                'handle'=>$product['handle'],
-                'image'=>$product['image']['src'],
-                'variant_id'=>$product['variants']['0']['id'],
-                'sku'=>$product['variants']['0']['sku'],
-                'price'=>$product['variants']['0']['price']
-            ];
+            $variant_r = collect($product['variants'])->map(function ($variant) {
+                // Calculate the total price based on your logic
+                $variant['price'] = $this->converter($variant['price']);
+                $variant['compare_at_price'] = $this->converter($variant['compare_at_price']); // Example calculation
+                return $variant;
+            })->sortBy('price')->values()->toArray();
+            $product['url'] = "/products/{$product['handle']}";
+            $product['variants'] = $variant_r;
+            $minVar = $this->getMinPrice($variant_r);
+            $maxVar = $this->getMaxPrice($variant_r);
+            $product['min_price'] = $this->converter($minVar['price']);
+            $product['max_price'] = $this->converter($maxVar['price']);
+            $product['available'] = collect($product['variants'])->sum('inventory_quantity') > 0 ? true:false;
+            return $product;
         }else{
             $this->error = $products;
         }
@@ -185,6 +206,8 @@ class ShopifyServices{
                 $maxVar = $this->getMaxPrice($product['variants']);
                 $product['min_price'] = $this->converter($minVar['price']);
                 $product['max_price'] = $this->converter($maxVar['price']);
+                $product['min_compare_at_price'] = $this->converter($minVar['compare_at_price']);
+                $product['max_compare_at_price'] = $this->converter($maxVar['compare_at_price']);
                 $product['available'] = collect($product['variants'])->sum('inventory_quantity') > 0 ? true:false;
                 $variants_genrated = [];
                 foreach($product['variants'] as $key => $variant){
@@ -254,14 +277,62 @@ class ShopifyServices{
         }
     }
 
+    function getPriceList() {
+        $currency = $this->currency;
+        $currencyToCountry = $this->currencyToCountry;
+        $country_code =  $this->currencyToCountry[$currency];
+        $this->priceList = Cache::remember("priceList_".$country_code, now()->addMinutes(30), function () use ($country_code) {
+            return $this->marketByGeography($country_code)['priceList'];
+        });
 
+        return $this;
+    }
 
     function converter($price){
-        if($this->currency == 'USD'){
-           return number_format(round((floatval($price) / 1.333) / 0.95), 2, '.', '');
+
+        $priceList = $this->priceList;
+        $adjustment_value = 0;
+
+        if(is_array($priceList) && array_key_exists('parent', $priceList)){
+            $adjustment_value = (int)$priceList['parent']['adjustment']['value'];
+        }
+
+        if(!is_null($priceList)){
+            $price_actual = ($price * $this->currencyRate);
+            $culculated = ceil($price_actual + (($price_actual / 100) * $adjustment_value));
+           return number_format($culculated, 2);
         }else{
             return $price;
         }
     }
+
+    function marketByGeography($countryCode) {
+        $graphqlQuery = <<<GRAPHQL
+                {
+                    marketByGeography(countryCode:$countryCode){
+                        name
+                        primary
+                        priceList{
+                            parent{
+                                adjustment{
+                                    type
+                                    value
+                                }
+                            }
+                        }
+                    }
+                }
+            GRAPHQL;
+
+        $response = $this->shop->api()->graph($graphqlQuery);
+        if($response['status'] == 200){
+            return (array)$response['body']['data']['marketByGeography']['container'];
+        }
+
+        return [];
+    }
+
+
+
 
 }
