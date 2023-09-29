@@ -136,7 +136,7 @@ class FrontWishlistController extends Controller
         do {
             // Create a request to fetch products with optional pagination
             $requestParams = [
-                'fields' => 'id,title',
+                'fields' => 'id,title,variants',
                 'limit' => 50,
             ];
 
@@ -228,6 +228,7 @@ class FrontWishlistController extends Controller
             'WishlistCreatedAt',
             'ProductID',
             'ProductTitle',
+            'ProductSku',
             'ProductAddedAt',
         ]);
 
@@ -237,6 +238,7 @@ class FrontWishlistController extends Controller
 
                     $shopifyProduct = $getProducts->where('id', $product->product_id)->first();
                     $shopifyCustomer = $getCustomers->where('id', $wishlistToken->customer_id)->first();
+                    $minVariant = $this->getMinPriceVariant($shopifyProduct->variants);
 
                     fputcsv($csvFile, [
                         $wishlistToken->wishlist_token,
@@ -249,6 +251,7 @@ class FrontWishlistController extends Controller
                         $wishlist->created_at,
                         $product->id,
                         $shopifyProduct->title,
+                        $minVariant->sku,
                         $product->created_at,
                     ]);
                 }
@@ -260,6 +263,23 @@ class FrontWishlistController extends Controller
         // // Download the CSV file
         return response()->download($csvFilePath, $csvFileName)->deleteFileAfterSend();
         // return $products;
+    }
+
+    function getMinPriceVariant($variants){
+        $variantCollection = collect($variants);
+
+          $minPrice =   $variantCollection->filter(function ($variant) {
+                return $variant['inventory_quantity'] > 0;
+            })
+            ->min('price');
+
+            if(!is_null($minPrice)){
+                $variant = $variantCollection->where('price', $minPrice)->values()->first();
+            }else{
+                $variant = $variantCollection->first();
+            }
+
+            return $variant;
     }
 
     function exportCustomer(Request $request) {
@@ -289,6 +309,7 @@ class FrontWishlistController extends Controller
             'WishlistCreatedAt',
             'ProductID',
             'ProductTitle',
+            'ProductSku',
             'ProductAddedAt',
         ]);
 
@@ -296,6 +317,7 @@ class FrontWishlistController extends Controller
             foreach ($wishlist->products as $product) {
 
                     $shopifyProduct = $getProducts->where('id', $product->product_id)->first();
+                    $minVariant = $this->getMinPriceVariant($shopifyProduct->variants);
 
                     fputcsv($csvFile, [
                         $wishlistToken->wishlist_token,
@@ -308,6 +330,7 @@ class FrontWishlistController extends Controller
                         $wishlist->created_at,
                         $product->id,
                         $shopifyProduct->title,
+                        $minVariant->sku,
                         $product->created_at,
                     ]);
             }
