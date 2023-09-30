@@ -22,8 +22,10 @@ class ProductFilterService{
 
     public $vendors = [];
 
+    public $shopify;
+
     public $minPrice = 0;
-    public $maxPrice = 0;
+    public $maxPrice = 1000;
 
 
     function __construct(Request $request)
@@ -73,7 +75,7 @@ class ProductFilterService{
     }
 
     function getMaxPrice()  {
-        return (int)$this->request->price_max;
+       return (int)$this->request->price_max;
     }
 
     function setCurrency($currency)  {
@@ -89,16 +91,11 @@ class ProductFilterService{
     }
 
     function hasFilter($input) {
-        if($this->request->has($input)){
+        if($this->request->has($input) && !empty($this->request->get($input))){
             if(gettype($this->request->get($input)) == "integer"){
                 return true;
             }else{
-               if(!empty($this->request->get($input))){
-                    return true;
-               }
-
-               return false;
-
+                return true;
             }
         }
         return false;
@@ -148,22 +145,21 @@ class ProductFilterService{
         $shopify = new ShopifyServices($this->getShop());
         $params['ids'] = $products;
         $params['limit'] = 250;
+        $this->shopify = $shopify;
         $products = $shopify->setParams($params)
                 ->setCurrency($this->getCurrency())
                 ->setCurrencyRate($this->request->rate)
+                ->setProductType($this->request->type)
                 ->wishlistId($this->getWishlistId())
                 ->getPriceList()
                 ->getProductByIdsFull();
 
-        $this->vendors = collect($products)->pluck('vendor')->unique()->values()->all();
         $minPrice_array = collect($products)->map(function($product){
             return $product['min_price'];
         })->sort()->values();
 
-
         $this->minPrice = ceil($minPrice_array->first());
         $this->maxPrice = ceil($minPrice_array->last());
-
         return $products;
     }
 
@@ -256,20 +252,41 @@ class ProductFilterService{
     }
 
     function filterByPrice($products) {
-        $minPrice = $this->getMinPrice();
-        $maxPrice = $this->getMaxPrice();
+        $minPrice = 0;
+        $maxPrice = 500;
+
+        $minPrice_array = $products->map(function($product){
+            return $product['min_price'];
+        })->sort()->values();
 
         if($this->hasFilter('price_min') && $this->hasFilter('price_max')){
-            $filteredProducts = $products->filter(function ($product) use ($minPrice, $maxPrice) {
-                $productPrice = (int)$product->min_price;
-                if($productPrice >= $minPrice && $productPrice <= $maxPrice){
-                    return $productPrice;
-                }
-            });
-           return  $filteredProducts->values()->toArray();;
+            $minPrice = $this->getMinPrice();
+            $maxPrice = $this->getMaxPrice();
         }
 
-        return $products->toArray();
+        if(!$this->hasFilter('price_min') && $this->hasFilter('price_max')){
+            $minPrice = ceil($minPrice_array->first());
+            $maxPrice = $this->getMaxPrice();
+        }
+
+        if($this->hasFilter('price_min') && !$this->hasFilter('price_max')){
+            $minPrice =  $this->getMinPrice();
+            $maxPrice =  ceil($minPrice_array->last());
+        }
+
+        if(!$this->hasFilter('price_min') && !$this->hasFilter('price_max')){
+            $minPrice =  ceil($minPrice_array->first());
+            $maxPrice =  ceil($minPrice_array->last());
+        }
+
+
+        $filteredProducts = $products->filter(function ($product) use ($minPrice, $maxPrice) {
+                    $productPrice = (int)$product->min_price;
+                    if($productPrice >= $minPrice && $productPrice <= $maxPrice){
+                        return $productPrice;
+                    }
+        });
+         return  $filteredProducts->values()->toArray();
     }
 
     function SortManual($products) {
@@ -332,6 +349,30 @@ class ProductFilterService{
         ]);
     }
 
+    function filterVariantByType($products){
+        if($this->hasFilter('type')){
+            $type = str_replace("giftset", "gift set", collect($this->getTypes())->first());
+            $mapProducts = $products->map(function($product) use ($type){
+                $variants = collect($product['variants']);
+                $product['variants'] = $variants->filter(function($variant) use($type) {
+                    return \str_contains(strtolower($variant['title']), $type);
+                })->values()->toArray();
+                $product['available'] = collect($product['variants'])->sum('inventory_quantity') > 0 ? true:false;
+                $minPriceVar = $this->shopify->getMinPrice($product['variants']);
+                $maxPriceVar = $this->shopify->getMaxPrice($product['variants']);
+                $product['min_price'] = $minPriceVar->price;
+                $product['max_price'] = $maxPriceVar->price;
+                $product['min_compare_at_price'] = $minPriceVar->compare_at_price;
+                $product['max_compare_at_price'] = $maxPriceVar->compare_at_price;
+                return $product;
+            });
+
+            return $mapProducts;
+        }
+
+        return collect($products)->toArray();
+    }
+
 
     function filterd() {
         $isToken = $this->isWishlistToken($this->getToken());
@@ -346,9 +387,23 @@ class ProductFilterService{
                     $products = $this->filterByVendor(collect($products));
                     $products = $this->filterByType(collect($products));
                     $products = $this->filterByGender(collect($products));
-                    $products = $this->filterByStock(collect($products));
+                    $products = $this->filterVariantByType(collect($products));
                     $products = $this->filterByPrice(collect($products));
+                    $products = $this->filterByStock(collect($products));
                     $products = $this->SortManual(collect($products));
+
+
+
+                    if(count($products)){
+                        $this->vendors = collect($products)->pluck('vendor')->unique()->values()->all();
+                        $minPrice_array = collect($products)->map(function($product){
+                            return $product['min_price'];
+                        })->sort()->values();
+
+                        $this->minPrice = ceil($minPrice_array->first());
+                        $this->maxPrice = ceil($minPrice_array->last());
+                    }
+
                     $collection = new Collection($products);
                     $totalItems = $collection->count();
 

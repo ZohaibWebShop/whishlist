@@ -32,6 +32,8 @@ class ShopifyServices{
 
     public $wishlist_id = null;
 
+    public $product_type = [];
+
 
 
     function __construct($shop=null)
@@ -56,6 +58,11 @@ class ShopifyServices{
 
     function setCurrencyRate($rate) {
         $this->currencyRate = \floatval($rate);
+        return $this;
+    }
+
+    function setProductType($param) {
+        $this->product_type = $param;
         return $this;
     }
 
@@ -95,7 +102,22 @@ class ShopifyServices{
         return $response;
     }
 
+    function getFilterVariantByType($variants){
+        $variantCollection = collect($variants);
+
+        $type = str_replace("giftset", "gift set", collect($this->product_type)->first());
+        if(!empty($type)){
+            $filterVariant = $variantCollection->filter(function($v) use($type){
+                return \str_contains(strtolower($v['title']), strtolower($type));
+            })->values()->toArray();
+            return $filterVariant;
+        }
+
+        return $variants;
+    }
+
     function getMinPrice($variants){
+        // $getFilterVariantByType = $this->getFilterVariantByType($variants);
         $variantCollection = collect($variants);
 
           $minPrice =   $variantCollection->filter(function ($variant) {
@@ -216,6 +238,7 @@ class ShopifyServices{
                 $maxVar = $this->getMaxPrice($product['variants']);
                 $product['min_price'] = $this->converter($minVar['price']);
                 $product['max_price'] = $this->converter($maxVar['price']);
+                $type = collect($this->product_type)->first();
                 $product['min_compare_at_price'] = $this->converter($minVar['compare_at_price']);
                 $product['max_compare_at_price'] = $this->converter($maxVar['compare_at_price']);
                 $product['available'] = collect($product['variants'])->sum('inventory_quantity') > 0 ? true:false;
