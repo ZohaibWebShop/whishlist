@@ -158,7 +158,7 @@ class ProductFilterService{
             return $product['min_price'];
         })->sort()->values();
 
-        $this->minPrice = ceil($minPrice_array->first());
+        $this->minPrice = floor($minPrice_array->first());
         $this->maxPrice = ceil($minPrice_array->last());
         return $products;
     }
@@ -235,20 +235,25 @@ class ProductFilterService{
         $stock = $this->getStock();
 
         if($this->hasFilter('stock')){
-            $filter = $products->filter(function ($product) use ($stock) {
-                $varaints = collect($product->variants);
-                $quatity = $varaints->sum('inventory_quantity');
-                if($stock == 0 && $quatity == 0){
-                    return $product;
-                }else if($stock == 1 && $quatity > 0){
-                    return $product;
-                }
-            })->values();
-
-            return $filter->toArray();
+            if($stock == 'is'){
+                  $filter = $products->filter(function ($product){
+                        $varaints = collect($product->variants);
+                        $quatity = $varaints->sum('inventory_quantity');
+                        return $quatity > 0;
+                 })->values();
+                 return $filter->toArray();
+            }else{
+                $filter = $products->filter(function ($product){
+                    $varaints = collect($product->variants);
+                    $quatity = $varaints->sum('inventory_quantity');
+                    return $quatity == 0;
+                })->values();
+                 return $filter->toArray();
+            }
         }
 
         return $products->toArray();
+
     }
 
     function filterByPrice($products) {
@@ -265,7 +270,7 @@ class ProductFilterService{
         }
 
         if(!$this->hasFilter('price_min') && $this->hasFilter('price_max')){
-            $minPrice = ceil($minPrice_array->first());
+            $minPrice = floor($minPrice_array->first());
             $maxPrice = $this->getMaxPrice();
         }
 
@@ -275,7 +280,7 @@ class ProductFilterService{
         }
 
         if(!$this->hasFilter('price_min') && !$this->hasFilter('price_max')){
-            $minPrice =  ceil($minPrice_array->first());
+            $minPrice =  floor($minPrice_array->first());
             $maxPrice =  ceil($minPrice_array->last());
         }
 
@@ -400,7 +405,7 @@ class ProductFilterService{
                             return $product['min_price'];
                         })->sort()->values();
 
-                        $this->minPrice = ceil($minPrice_array->first());
+                        $this->minPrice = floor($minPrice_array->first());
                         $this->maxPrice = ceil($minPrice_array->last());
                     }
 
