@@ -244,14 +244,14 @@ class ShopifyServices{
                 $product['available'] = collect($product['variants'])->sum('inventory_quantity') > 0 ? true:false;
                 $variants_genrated = [];
                 foreach($product['variants'] as $key => $variant){
-                    if($this->textContain($variant['title'], 'Boxed')){
+                    if(strtolower(substr($variant['sku'], -1)) == 'b') {
                         if(!str_contains($product['tags'], 'boxed')){
                             $product['tags'] = $this->addTagIntotags($product['tags'], 'boxed');
                         }
                     }
 
 
-                    if($this->textContain($variant['title'], 'Decant')){
+                    if(strtolower(substr($variant['sku'], -1)) == 'd') {
                         if(!str_contains($product['tags'], 'decant')){
                             $product['tags'] = $this->addTagIntotags($product['tags'], 'decant');
                         }
