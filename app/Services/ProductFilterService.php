@@ -63,7 +63,7 @@ class ProductFilterService{
     }
 
     function getStock()  {
-        return (int)$this->request->stock;
+        return $this->request->stock;
     }
 
     function getSort()  {
