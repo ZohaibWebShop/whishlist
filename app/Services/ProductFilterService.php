@@ -71,11 +71,11 @@ class ProductFilterService{
     }
 
     function getMinPrice()  {
-        return (int)$this->request->price_min;
+        return (float)$this->request->price_min;
     }
 
     function getMaxPrice()  {
-       return (int)$this->request->price_max;
+       return (float)$this->request->price_max;
     }
 
     function setCurrency($currency)  {
@@ -265,7 +265,7 @@ class ProductFilterService{
         }
 
         if(!$this->hasFilter('price_min') && $this->hasFilter('price_max')){
-            $minPrice = ceil($minPrice_array->first());
+            $minPrice = floor($minPrice_array->first());
             $maxPrice = $this->getMaxPrice();
         }
 
@@ -275,13 +275,13 @@ class ProductFilterService{
         }
 
         if(!$this->hasFilter('price_min') && !$this->hasFilter('price_max')){
-            $minPrice =  ceil($minPrice_array->first());
+            $minPrice =  floor($minPrice_array->first());
             $maxPrice =  ceil($minPrice_array->last());
         }
 
 
         $filteredProducts = $products->filter(function ($product) use ($minPrice, $maxPrice) {
-                    $productPrice = (int)$product->min_price;
+                    $productPrice = (float)$product->min_price;
                     if($productPrice >= $minPrice && $productPrice <= $maxPrice){
                         return $productPrice;
                     }
@@ -349,21 +349,51 @@ class ProductFilterService{
         ]);
     }
 
+    function getType($type) {
+        switch ($type) {
+            case 'boxed':
+                return 'b';
+                break;
+            case 'decant':
+                return 'd';
+                break;
+            case 'tester':
+                return 't';
+                break;
+            case 'giftset':
+                return 's';
+                break;
+            default:
+                return '';
+                break;
+        }
+    }
+
     function filterVariantByType($products){
         if($this->hasFilter('type')){
-            $type = str_replace("giftset", "gift set", collect($this->getTypes())->first());
+            // $type = str_replace("giftset", "gift set", collect($this->getTypes())->first());
+            $type = collect($this->getTypes())->first();
+            $type = $this->getType(strtolower($type));
             $mapProducts = $products->map(function($product) use ($type){
                 $variants = collect($product['variants']);
-                $product['variants'] = $variants->filter(function($variant) use($type) {
-                    return \str_contains(strtolower($variant['title']), $type);
+                $product_variants = $variants->filter(function($variant) use($type) {
+                    if ($type == 's') {
+                        return \str_contains(strtolower(substr($variant['sku'], -1)), $type) || str_contains(strtolower(substr($variant['sku'], -1)), 'm');
+                    }
+                    return \str_contains(strtolower(substr($variant['sku'], -1)), $type);
                 })->values()->toArray();
-                $product['available'] = collect($product['variants'])->sum('inventory_quantity') > 0 ? true:false;
-                $minPriceVar = $this->shopify->getMinPrice($product['variants']);
-                $maxPriceVar = $this->shopify->getMaxPrice($product['variants']);
-                $product['min_price'] = $minPriceVar->price;
-                $product['max_price'] = $maxPriceVar->price;
-                $product['min_compare_at_price'] = $minPriceVar->compare_at_price;
-                $product['max_compare_at_price'] = $maxPriceVar->compare_at_price;
+                if (!empty($product_variants)) {
+                    $product['available'] = collect($product_variants)->sum('inventory_quantity') > 0 ? true:false;
+                    $minPriceVar = $this->shopify->getMinPrice($product_variants);
+                    $maxPriceVar = $this->shopify->getMaxPrice($product_variants);
+                    $product['min_price'] = $minPriceVar->price;
+                    $product['max_price'] = $maxPriceVar->price;
+                    $product['min_compare_at_price'] = $minPriceVar->compare_at_price;
+                    $product['max_compare_at_price'] = $maxPriceVar->compare_at_price;
+                    $product['variants'] = $product_variants;
+                } else {
+                    $product['variants'] = [];
+                }
                 return $product;
             });
 
@@ -371,6 +401,12 @@ class ProductFilterService{
         }
 
         return collect($products)->toArray();
+    }
+
+    function removeProductsEmptyVariants($products) {
+        return $products->filter(function ($product) {
+            return count($product['variants']) > 0;
+        });
     }
 
 
@@ -388,7 +424,8 @@ class ProductFilterService{
                     $products = $this->filterByType(collect($products));
                     $products = $this->filterByGender(collect($products));
                     $products = $this->filterVariantByType(collect($products));
-                    $products = $this->filterByPrice(collect($products));
+                    $products = $this->removeProductsEmptyVariants(collect($products));
+                    $prices = $this->filterByPrice(collect($products));
                     $products = $this->filterByStock(collect($products));
                     $products = $this->SortManual(collect($products));
 
@@ -419,7 +456,8 @@ class ProductFilterService{
                         "products"=>$currentPageItems,
                         "vendors"=>$this->vendors,
                         "min_price"=>$this->minPrice,
-                        "max_price"=>$this->maxPrice
+                        "max_price"=>$this->maxPrice,
+                        "prices"=>$prices
                     ]);
                 }else{
                     $this->setResponse([
