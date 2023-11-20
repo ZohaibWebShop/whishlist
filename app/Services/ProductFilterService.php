@@ -158,7 +158,7 @@ class ProductFilterService{
             return $product['min_price'];
         })->sort()->values();
 
-        $this->minPrice = floor($minPrice_array->first());
+        $this->minPrice = floor((float)$minPrice_array->first());
         $this->maxPrice = ceil($minPrice_array->last());
         return $products;
     }
@@ -280,7 +280,7 @@ class ProductFilterService{
         }
 
         if(!$this->hasFilter('price_min') && !$this->hasFilter('price_max')){
-            $minPrice =  floor($minPrice_array->first());
+            $minPrice =  floor((float)$minPrice_array->first());
             $maxPrice =  ceil($minPrice_array->last());
         }
 
@@ -442,7 +442,7 @@ class ProductFilterService{
                             return $product['min_price'];
                         })->sort()->values();
 
-                        $this->minPrice = floor($minPrice_array->first());
+                        $this->minPrice = floor((float)$minPrice_array->first());
                         $this->maxPrice = ceil($minPrice_array->last());
                     }
 

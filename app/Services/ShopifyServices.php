@@ -165,7 +165,7 @@ class ShopifyServices{
                         'id'=>$product['id'],
                         'title'=>$product['title'],
                         'handle'=>$product['handle'],
-                        'image'=>$product['image']['src'],
+                        'image'=>isset($product['image']['src'])?$product['image']['src']:'https://cdn.shopify.com/s/files/1/0215/6845/4756/products/FragFlex_20Image_20Coming_20Soon_a609ebe0-1688-455b-a1a8-0f2a23c5a362.jpg?v=1697609743',
                         'url'=>"/products/{$product['handle']}",
                         'variant_id'=>$varCol->id,
                         'sku'=>$varCol->sku,

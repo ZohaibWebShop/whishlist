@@ -8,7 +8,7 @@ const ASSET_URL = process.env.ASSET_URL || '/build/';
 
 export default defineConfig({
     server: {
-        origin: 'https://app.wdspreview.com',
+        origin: 'https://wishlist.digitalnomadsco.com',
     },
     plugins: [
         react(),

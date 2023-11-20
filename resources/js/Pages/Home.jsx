@@ -11,6 +11,8 @@ function Home() {
     const { getWishlist, pageInfo, loading, sortfilter, searchFilter, resetFilter, nextPage, prevPage, deleteCustomer } = useWishlistToken();
     const { onExport, loadingExport } = useExport();
 
+console.log(getWishlist);
+
   return (
      <Page
 
