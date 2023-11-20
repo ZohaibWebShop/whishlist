@@ -30,10 +30,25 @@ class FrontWishlistController extends Controller
 
         $wishlists->transform(function ($item) use($customers) {
             $customer_id =  $item['customer_id'];
-
-            $item['customer'] = $customers->filter(function($customer) use($customer_id){
+            $filterCustomerById = $customers->filter(function($customer) use($customer_id){
                 return $customer['id'] == $customer_id;
             })->values()->first();
+            if(!is_null($filterCustomerById)){
+                if(!is_null($filterCustomerById['first_name']) && !is_null($filterCustomerById['last_name'])){
+                    $item['customer'] = [
+                        "first_name"=>"NA",
+                        "last_name"=>"",
+                        "email"=>$filterCustomerById['email']
+                    ];
+                }
+                $item['customer'] = $filterCustomerById;
+            }else{
+                $item['customer'] = [
+                    "first_name"=>"Customer",
+                    "last_name"=>"Deleted",
+                    "email"=>""
+                ];
+            }
             return $item;
         });
 
