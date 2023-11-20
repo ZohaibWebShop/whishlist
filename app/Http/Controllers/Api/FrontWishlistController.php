@@ -36,7 +36,11 @@ class FrontWishlistController extends Controller
 
 
             if(!is_null($filterCustomerById)){
-                $item['customer'] = $filterCustomerById;
+                $item['customer'] = $item['customer'] = [
+                        "first_name"=>!is_null($filterCustomerById['first_name'])?$filterCustomerById['first_name']:'NA',
+                        "last_name"=>!is_null($filterCustomerById['last_name'])?$filterCustomerById['last_name']:'NA',
+                        "email"=>!is_null($filterCustomerById['email'])?$filterCustomerById['email']:'NA'
+                    ];
             }else{
                 $item['customer'] = [
                             "first_name"=>"Customer",
@@ -47,11 +51,7 @@ class FrontWishlistController extends Controller
 
             // if(!is_null($filterCustomerById)){
             //     if(!is_null($filterCustomerById['first_name']) && !is_null($filterCustomerById['last_name'])){
-            //         $item['customer'] = [
-            //             "first_name"=>"NA",
-            //             "last_name"=>"",
-            //             "email"=>$filterCustomerById['email']
-            //         ];
+            //
             //     }
             //     $item['customer'] = [
             //         ...$filterCustomerById,
