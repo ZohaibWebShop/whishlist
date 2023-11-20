@@ -26,8 +26,7 @@ class FrontWishlistController extends Controller
             return $wishlist['customer_id'];
         });
 
-        $customer_ids = implode(',', $customers->toArray());
-        $customers = $this->getAllCustomers($request, $customer_ids);
+        $customers = $this->getAllCustomers($request, $customers->toArray());
         // $shopifySerivice->setParams(['ids'=>$customer_ids,"limit"=>250,'fields'=>"id,email,first_name,last_name"]);
         // $customers = collect($shopifySerivice->getCustomers());
         return $customers;
