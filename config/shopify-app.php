@@ -345,6 +345,14 @@ return [
     */
 
     'webhooks' => [
+        [
+            'topic' => 'CUSTOMERS_DELETE',
+            'address' => config('app.url').'/webhook/customers-delete'
+        ],
+        [
+            'topic' => 'PRODUCTS_DELETE',
+            'address' => config('app.url').'/webhook/product-delete'
+        ]
         /*
             [
                 'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'ORDERS_CREATE'),
