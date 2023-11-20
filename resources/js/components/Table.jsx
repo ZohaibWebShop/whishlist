@@ -87,7 +87,7 @@ import {
 
                  <Text as="span" variant="bodyMd" fontWeight="semibold">
                         <Link href={`/customer/${customer_id}/wishlists`}>
-                            {name} {email && (
+                            {name && !name.includes('null')?name:'Customer Deleted'} {email && (
                                 <>
                                     • {email}
                                 </>
