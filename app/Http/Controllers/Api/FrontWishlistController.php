@@ -36,7 +36,7 @@ class FrontWishlistController extends Controller
 
 
             if(!is_null($filterCustomerById)){
-                $item['customer'] = $filterCustomerById['id'];
+                $item['customer'] = $filterCustomerById['first_name'];
             }else{
                 $item['customer'] = [
                             "first_name"=>"Customer",
