@@ -38,15 +38,15 @@ class FrontWishlistController extends Controller
             if(!is_null($filterCustomerById)){
                 if(is_null($filterCustomerById['first_name']) && is_null($filterCustomerById['last_name'])){
                     $item['customer'] = $item['customer'] = [
-                        "first_name"=>'NA',
+                        "first_name"=>'',
                         "last_name"=>"",
-                        "email"=>!is_null($filterCustomerById['email'])?$filterCustomerById['email']:'NA'
+                        "email"=>!is_null($filterCustomerById['email'])?$filterCustomerById['email']:''
                     ];
                 }else{
                     $item['customer'] = $item['customer'] = [
-                        "first_name"=>!is_null($filterCustomerById['first_name'])?$filterCustomerById['first_name']:'NA',
-                        "last_name"=>!is_null($filterCustomerById['last_name'])?$filterCustomerById['last_name']:'NA',
-                        "email"=>!is_null($filterCustomerById['email'])?$filterCustomerById['email']:'NA'
+                        "first_name"=>!is_null($filterCustomerById['first_name'])?$filterCustomerById['first_name']:'',
+                        "last_name"=>!is_null($filterCustomerById['last_name'])?$filterCustomerById['last_name']:'',
+                        "email"=>!is_null($filterCustomerById['email'])?$filterCustomerById['email']:''
                     ];
                 }
 
