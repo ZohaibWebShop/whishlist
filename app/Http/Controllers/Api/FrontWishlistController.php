@@ -14,20 +14,53 @@ use Illuminate\Http\Request;
 
 class FrontWishlistController extends Controller
 {
+
+
+    function getAllCustomers($request, $ids) {
+
+        $shopifySerivice = new ShopifyServices($request->shop);
+        $customers = []; // Initialize an array to store all customer data
+
+        do {
+            // Set up parameters for the request
+            $params = [
+                'ids' => $ids,
+                'limit' => 250,
+                'fields' => "id,email,first_name,last_name"
+            ];
+
+
+
+            // Set parameters for the next page if it's not null
+            if (isset($response['next_page']) && $response['next_page'] !== null) {
+                $params['page_info'] = $response['next_page'];
+            }
+
+            // Make the request
+            $response = $shopifyService->setParams($params)->getCustomers();
+
+            // Append current page's customers to the array
+            $allCustomers = array_merge($allCustomers, $response['customers']);
+
+        } while (isset($response['next_page']) && $response['next_page'] !== null);
+
+        return $allCustomers;
+    }
+
     function GetCustomers(Request $request) {
         $shop = $request->shop;
         $shopifySerivice = new ShopifyServices($request->shop);
         $wishlists = WishlistToken::with('WishlistsCount')->get();
 
-        return ["count"=>count($wishlists)];
+        $customers = $wishlists->map(function($wishlist){
+            return $wishlist['customer_id'];
+        });
 
-        // $customers = $wishlists->map(function($wishlist){
-        //     return $wishlist['customer_id'];
-        // });
-
-        // $customer_ids = implode(',', $customers->toArray());
-        // $shopifySerivice->setParams(['ids'=>$customer_ids,'fields'=>"id,email,first_name,last_name"]);
+        $customer_ids = implode(',', $customers->toArray());
+        $customers = $this->getAllCustomers($request, $customer_ids);
+        // $shopifySerivice->setParams(['ids'=>$customer_ids,"limit"=>250,'fields'=>"id,email,first_name,last_name"]);
         // $customers = collect($shopifySerivice->getCustomers());
+        return $customers;
 
         // $wishlists->transform(function ($item) use($customers) {
         //     $customer_id =  $item['customer_id'];
