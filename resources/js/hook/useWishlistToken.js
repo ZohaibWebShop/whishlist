@@ -105,7 +105,6 @@ function useWishlistToken(){
         id: wishlist?.id,
         customer: wishlist?.customer,
         customer_id: wishlist?.customer_id,
-
         name:typeof wishlist?.customer?.first_name != 'undefined' && typeof wishlist?.customer?.last_name != 'undefined'?`${wishlist?.customer?.first_name} ${wishlist?.customer?.last_name}`:'Customer Deleted',
         email: wishlist?.customer?.email,
         total: wishlist?.wishlists_count?.length,
