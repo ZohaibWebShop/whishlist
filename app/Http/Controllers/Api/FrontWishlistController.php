@@ -19,24 +19,26 @@ class FrontWishlistController extends Controller
         $shopifySerivice = new ShopifyServices($request->shop);
         $wishlists = WishlistToken::with('WishlistsCount')->get();
 
-        $customers = $wishlists->map(function($wishlist){
-            return $wishlist['customer_id'];
-        });
+        return ["count"=>count($wishlists)];
 
-        $customer_ids = implode(',', $customers->toArray());
-        $shopifySerivice->setParams(['ids'=>$customer_ids,'fields'=>"id,email,first_name,last_name"]);
-        $customers = collect($shopifySerivice->getCustomers());
+        // $customers = $wishlists->map(function($wishlist){
+        //     return $wishlist['customer_id'];
+        // });
 
-        $wishlists->transform(function ($item) use($customers) {
-            $customer_id =  $item['customer_id'];
+        // $customer_ids = implode(',', $customers->toArray());
+        // $shopifySerivice->setParams(['ids'=>$customer_ids,'fields'=>"id,email,first_name,last_name"]);
+        // $customers = collect($shopifySerivice->getCustomers());
 
-            $item['customer'] = $customers->filter(function($customer) use($customer_id){
-                return $customer['id'] == $customer_id;
-            })->values()->first();
-            return $item;
-        });
+        // $wishlists->transform(function ($item) use($customers) {
+        //     $customer_id =  $item['customer_id'];
 
-        return $wishlists;
+        //     $item['customer'] = $customers->filter(function($customer) use($customer_id){
+        //         return $customer['id'] == $customer_id;
+        //     })->values()->first();
+        //     return $item;
+        // });
+
+        // return $wishlists;
     }
 
     function getWishlists(Request $request, $customer_id) {
