@@ -17,6 +17,7 @@ import {
 
   function Table({ wishlist, pageInfo, isLoading, resetFilter, sortFilter, searchFilter, nextPage, prevPage, deleteCustomer }) {
     const { user } = usePage().props;
+    console.log(wishlist);
     const [selected, setSelected] = useState(0);
     const sortOptions = [
       {label: 'Order', value: 'order asc', directionLabel: 'Ascending'},
