@@ -16,36 +16,6 @@ class FrontWishlistController extends Controller
 {
 
 
-    function getAllCustomers($request, $ids) {
-
-        $shopifySerivice = new ShopifyServices($request->shop);
-        $customers = []; // Initialize an array to store all customer data
-
-        do {
-            // Set up parameters for the request
-            $params = [
-                'ids' => $ids,
-                'limit' => 250,
-                'fields' => "id,email,first_name,last_name"
-            ];
-
-
-
-            // Set parameters for the next page if it's not null
-            if (isset($response['next_page']) && $response['next_page'] !== null) {
-                $params['page_info'] = $response['next_page'];
-            }
-
-            // Make the request
-            $response = $shopifyService->setParams($params)->getCustomers();
-
-            // Append current page's customers to the array
-            $allCustomers = array_merge($allCustomers, $response['customers']);
-
-        } while (isset($response['next_page']) && $response['next_page'] !== null);
-
-        return $allCustomers;
-    }
 
     function GetCustomers(Request $request) {
         $shop = $request->shop;
