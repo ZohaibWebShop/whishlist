@@ -1,0 +1,13 @@
+import './SearchField.css';
+
+var styles = {
+  "SearchField": "Polaris-Filters-SearchField_ek145",
+  "Label": "Polaris-Filters-SearchField__Label_2vd36",
+  "Input": "Polaris-Filters-SearchField__Input_30ock",
+  "borderless": "Polaris-Filters-SearchField--borderless_1dsfi",
+  "focused": "Polaris-Filters-SearchField--focused_17w4h",
+  "ClearButton": "Polaris-Filters-SearchField__ClearButton_b7wzn",
+  "ClearButton-focused": "Polaris-Filters-SearchField__ClearButton--focused_164jo"
+};
+
+export { styles as default };

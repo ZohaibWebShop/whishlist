@@ -1,0 +1,106 @@
+.Polaris-LegacyCard_l5l93 { background-color: var(--p-color-bg); box-shadow: var(--p-shadow-md); outline: var(--p-border-width-1) solid transparent; overflow: clip; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93 { position: relative; box-shadow: var(--p-shadow-xs); border-radius: var(--p-border-radius-0-experimental); border: var(--pc-app-provider-shadow-bevel-border); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93::before { content: var(--pc-app-provider-shadow-bevel-content); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 101; box-shadow: var(--p-shadow-bevel-experimental); border-radius: var(--p-border-radius-0-experimental); pointer-events: none; mix-blend-mode: luminosity; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93 h2, html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93 h3 { font-size: var(--p-font-size-80-experimental); }
+
+.Polaris-LegacyCard_l5l93 + .Polaris-LegacyCard_l5l93 { margin-top: var(--p-space-4); }
+
+@media print { .Polaris-LegacyCard_l5l93 + .Polaris-LegacyCard_l5l93 { margin-top: calc(var(--p-space-2)*-1); } }
+
+@media (min-width: 30.625em) { .Polaris-LegacyCard_l5l93 { border-radius: var(--p-border-radius-2); }
+  .Polaris-LegacyCard_l5l93 .Polaris-LegacyCard__Section_1b1h1:first-child { border-top-left-radius: var(--p-border-radius-2); border-top-right-radius: var(--p-border-radius-2); }
+  .Polaris-LegacyCard_l5l93 .Polaris-LegacyCard__Section_1b1h1:last-child { border-bottom-left-radius: var(--p-border-radius-2); border-bottom-right-radius: var(--p-border-radius-2); }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93 { position: relative; box-shadow: var(--p-shadow-xs); border-radius: var(--p-border-radius-3); border: var(--pc-app-provider-shadow-bevel-border); }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93::before { content: var(--pc-app-provider-shadow-bevel-content); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 101; box-shadow: var(--p-shadow-bevel-experimental); border-radius: var(--p-border-radius-3); pointer-events: none; mix-blend-mode: luminosity; }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93 .Polaris-LegacyCard__Section_1b1h1:first-child { border-top-left-radius: var(--p-border-radius-3); border-top-right-radius: var(--p-border-radius-3); }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93 .Polaris-LegacyCard__Section_1b1h1:last-child { border-bottom-left-radius: var(--p-border-radius-3); border-bottom-right-radius: var(--p-border-radius-3); } }
+
+@media print { .Polaris-LegacyCard_l5l93 { box-shadow: none; }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93 { position: relative; box-shadow: none; border-radius: var(--p-border-radius-0-experimental); border: none; }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard_l5l93::before { content: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; box-shadow: var(--p-shadow-bevel-experimental); border-radius: var(--p-border-radius-0-experimental); pointer-events: none; mix-blend-mode: luminosity; } }
+
+.Polaris-LegacyCard--subdued_17vaa { background-color: var(--p-color-bg-subdued); }
+
+@media print { .Polaris-LegacyCard__Section--hideOnPrint_f883o, .Polaris-LegacyCard--hideOnPrint_1nslv { display: none !important; } }
+
+.Polaris-LegacyCard__Header_z4uwg { padding: var(--p-space-4) var(--p-space-4) 0; }
+
+@media (min-width: 30.625em) { .Polaris-LegacyCard__Header_z4uwg { padding: var(--p-space-5) var(--p-space-5) 0; }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Header_z4uwg { padding: var(--p-space-2) var(--p-space-4) 0; } }
+
+@media print and (min-width: 30.625em) { .Polaris-LegacyCard__Header_z4uwg { padding: var(--p-space-2) var(--p-space-4) 0; } }
+
+.Polaris-LegacyCard__Section_1b1h1 { padding: var(--p-space-4); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section_1b1h1 { padding: var(--p-space-2) var(--p-space-4); }
+
+@media (min-width: 30.625em) { .Polaris-LegacyCard__Section_1b1h1 { padding: var(--p-space-5); }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section_1b1h1 { padding: var(--p-space-2) var(--p-space-4); } }
+
+.Polaris-LegacyCard__Section_1b1h1 + .Polaris-LegacyCard__Section_1b1h1 { border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); }
+
+@media print { .Polaris-LegacyCard__Section_1b1h1 + .Polaris-LegacyCard__Section_1b1h1 { border-top: 0; } }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section_1b1h1 + .Polaris-LegacyCard__Section_1b1h1 { border-top: 0; }
+
+@media print { .Polaris-LegacyCard__Section_1b1h1 { padding-top: var(--p-space-1); padding-bottom: var(--p-space-1); } }
+
+.Polaris-LegacyCard__Section--fullWidth_3l6fs { padding: var(--p-space-4) 0; }
+
+@media (min-width: 30.625em) { .Polaris-LegacyCard__Section--fullWidth_3l6fs { padding: var(--p-space-5) 0; }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--fullWidth_3l6fs { padding: var(--p-space-4) 0; } }
+
+.Polaris-LegacyCard__Section--flush_1tjqa { padding: 0; }
+
+@media (min-width: 30.625em) { .Polaris-LegacyCard__Section--flush_1tjqa { padding: 0; } }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--flush_1tjqa { padding: 0; }
+
+.Polaris-LegacyCard__Section--subdued_3jppn { background-color: var(--p-color-bg-subdued); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--subdued_3jppn { padding: var(--p-space-3) var(--p-space-4); }
+
+@media (-ms-high-contrast: active) { .Polaris-LegacyCard__Section--subdued_3jppn { background-color: transparent; } }
+
+.Polaris-LegacyCard__Header_z4uwg + .Polaris-LegacyCard__Section--subdued_3jppn { border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); margin-top: var(--p-space-5); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Header_z4uwg + .Polaris-LegacyCard__Section--subdued_3jppn { border-top: 0; margin-top: 0; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--subdued_3jppn:last-child { padding: var(--p-space-4); }
+
+@media print { html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--subdued_3jppn:last-child { padding-top: var(--p-space-2); padding-bottom: var(--p-space-2); } }
+
+.Polaris-LegacyCard__SectionHeader_1aytf { padding-bottom: var(--p-space-2); }
+
+.Polaris-LegacyCard__Section--fullWidth_3l6fs .Polaris-LegacyCard__SectionHeader_1aytf { padding-left: var(--p-space-4); padding-right: var(--p-space-4); }
+
+@media (min-width: 30.625em) { .Polaris-LegacyCard__Section--fullWidth_3l6fs .Polaris-LegacyCard__SectionHeader_1aytf { padding-left: var(--p-space-5); padding-right: var(--p-space-5); }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--fullWidth_3l6fs .Polaris-LegacyCard__SectionHeader_1aytf { padding-left: var(--p-space-4); padding-right: var(--p-space-4); } }
+
+.Polaris-LegacyCard__Subsection_197ob + .Polaris-LegacyCard__Subsection_197ob { margin-top: var(--p-space-4); padding-top: var(--p-space-4); border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); }
+
+@media print { .Polaris-LegacyCard__Subsection_197ob + .Polaris-LegacyCard__Subsection_197ob { border-top: 0; } }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Subsection_197ob + .Polaris-LegacyCard__Subsection_197ob { border-top: 0; margin-top: 0; padding-top: var(--p-space-2); }
+
+@media print { .Polaris-LegacyCard__Subsection_197ob { padding-top: var(--p-space-1); padding-bottom: var(--p-space-1); } }
+
+.Polaris-LegacyCard__Footer_z4ij5 { display: flex; justify-content: flex-end; padding: var(--p-space-2) var(--p-space-4) var(--p-space-4); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Footer_z4ij5 { padding: 0 var(--p-space-4) var(--p-space-4); }
+
+@media (min-width: 30.625em) { .Polaris-LegacyCard__Footer_z4ij5 { padding: 0 var(--p-space-5) var(--p-space-5); }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Footer_z4ij5 { padding: 0 var(--p-space-4) var(--p-space-4); } }
+
+.Polaris-LegacyCard__Footer_z4ij5.Polaris-LegacyCard__LeftJustified_1ldly { justify-content: flex-start; }
+
+.Polaris-LegacyCard__Section--subdued_3jppn + .Polaris-LegacyCard__Footer_z4ij5 { border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); padding: var(--p-space-5); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--subdued_3jppn + .Polaris-LegacyCard__Footer_z4ij5 { padding: var(--p-space-4); border-top: 0; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__FirstSectionPadding_dq8kr { padding-top: var(--p-space-4); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__LastSectionPadding_17gqq { padding-bottom: var(--p-space-4); }

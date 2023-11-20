@@ -1,0 +1,7 @@
+:root { --pc-skeleton-page-max-width: 62.375rem; --pc-skeleton-page-max-width-narrow: 41.375rem; }
+
+.Polaris-SkeletonPage__Title_2qj8j { font-weight: var(--p-font-weight-semibold); font-size: var(--p-font-size-300); line-height: var(--p-font-line-height-4); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-SkeletonPage__Title_2qj8j { font-weight: var(--p-font-weight-bold); }
+
+@media screen and (-ms-high-contrast: active) { .Polaris-SkeletonPage__SkeletonTitle_7v6f2 { background-color: grayText; } }

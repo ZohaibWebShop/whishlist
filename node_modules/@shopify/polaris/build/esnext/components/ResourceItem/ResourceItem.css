@@ -1,0 +1,55 @@
+.Polaris-ResourceItem_1uu16 { --pc-resource-item-min-height: 2.75rem; --pc-resource-item-disclosure-width: 3rem; --pc-resource-item-offset: 2.375rem; --pc-resource-item-clickable-stacking-order: 1; --pc-resource-item-content-stacking-order: 2; outline: none; cursor: pointer; }
+
+.Polaris-ResourceItem_1uu16:hover { background-color: var(--p-color-bg-hover); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ResourceItem_1uu16:hover { background-color: var(--p-color-bg-subdued-hover); }
+
+.Polaris-ResourceItem_1uu16:hover .Polaris-ResourceItem__Actions_17m67 > * { clip: auto; overflow: visible; }
+
+.Polaris-ResourceItem_1uu16:active { background-color: var(--p-color-bg-active); }
+
+.Polaris-ResourceItem__ItemWrapper_1kbav { overflow: hidden; max-width: 100%; }
+
+.Polaris-ResourceItem__CheckboxWrapper_11ah0 { z-index: var(--pc-resource-item-content-stacking-order); display: flex; align-items: inherit; height: 100%; }
+
+.Polaris-ResourceItem__CheckboxLabel_13dcr { align-items: inherit; }
+
+.Polaris-ResourceItem--focusedInner_426pi, .Polaris-ResourceItem--focusedInner_426pi.Polaris-ResourceItem--focused_17w4h, .Polaris-ResourceItem--focusedInner_426pi.Polaris-ResourceItem--focused_17w4h.Polaris-ResourceItem--selected_mijeo { box-shadow: none; }
+
+.Polaris-ResourceItem__Link_yj5sy, .Polaris-ResourceItem__Button_r99lw { position: absolute; z-index: var(--pc-resource-item-clickable-stacking-order); top: 0; left: 0; height: 100%; width: 100%; opacity: 0; }
+
+.Polaris-ResourceItem__Button_r99lw { padding: 0; border: none; }
+
+.Polaris-ResourceItem--selectable_1tkx2 { width: 100%; margin-right: 0; }
+
+.Polaris-ResourceItem__Actions_17m67 > * { clip: rect(0, 0, 0, 0); overflow: hidden; }
+
+.Polaris-ResourceItem--focused_17w4h .Polaris-ResourceItem__Actions_17m67 > * { clip: auto; overflow: visible; }
+
+.Polaris-ResourceItem--selected_mijeo { background-color: var(--p-color-bg-interactive-selected); }
+
+.Polaris-ResourceItem--selected_mijeo:hover { background-color: var(--p-color-bg-interactive-subdued-hover); }
+
+.Polaris-ResourceItem--selected_mijeo:active { background-color: var(--p-color-bg-interactive-subdued-active); }
+
+.Polaris-ResourceItem__ListItem_wxd2m { position: relative; }
+
+.Polaris-ResourceItem__ListItem_wxd2m::after { content: ''; position: absolute; z-index: 1; top: 0rem; right: 0rem; bottom: 0rem; left: 0rem; display: block; pointer-events: none; box-shadow: 0 0 0 0rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+.Polaris-ResourceItem__ListItem_wxd2m + .Polaris-ResourceItem__ListItem_wxd2m { border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ResourceItem__ListItem_wxd2m + .Polaris-ResourceItem__ListItem_wxd2m { border-top: var(--p-border-width-1) solid var(--p-color-border); }
+
+.Polaris-ResourceItem__ListItem_wxd2m:not(.Polaris-ResourceItem--hasBulkActions_1qwms):not(.Polaris-ResourceItem--selectMode_4098j)::after { border-radius: var(--p-border-radius-05); }
+
+.Polaris-ResourceItem__ListItem_wxd2m:not(.Polaris-ResourceItem--hasBulkActions_1qwms):not(.Polaris-ResourceItem--selectMode_4098j):last-of-type { border-bottom-left-radius: var(--p-border-radius-2); border-bottom-right-radius: var(--p-border-radius-2); }
+
+.Polaris-ResourceItem__ListItem_wxd2m:not(.Polaris-ResourceItem--hasBulkActions_1qwms):not(.Polaris-ResourceItem--selectMode_4098j):last-of-type .Polaris-ResourceItem__ItemWrapper_1kbav { border-radius: inherit; }
+
+.Polaris-ResourceItem__ListItem_wxd2m:not(.Polaris-ResourceItem--hasBulkActions_1qwms):not(.Polaris-ResourceItem--selectMode_4098j):last-of-type.Polaris-ResourceItem--focused_17w4h::after { border-bottom-left-radius: var(--p-border-radius-2); border-bottom-right-radius: var(--p-border-radius-2); }
+
+.Polaris-ResourceItem__ListItem_wxd2m.Polaris-ResourceItem--focused_17w4h { z-index: var(--pc-resource-item-clickable-stacking-order); }
+
+.Polaris-ResourceItem__ListItem_wxd2m.Polaris-ResourceItem--focused_17w4h::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+* + ul > .Polaris-ResourceItem__ListItem_wxd2m:first-of-type.Polaris-ResourceItem--focused_17w4h::after { top: 0.0625rem; }

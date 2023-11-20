@@ -1,0 +1,25 @@
+.Polaris-Link_yj5sy { -webkit-appearance: none; appearance: none; display: inline; text-align: inherit; padding: 0; background: none; border: 0; font-size: inherit; font-weight: inherit; color: var(--p-color-text-interactive); text-decoration: underline; cursor: pointer; }
+
+.Polaris-Link_yj5sy:hover { color: var(--p-color-text-interactive-hover); text-decoration: none; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link_yj5sy:hover { text-decoration: underline; }
+
+.Polaris-Link_yj5sy:focus:not(:active) { outline: var(--p-color-border-interactive-focus) auto var(--p-border-width-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link_yj5sy:focus, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link_yj5sy:focus-visible { outline: var(--p-color-border-interactive-focus) auto var(--p-border-width-2); outline-offset: var(--p-space-05); border-radius: var(--p-border-radius-1_5-experimental); }
+
+.Polaris-Link_yj5sy:active { position: relative; color: var(--p-color-text-interactive-active); }
+
+.Polaris-Link_yj5sy:active::before { content: ''; position: absolute; z-index: -1; top: -0.125rem; right: -0.3125rem; bottom: -0.125rem; left: -0.3125rem; display: block; border-radius: var(--p-border-radius-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link_yj5sy:active::before { content: none; }
+
+@media print { .Polaris-Link_yj5sy { -webkit-text-decoration-color: var(--p-color-border-strong); text-decoration-color: var(--p-color-border-strong); } }
+
+.Polaris-Link--monochrome_14jw2 { color: inherit; }
+
+.Polaris-Link--monochrome_14jw2:hover, .Polaris-Link--monochrome_14jw2:focus, .Polaris-Link--monochrome_14jw2:active { color: inherit; }
+
+.Polaris-Link--removeUnderline_adav6 { text-decoration: none; }
+
+.Polaris-Link--removeUnderline_adav6:hover { text-decoration: underline; }

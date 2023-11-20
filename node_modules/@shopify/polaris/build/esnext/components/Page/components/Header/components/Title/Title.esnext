@@ -1,0 +1,35 @@
+import React from 'react';
+import { classNames } from '../../../../../../utilities/css.esnext';
+import styles from './Title.scss.esnext';
+import { useFeatures } from '../../../../../../utilities/features/hooks.esnext';
+import { Text } from '../../../../../Text/Text.esnext';
+
+function Title({
+  title,
+  subtitle,
+  titleMetadata,
+  compactTitle
+}) {
+  const {
+    polarisSummerEditions2023
+  } = useFeatures();
+  const className = classNames(styles.Title, subtitle && styles.TitleWithSubtitle);
+  const titleMarkup = title ? /*#__PURE__*/React.createElement("h1", {
+    className: className
+  }, title) : null;
+  const titleMetadataMarkup = titleMetadata ? /*#__PURE__*/React.createElement("div", {
+    className: styles.TitleMetadata
+  }, titleMetadata) : null;
+  const wrappedTitleMarkup = titleMetadata ? /*#__PURE__*/React.createElement("div", {
+    className: styles.TitleWithMetadataWrapper
+  }, titleMarkup, titleMetadataMarkup) : titleMarkup;
+  const subtitleMarkup = subtitle ? /*#__PURE__*/React.createElement("div", {
+    className: classNames(styles.SubTitle, compactTitle && styles.SubtitleCompact)
+  }, /*#__PURE__*/React.createElement(Text, {
+    as: "p",
+    variant: polarisSummerEditions2023 ? 'bodySm' : undefined
+  }, subtitle)) : null;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, wrappedTitleMarkup, subtitleMarkup);
+}
+
+export { Title };

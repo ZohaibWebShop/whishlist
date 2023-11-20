@@ -1,0 +1,8 @@
+var styles = {
+  "Tabs": "Polaris-SkeletonTabs__Tabs",
+  "Tab": "Polaris-SkeletonTabs__Tab",
+  "Tab-short": "Polaris-SkeletonTabs__Tab--short",
+  "Tab-long": "Polaris-SkeletonTabs__Tab--long"
+};
+
+export { styles as default };

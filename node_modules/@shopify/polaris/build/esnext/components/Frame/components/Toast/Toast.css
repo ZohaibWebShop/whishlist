@@ -1,0 +1,35 @@
+.Polaris-Frame-Toast_30jlx { display: inline-flex; max-width: 31.25rem; padding: var(--p-space-2) var(--p-space-3); border-radius: var(--p-border-radius-1); background: var(--p-color-bg-inverse); color: var(--p-color-text-on-color); margin-bottom: var(--p-space-5); box-shadow: var(--p-shadow-xl); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-Toast_30jlx { position: relative; box-shadow: var(--p-shadow-lg); border-radius: var(--p-border-radius-2); border: var(--pc-app-provider-shadow-bevel-border); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-Toast_30jlx::before { content: var(--pc-app-provider-shadow-bevel-content); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; box-shadow: var(--p-shadow-bevel-experimental); border-radius: var(--p-border-radius-2); pointer-events: none; mix-blend-mode: luminosity; }
+
+@media (min-width: 30.625em) { .Polaris-Frame-Toast_30jlx { padding: var(--p-space-3); } }
+
+@media (forced-colors: active) { .Polaris-Frame-Toast_30jlx { border: var(--p-border-width-2) solid transparent; } }
+
+.Polaris-Frame-Toast__Action_r96cs { margin-left: var(--p-space-2); color: var(--p-color-text-on-color); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-Toast__Action_r96cs { margin-left: var(--p-space-4); }
+
+.Polaris-Frame-Toast--error_37uk1 { background: var(--p-color-bg-critical-strong); color: var(--p-color-text-on-color); }
+
+.Polaris-Frame-Toast--error_37uk1 .Polaris-Frame-Toast__CloseButton_bl13t { color: var(--p-color-icon-on-color); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-Toast--error_37uk1 .Polaris-Frame-Toast__CloseButton_bl13t { color: var(--p-color-icon-on-color); }
+
+.Polaris-Frame-Toast__LeadingIcon_1a867 { margin-right: var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-Toast__LeadingIcon_1a867 { margin-right: var(--p-space-1_5-experimental); }
+
+.Polaris-Frame-Toast__LeadingIcon_1a867 svg { fill: currentColor; }
+
+.Polaris-Frame-Toast__CloseButton_bl13t { display: flex; align-self: center; flex-direction: column; justify-content: flex-start; padding: 0; border: none; -webkit-appearance: none; appearance: none; background: transparent; color: var(--p-color-icon-subdued); cursor: pointer; margin-left: var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-Toast__CloseButton_bl13t { color: var(--p-color-icon-inverse); }
+
+.Polaris-Frame-Toast__CloseButton_bl13t svg { fill: currentColor; }
+
+.Polaris-Frame-Toast__CloseButton_bl13t:focus { outline: none; }
+
+.Polaris-Frame-Toast__CloseButton_bl13t:focus, .Polaris-Frame-Toast__CloseButton_bl13t:hover { color: var(--p-color-text-on-color); }

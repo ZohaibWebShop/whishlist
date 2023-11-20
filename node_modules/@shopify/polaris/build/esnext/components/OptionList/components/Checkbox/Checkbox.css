@@ -1,0 +1,39 @@
+.Polaris-OptionList-Checkbox_1d6zr { position: relative; width: 100%; margin: var(--p-space-025); }
+
+.Polaris-OptionList-Checkbox_1d6zr.Polaris-OptionList-Checkbox--active_jeq8y .Polaris-OptionList-Checkbox__Backdrop_1x2i2::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-OptionList-Checkbox__Input_30ock { position: absolute !important; top: 0; width: 0.0625rem !important; height: 0.0625rem !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; clip-path: inset(50%) !important; border: 0 !important; white-space: nowrap !important; }
+
+.Polaris-OptionList-Checkbox__Input_30ock:focus-visible + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-OptionList-Checkbox__Input_30ock:active:not(:disabled) + .Polaris-OptionList-Checkbox__Backdrop_1x2i2, .Polaris-OptionList-Checkbox__Input_30ock:checked + .Polaris-OptionList-Checkbox__Backdrop_1x2i2, .Polaris-OptionList-Checkbox__Input_30ock.Polaris-OptionList-Checkbox__Input--indeterminate_wtlpx + .Polaris-OptionList-Checkbox__Backdrop_1x2i2 { border-color: var(--p-color-border-interactive); }
+
+.Polaris-OptionList-Checkbox__Input_30ock:active:not(:disabled) + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before, .Polaris-OptionList-Checkbox__Input_30ock:checked + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before, .Polaris-OptionList-Checkbox__Input_30ock.Polaris-OptionList-Checkbox__Input--indeterminate_wtlpx + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before { opacity: 1; transform: scale(1); }
+
+@media (-ms-high-contrast: active) { .Polaris-OptionList-Checkbox__Input_30ock:active:not(:disabled) + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before, .Polaris-OptionList-Checkbox__Input_30ock:checked + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before, .Polaris-OptionList-Checkbox__Input_30ock.Polaris-OptionList-Checkbox__Input--indeterminate_wtlpx + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before { border: var(--p-border-width-2) solid windowText; } }
+
+.Polaris-OptionList-Checkbox__Input_30ock:active:not(:disabled) ~ .Polaris-OptionList-Checkbox__Icon_yj27d, .Polaris-OptionList-Checkbox__Input_30ock:checked ~ .Polaris-OptionList-Checkbox__Icon_yj27d, .Polaris-OptionList-Checkbox__Input_30ock.Polaris-OptionList-Checkbox__Input--indeterminate_wtlpx ~ .Polaris-OptionList-Checkbox__Icon_yj27d { transform: translate(-50%, -50%) scale(1); opacity: 1; transition: opacity var(--p-motion-duration-150) var(--p-motion-ease), transform var(--p-motion-duration-150) var(--p-motion-ease); }
+
+.Polaris-OptionList-Checkbox__Input_30ock:disabled + .Polaris-OptionList-Checkbox__Backdrop_1x2i2 { border-color: var(--p-color-border-disabled); }
+
+.Polaris-OptionList-Checkbox__Input_30ock:disabled + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before { background-color: var(--p-color-bg-disabled); }
+
+.Polaris-OptionList-Checkbox__Input_30ock:disabled + .Polaris-OptionList-Checkbox__Backdrop_1x2i2:hover { cursor: default; }
+
+.Polaris-OptionList-Checkbox__Input_30ock:disabled:checked + .Polaris-OptionList-Checkbox__Backdrop_1x2i2, .Polaris-OptionList-Checkbox__Input_30ock:disabled:checked + .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before { background: var(--p-color-border-disabled); }
+
+.Polaris-OptionList-Checkbox__Backdrop_1x2i2 { position: relative; border: var(--p-border-width-2) solid var(--p-color-border-input); background-color: var(--p-color-bg); border-radius: var(--p-border-radius-1); position: relative; display: block; width: 100%; height: 100%; position: relative; }
+
+.Polaris-OptionList-Checkbox__Backdrop_1x2i2::before { content: ''; position: absolute; top: calc(var(--p-border-width-2)*-1); right: calc(var(--p-border-width-2)*-1); bottom: calc(var(--p-border-width-2)*-1); left: calc(var(--p-border-width-2)*-1); border-radius: var(--p-border-radius-1); background-color: var(--p-color-bg-interactive); opacity: 0; transform: scale(0.25); transition: opacity var(--p-motion-duration-100) var(--p-motion-ease), transform var(--p-motion-duration-100) var(--p-motion-ease); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-OptionList-Checkbox__Backdrop_1x2i2::before { content: none; }
+
+.Polaris-OptionList-Checkbox__Backdrop_1x2i2.Polaris-OptionList-Checkbox--hover_37sww, .Polaris-OptionList-Checkbox__Backdrop_1x2i2:hover { cursor: pointer; border-color: var(--p-color-border-hover); }
+
+.Polaris-OptionList-Checkbox__Backdrop_1x2i2::after { content: ''; position: absolute; z-index: 1; top: calc(var(--p-border-width-2)*-1 + -0.0625rem); right: calc(var(--p-border-width-2)*-1 + -0.0625rem); bottom: calc(var(--p-border-width-2)*-1 + -0.0625rem); left: calc(var(--p-border-width-2)*-1 + -0.0625rem); display: block; pointer-events: none; box-shadow: 0 0 0 calc(var(--p-border-width-2)*-1 + -0.0625rem) var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+.Polaris-OptionList-Checkbox__Icon_yj27d { position: absolute; top: 50%; left: 50%; transform-origin: 50% 50%; pointer-events: none; transform: translate(-50%, -50%) scale(0.25); opacity: 0; transition: opacity var(--p-motion-duration-100) var(--p-motion-ease), transform var(--p-motion-duration-100) var(--p-motion-ease); }
+
+@media (-ms-high-contrast: active) { .Polaris-OptionList-Checkbox__Icon_yj27d { fill: windowText; } }
+
+.Polaris-OptionList-Checkbox__Icon_yj27d svg { fill: var(--p-color-icon-on-color); }

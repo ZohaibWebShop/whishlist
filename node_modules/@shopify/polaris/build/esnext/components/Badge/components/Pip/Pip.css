@@ -1,0 +1,41 @@
+.Polaris-Badge-Pip_375sr { --pc-pip-size: var(--p-space-2); --pc-pip-color: var(--p-color-icon); --pc-border-width: 0.07813rem; display: inline-block; color: var(--pc-pip-color); height: var(--pc-pip-size); width: var(--pc-pip-size); border: var(--p-border-width-2) solid var(--pc-pip-color); border-radius: var(--p-border-radius-full); flex-shrink: 0; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip_375sr { border-radius: 0.1875rem; border-width: var(--pc-border-width); --pc-pip-color: var(--p-color-text-subdued); }
+
+.Polaris-Badge-Pip--statusInfo_knr66 { --pc-pip-color: var(--p-color-icon-info); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--statusInfo_knr66 { --pc-pip-color: var(--p-color-icon-info); }
+
+.Polaris-Badge-Pip--statusSuccess_pc5rl { --pc-pip-color: var(--p-color-icon-success); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--statusSuccess_pc5rl { --pc-pip-color: var(--p-color-icon-success); }
+
+.Polaris-Badge-Pip--statusNew_cj8gz { --pc-pip-color: var(--p-color-icon); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--statusNew_cj8gz { --pc-pip-color: var(--p-color-text-subdued); }
+
+.Polaris-Badge-Pip--statusAttention_i61kn { --pc-pip-color: var(--p-color-icon-caution); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--statusAttention_i61kn { --pc-pip-color: var(--p-color-icon-caution); }
+
+.Polaris-Badge-Pip--statusWarning_1x66d { --pc-pip-color: var(--p-color-icon-caution); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--statusWarning_1x66d { --pc-pip-color: var(--p-color-icon-warning); }
+
+.Polaris-Badge-Pip--statusCritical_1iy3d { --pc-pip-color: var(--p-color-icon-critical); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--statusCritical_1iy3d { --pc-pip-color: var(--p-color-icon-critical); }
+
+.Polaris-Badge-Pip--progressIncomplete_1jg92 { background: transparent; }
+
+.Polaris-Badge-Pip--progressPartiallyComplete_11p0t { background: linear-gradient(to top, currentColor, currentColor 50%, transparent 50%, transparent); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--progressPartiallyComplete_11p0t.Polaris-Badge-Pip_375sr { background: none; position: relative; overflow: hidden; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip--progressPartiallyComplete_11p0t.Polaris-Badge-Pip_375sr::after { content: ''; position: absolute; /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 */ top: calc(var(--pc-border-width)*-1); /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 */ left: calc(var(--pc-border-width)*-1); width: 0.25rem; height: 0.5rem; /* stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- se23 */ margin: 0 0.1275rem; /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 */ border-right: var(--pc-border-width) solid currentColor; /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 */ border-left: var(--pc-border-width) solid currentColor; font-size: 0; transform: rotate(-45deg); }
+
+@media print { .Polaris-Badge-Pip--progressPartiallyComplete_11p0t { background: none; /* stylelint-disable -- 100px is an arbitrarily large number so that you can't see the curvature of the box shadow. y-offset is 2px larger than the spread to make it look like it is half-way down the pip (which is 4px tall) */ box-shadow: 0 -6.375rem 0 -6.25rem currentColor inset; /* stylelint-enable */ } }
+
+.Polaris-Badge-Pip--progressComplete_189p5 { background: currentColor; }
+
+@media print { .Polaris-Badge-Pip--progressComplete_189p5 { background: none; /* stylelint-disable -- 100px is an arbitrarily large number so that you can't see the curvature of the box shadow. */ box-shadow: 0 0 0 6.25rem currentColor inset; /* stylelint-enable */ } }

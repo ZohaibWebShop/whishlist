@@ -1,0 +1,51 @@
+{
+    "name": "gnikyt/basic-shopify-api",
+    "description": "A basic Shopify API wrapper with REST and GraphQL support, powered by Guzzle.",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "api",
+        "graphql",
+        "rest",
+        "shopify",
+        "wrapper"
+    ],
+    "authors": [
+        {
+            "name": "Tyler King",
+            "email": "tyler.n.king@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/gnikyt/basic-shopify-api/issues",
+        "source": "https://github.com/gnikyt/basic-shopify-api"
+    },
+    "require": {
+        "php": ">=7.3.0",
+        "ext-json": "*",
+        "caseyamcl/guzzle_retry_middleware": "^2.3",
+        "guzzlehttp/guzzle": "^6.5 || ^7.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.8",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^0.12",
+        "phpunit/phpunit": "^6.2 || ^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gnikyt\\BasicShopifyAPI\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gnikyt\\BasicShopifyAPI\\Test\\": "test/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    }
+}

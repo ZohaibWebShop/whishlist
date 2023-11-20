@@ -1,0 +1,16 @@
+import './Pip.css';
+
+var styles = {
+  "Pip": "Polaris-Badge-Pip_375sr",
+  "statusInfo": "Polaris-Badge-Pip--statusInfo_knr66",
+  "statusSuccess": "Polaris-Badge-Pip--statusSuccess_pc5rl",
+  "statusNew": "Polaris-Badge-Pip--statusNew_cj8gz",
+  "statusAttention": "Polaris-Badge-Pip--statusAttention_i61kn",
+  "statusWarning": "Polaris-Badge-Pip--statusWarning_1x66d",
+  "statusCritical": "Polaris-Badge-Pip--statusCritical_1iy3d",
+  "progressIncomplete": "Polaris-Badge-Pip--progressIncomplete_1jg92",
+  "progressPartiallyComplete": "Polaris-Badge-Pip--progressPartiallyComplete_11p0t",
+  "progressComplete": "Polaris-Badge-Pip--progressComplete_189p5"
+};
+
+export { styles as default };

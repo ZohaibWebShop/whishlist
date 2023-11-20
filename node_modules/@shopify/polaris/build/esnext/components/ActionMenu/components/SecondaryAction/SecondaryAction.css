@@ -1,0 +1,42 @@
+.Polaris-ActionMenu-SecondaryAction_1dl4i { --pc-secondary-action-button-spacing: var(--p-space-3); }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i a, .Polaris-ActionMenu-SecondaryAction_1dl4i button { position: relative; background: transparent !important; box-shadow: none !important; border-radius: var(--p-border-radius-1) !important; padding-left: var(--pc-secondary-action-button-spacing); padding-right: var(--pc-secondary-action-button-spacing); }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i a::after, .Polaris-ActionMenu-SecondaryAction_1dl4i button::after { content: ''; position: absolute; z-index: 1; top: -0.125rem; right: -0.125rem; bottom: -0.125rem; left: -0.125rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.125rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i a:hover, .Polaris-ActionMenu-SecondaryAction_1dl4i button:hover { background: var(--p-color-bg-app-hover) !important; }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i a:active, .Polaris-ActionMenu-SecondaryAction_1dl4i button:active { background: var(--p-color-bg-app-active) !important; }
+
+@media (min-width: 48em) { .Polaris-ActionMenu-SecondaryAction_1dl4i a, .Polaris-ActionMenu-SecondaryAction_1dl4i button { border: none !important; position: relative; }
+  .Polaris-ActionMenu-SecondaryAction_1dl4i a::after, .Polaris-ActionMenu-SecondaryAction_1dl4i button::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); } }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a, .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button { color: var(--p-color-text-critical); }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a svg, .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button svg { fill: var(--p-color-icon-critical); }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a:hover, .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button:hover { background-color: var(--p-color-bg-critical-subdued-hover) !important; }
+
+.Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a:active, .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button:active { background-color: var(--p-color-bg-critical-subdued-active) !important; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i a, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i button { border: none; min-height: 1.75rem; padding: var(--p-space-1) var(--p-space-3); background-color: var(--p-color-bg-strong) !important; border-radius: var(--p-border-radius-2) !important; /* stylelint-disable-next-line selector-max-combinators -- se23 */ /* stylelint-disable-next-line selector-max-combinators -- se23 */ /* stylelint-disable-next-line selector-max-combinators -- se23 */ }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i a:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i button:hover { background-color: var(--p-color-bg-strong-hover) !important; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i a:focus, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i a:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i button:focus, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i button:active { background-color: var(--p-color-bg-strong-active) !important; box-shadow: var(--p-shadow-inset-md) !important; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i a:focus:not(:active), html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i button:focus:not(:active) { /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */ outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus); outline-offset: var(--p-space-05); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i a:focus:not(:active)::after, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i button:focus:not(:active)::after { content: none; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i a[aria-disabled='true'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i button[aria-disabled='true'] { background-color: var(--p-color-bg-transparent-disabled-experimental) !important; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 { /* stylelint-disable-next-line selector-max-combinators -- se23 */ }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button { color: var(--p-color-text-critical) !important; /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 */ /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 */ /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth, selector-max-compound-selectors -- se23 */ }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button:hover { background-color: var(--p-color-bg-strong-hover) !important; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a:focus, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button:focus, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button:active { background-color: var(--p-color-bg-strong-active) !important; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 a svg, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction_1dl4i.Polaris-ActionMenu-SecondaryAction--destructive_zy6o5 button svg { fill: var(--p-color-icon-critical-strong-experimental); }

@@ -1,0 +1,15 @@
+.Polaris-FormLayout_1wntl { --pc-form-layout-gap: var(--p-space-5); --pc-form-layout-item-top: var(--p-space-4); margin-top: calc(var(--pc-form-layout-item-top)*-1); margin-left: calc(var(--pc-form-layout-gap)*-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-FormLayout_1wntl { --pc-form-layout-gap: var(--p-space-2); --pc-form-layout-item-top: var(--p-space-2); }
+
+.Polaris-FormLayout__Title_2qj8j { margin-bottom: calc(var(--p-space-2)*-1); padding: var(--pc-form-layout-item-top) var(--pc-form-layout-gap) 0; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-FormLayout__Title_2qj8j { margin-bottom: 0; }
+
+.Polaris-FormLayout__Items_38lvu { display: flex; flex-wrap: wrap; }
+
+.Polaris-FormLayout__Item_yiyol { flex: 1 1 13.75rem; margin-top: var(--pc-form-layout-item-top); margin-left: var(--pc-form-layout-gap); max-width: calc(100% - var(--pc-form-layout-gap)); }
+
+.Polaris-FormLayout--grouped_17srt .Polaris-FormLayout__Item_yiyol { min-width: 13.75rem; }
+
+.Polaris-FormLayout--condensed_b60cb .Polaris-FormLayout__Item_yiyol { flex-basis: 6.875rem; min-width: 6.875rem; }

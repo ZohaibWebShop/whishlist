@@ -1,0 +1,37 @@
+.Polaris-IndexFilters-FilterButton_f6p6d { position: relative; position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 2.25rem; min-width: 2.25rem; margin: 0; padding: calc((2.25rem - var(--p-font-line-height-2) - var(--p-space-05))/2) var(--p-space-4); background: var(--p-color-bg); box-shadow: var(--p-shadow-sm); border-radius: var(--p-border-radius-1); color: var(--p-color-text); border: var(--p-border-width-1) solid var(--p-color-border-strong); line-height: 1; text-align: center; cursor: pointer; -webkit-user-select: none; user-select: none; text-decoration: none; -webkit-tap-highlight-color: transparent; padding: 0.3125rem; min-height: 2rem; min-width: 2rem; cursor: pointer; }
+
+.Polaris-IndexFilters-FilterButton_f6p6d::after { content: ''; position: absolute; z-index: 1; top: calc(var(--p-border-width-1)*-1 + -0.0625rem); right: calc(var(--p-border-width-1)*-1 + -0.0625rem); bottom: calc(var(--p-border-width-1)*-1 + -0.0625rem); left: calc(var(--p-border-width-1)*-1 + -0.0625rem); display: block; pointer-events: none; box-shadow: 0 0 0 calc(var(--p-border-width-1)*-1 + -0.0625rem) var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexFilters-FilterButton_f6p6d { min-height: 1.75rem; min-width: 1.75rem; padding: var(--p-space-1_5-experimental) var(--p-space-3); border-radius: var(--p-border-radius-2); border: none; }
+
+.Polaris-IndexFilters-FilterButton_f6p6d svg { fill: var(--p-color-icon); }
+
+.Polaris-IndexFilters-FilterButton_f6p6d:hover { background: var(--p-color-bg-hover); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-IndexFilters-FilterButton_f6p6d:focus-visible { box-shadow: var(--p-shadow-sm); outline: 0; }
+
+.Polaris-IndexFilters-FilterButton_f6p6d:focus-visible::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexFilters-FilterButton_f6p6d:focus-visible { outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus); outline-offset: var(--p-space-025); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexFilters-FilterButton_f6p6d:focus-visible::after { content: none; }
+
+.Polaris-IndexFilters-FilterButton_f6p6d:active::after { border: none; box-shadow: none; }
+
+.Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton--pressed_17w8v { background: var(--p-color-bg-inset-strong); box-shadow: var(--p-shadow-inset-md); color: var(--p-color-text-on-color); border-color: var(--p-color-border-inverse); }
+
+.Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton--pressed_17w8v svg { fill: currentColor; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton--pressed_17w8v { background: var(--p-color-bg-strong-active); box-shadow: var(--p-shadow-inset-md); color: var(--p-color-text); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton--pressed_17w8v:hover { background: var(--p-color-bg-strong-hover); box-shadow: var(--p-shadow-inset-md); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton--pressed_17w8v:active { background: var(--p-color-bg-strong-active); box-shadow: var(--p-shadow-inset-md); }
+
+@media (-ms-high-contrast: active) { .Polaris-IndexFilters-FilterButton_f6p6d { border: var(--p-border-width-1) solid windowText; } }
+
+.Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton__Disabled_hcuh9 { background: var(--p-color-bg-disabled); border-color: transparent; box-shadow: none; cursor: default; }
+
+.Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton__Disabled_hcuh9:hover, .Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton__Disabled_hcuh9:focus, .Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton__Disabled_hcuh9:active { background: var(--p-color-bg-disabled); }
+
+.Polaris-IndexFilters-FilterButton_f6p6d.Polaris-IndexFilters-FilterButton__Disabled_hcuh9 path { fill: var(--p-color-icon-subdued); }

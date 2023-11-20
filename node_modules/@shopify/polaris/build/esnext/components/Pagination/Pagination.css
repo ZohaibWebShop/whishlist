@@ -1,0 +1,7 @@
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Pagination_1af4k button { /* stylelint-disable declaration-no-important -- se23 */ border: none !important; box-shadow: none !important; /* stylelint-enable */ background-color: var(--p-color-bg-strong); /* stylelint-disable-next-line selector-max-combinators -- se23 */ /* stylelint-disable-next-line selector-max-combinators -- se23 */ /* stylelint-disable-next-line selector-max-combinators -- se23 */ }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Pagination_1af4k button:hover { background-color: var(--p-color-bg-strong-hover); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Pagination_1af4k button:active { /* stylelint-disable-next-line declaration-no-important -- se23 */ box-shadow: var(--p-shadow-inset-md) !important; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Pagination_1af4k button:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Pagination_1af4k button:focus { background-color: var(--p-color-bg-strong-active); }

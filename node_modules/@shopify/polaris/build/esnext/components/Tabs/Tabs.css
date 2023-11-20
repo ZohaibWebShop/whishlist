@@ -1,0 +1,149 @@
+:root { --item-min-height: var(--p-space-4); --item-min-width: 3.125rem; --item-vertical-padding: var(--p-space-2); }
+
+@media (max-width: 47.9975em) { .Polaris-Tabs__Outer_37t24 { max-width: 100%; overflow: hidden; height: 3.5rem; padding: 0; }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Outer_37t24 { height: unset; } }
+
+@media (max-width: 47.9975em) { .Polaris-Tabs__Wrapper_mkrm3 { overflow: auto; -webkit-overflow-scrolling: touch; padding: var(--p-space-3) var(--p-space-3) var(--p-space-3) var(--p-space-4); }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Wrapper_mkrm3 { padding: var(--p-space-2); } }
+
+@media (min-width: 48em) { .Polaris-Tabs__WrapperWithNewButton_n10tb { position: relative; display: inline-flex; padding-right: var(--p-space-8); } }
+
+@media (max-width: 47.9975em) { .Polaris-Tabs__ButtonWrapper_mxqbe { display: flex; align-items: center; justify-content: flex-start; } }
+
+.Polaris-Tabs_yjc8o { display: flex; align-items: center; justify-content: flex-start; margin: 0; padding: 0; list-style: none; gap: var(--p-space-1); }
+
+@media (min-width: 48em) { .Polaris-Tabs_yjc8o { padding: 0 var(--p-space-1); flex-wrap: wrap; align-items: stretch; } }
+
+.Polaris-Tabs__Tab_375k2 { position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative; display: inline-flex; justify-content: center; align-items: center; height: var(--p-space-8); padding: 0 var(--p-space-3); border: 0; border-radius: var(--p-border-radius-1); background: var(--p-color-bg); color: var(--p-color-text-subdued); cursor: pointer; text-decoration: none; width: 100%; min-width: 100%; margin-top: var(--p-space-025); margin-bottom: calc(var(--p-space-025)*-1); outline: none; text-align: center; white-space: nowrap; }
+
+.Polaris-Tabs__Tab_375k2::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+.Polaris-Tabs__Tab_375k2[aria-disabled='true'] { cursor: default; color: var(--p-color-text-disabled); }
+
+.Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):hover, .Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):focus { background-color: var(--p-color-bg-hover); color: var(--p-color-text); }
+
+.Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):focus-visible:not(:active) { outline: 0; }
+
+.Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):focus-visible:not(:active)::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):active { background-color: var(--p-color-bg-active); color: var(--p-color-text); z-index: var(--p-z-index-1); }
+
+.Polaris-Tabs__Tab_375k2 path { fill: currentColor; }
+
+.Polaris-Tabs__Tab_375k2[aria-disabled='true'] path { fill: var(--p-color-icon-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2 { position: relative; color: var(--p-color-text-primary); background-color: transparent; border-radius: var(--p-border-radius-2); padding: var(--p-space-1_5-experimental) var(--p-space-3); height: 2rem; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2[aria-disabled='true'] { color: var(--p-color-text-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):hover { background-color: var(--p-color-bg-transparent-hover-experimental); color: var(--p-color-text-primary); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):focus-visible { background-color: transparent; color: var(--p-color-text-primary); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):focus-visible::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2:not([aria-disabled='true']):active { background-color: var(--p-color-bg-secondary-experimental); color: var(--p-color-text-primary); z-index: var(--p-z-index-1); }
+
+@media (min-width: 48em) { html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab_375k2 { font-size: var(--p-font-size-75); line-height: var(--p-font-line-height-1); height: 1.75rem; } }
+
+.Polaris-Tabs__Tab--active_2tfyj { background: var(--p-color-bg-primary-subdued-hover); color: var(--p-color-text-primary); }
+
+.Polaris-Tabs__Tab--active_2tfyj[aria-disabled='true'] { background: var(--p-color-bg-disabled); color: var(--p-color-text-disabled); }
+
+.Polaris-Tabs__Tab--active_2tfyj:not([aria-disabled='true']):hover, .Polaris-Tabs__Tab--active_2tfyj:not([aria-disabled='true']):focus { background-color: var(--p-color-bg-primary-subdued-hover); color: var(--p-color-text-primary-hover); }
+
+.Polaris-Tabs__Tab--active_2tfyj:not([aria-disabled='true']):active { background-color: var(--p-color-bg-success-subdued-active); color: var(--p-color-text-primary); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab--active_2tfyj { background: var(--p-color-bg-transparent-active-experimental); color: var(--p-color-text); border-radius: var(--p-border-radius-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab--active_2tfyj[aria-disabled='true'] { background: var(--p-color-bg-disabled); color: var(--p-color-text-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab--active_2tfyj:not([aria-disabled='true']):hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab--active_2tfyj:not([aria-disabled='true']):focus { background-color: var(--p-color-bg-transparent-hover-experimental); color: var(--p-color-text-primary); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab--active_2tfyj:not([aria-disabled='true']):active { background-color: var(--p-color-bg-transparent-active-experimental); }
+
+.Polaris-Tabs__Tab--hasActions_1ysg1 { padding-right: var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Tab--hasActions_1ysg1 { padding-right: var(--p-space-2); }
+
+.Polaris-Tabs__Tab--iconOnly_1etqr { padding-left: var(--p-space-1); padding-right: var(--p-space-1); width: var(--p-space-8); }
+
+.Polaris-Tabs--fillSpace_yc42y .Polaris-Tabs__TabContainer_dsj6d { flex: 1 1 auto; }
+
+.Polaris-Tabs--fitted_ijluy { flex-wrap: nowrap; }
+
+.Polaris-Tabs--fitted_ijluy .Polaris-Tabs__TabContainer_dsj6d { flex: 1 1 100%; }
+
+.Polaris-Tabs__TabContainer_dsj6d { display: flex; margin: 0; padding: 0; }
+
+.Polaris-Tabs--titleWithIcon_11lkm { display: flex; }
+
+.Polaris-Tabs__List_yj3nl { list-style: none; margin: 0; padding: var(--p-space-2); }
+
+.Polaris-Tabs__Item_yiyol { -webkit-appearance: none; appearance: none; margin: 0; padding: 0; background: none; border: none; font-size: inherit; line-height: inherit; color: inherit; cursor: pointer; position: relative; display: block; width: 100%; min-height: var(--item-min-height); padding: var(--item-vertical-padding) var(--p-space-4); text-align: left; text-decoration: none; cursor: pointer; border-radius: var(--p-border-radius-1); color: inherit; }
+
+.Polaris-Tabs__Item_yiyol:focus { outline: none; }
+
+.Polaris-Tabs__Item_yiyol::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+.Polaris-Tabs__Item_yiyol::-moz-focus-inner { border: none; }
+
+.Polaris-Tabs__Item_yiyol:hover { background-color: var(--p-color-bg-hover); color: var(--p-color-text); }
+
+.Polaris-Tabs__Item_yiyol:active { background-color: var(--p-color-bg-active); color: var(--p-color-text); }
+
+.Polaris-Tabs__Item_yiyol:focus-visible:not(:active)::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-Tabs__Item_yiyol:visited { color: inherit; }
+
+.Polaris-Tabs__DisclosureTab_1qbhg { display: none; }
+
+.Polaris-Tabs__DisclosureTab--visible_1v5xr { display: flex; }
+
+.Polaris-Tabs__DisclosureActivator_1mita { position: relative; -webkit-appearance: none; appearance: none; margin: 0; padding: 0; background: none; border: none; font-size: inherit; line-height: inherit; color: inherit; cursor: pointer; height: 100%; background-color: transparent; color: var(--p-color-text-subdued); display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: var(--p-border-radius-1); padding: 0 var(--p-space-2) 0 var(--p-space-3); margin-top: var(--p-space-025); border: none; outline: none; }
+
+.Polaris-Tabs__DisclosureActivator_1mita::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+.Polaris-Tabs__DisclosureActivator_1mita:focus { outline: none; }
+
+.Polaris-Tabs__DisclosureActivator_1mita:hover svg, .Polaris-Tabs__DisclosureActivator_1mita:focus svg { fill: var(--p-color-icon); }
+
+.Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):hover, .Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):focus { background-color: var(--p-color-bg-hover); }
+
+.Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):focus-visible { outline: 0; }
+
+.Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):focus-visible::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):active { background-color: var(--p-color-bg-active); z-index: var(--p-z-index-1); }
+
+.Polaris-Tabs__DisclosureActivator_1mita[aria-disabled='true'] { cursor: default; color: var(--p-color-text-disabled); }
+
+.Polaris-Tabs__DisclosureActivator_1mita[aria-disabled='true'] path { fill: var(--p-color-icon-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__DisclosureActivator_1mita { background-color: transparent; color: var(--p-color-text-primary); border-radius: var(--p-border-radius-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__DisclosureActivator_1mita svg { fill: var(--p-color-icon); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__DisclosureActivator_1mita[aria-disabled='true'] { background: var(--p-color-bg-disabled); color: var(--p-color-text-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):hover { background-color: var(--p-color-bg-transparent-hover-experimental); color: var(--p-color-text-primary); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):focus { background-color: transparent; color: var(--p-color-text-primary); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__DisclosureActivator_1mita:not([aria-disabled='true']):active { background-color: var(--p-color-bg-secondary-experimental); }
+
+.Polaris-Tabs__TabsMeasurer_15ef4 { display: flex; gap: 0; padding: 0; visibility: hidden; height: 0; }
+
+.Polaris-Tabs__NewTab_ouedr { padding: 0 var(--p-space-2) 0 var(--p-space-1); }
+
+@media (min-width: 48em) { .Polaris-Tabs__NewTab_ouedr { position: absolute; right: 0; top: 0; padding: 0; } }
+
+.Polaris-Tabs__ActionListWrap_1nl6z { display: block; }
+
+.Polaris-Tabs__Panel_2vct4 { display: block; }
+
+.Polaris-Tabs__Panel_2vct4:focus { outline: none; }
+
+.Polaris-Tabs__Panel--hidden_1h4kj { display: none; }

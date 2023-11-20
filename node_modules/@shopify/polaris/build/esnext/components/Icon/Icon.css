@@ -1,0 +1,39 @@
+.Polaris-Icon_yj27d { display: block; height: 1.25rem; width: 1.25rem; max-height: 100%; max-width: 100%; margin: auto; }
+
+.Polaris-Icon--applyColor_2y25n { color: var(--p-color-bg); }
+
+.Polaris-Icon--hasBackdrop_1anyy { position: relative; display: flex; align-items: center; margin: var(--p-space-1); }
+
+.Polaris-Icon--hasBackdrop_1anyy::before { content: ''; position: absolute; top: calc(var(--p-space-1)*-1); bottom: calc(var(--p-space-1)*-1); left: calc(var(--p-space-1)*-1); right: calc(var(--p-space-1)*-1); border-radius: var(--p-border-radius-full); }
+
+.Polaris-Icon--colorBase_nqlaq svg { fill: var(--p-color-icon); }
+
+.Polaris-Icon--colorBase_nqlaq::before { background-color: var(--p-color-bg-strong); }
+
+.Polaris-Icon--colorSubdued_113xs svg { fill: var(--p-color-icon-subdued); }
+
+.Polaris-Icon--colorCritical_glskc svg { fill: var(--p-color-icon-critical); }
+
+.Polaris-Icon--colorCritical_glskc::before { background-color: var(--p-color-bg-critical); }
+
+.Polaris-Icon--colorInteractive_1wzbd svg { fill: var(--p-color-icon-interactive); }
+
+.Polaris-Icon--colorWarning_14tqz svg { fill: var(--p-color-icon-caution); }
+
+.Polaris-Icon--colorWarning_14tqz::before { background-color: var(--p-color-bg-warning); }
+
+.Polaris-Icon--colorHighlight_2qv4t svg { fill: var(--p-color-icon-info); }
+
+.Polaris-Icon--colorHighlight_2qv4t::before { background-color: var(--p-color-bg-info); }
+
+.Polaris-Icon--colorSuccess_k0sue svg { fill: var(--p-color-icon-success); }
+
+.Polaris-Icon--colorSuccess_k0sue::before { background-color: var(--p-color-bg-success); }
+
+.Polaris-Icon--colorPrimary_4ruww svg { fill: var(--p-color-icon-primary); }
+
+.Polaris-Icon--colorMagic_1mkpp svg { fill: var(--p-color-icon-magic); }
+
+.Polaris-Icon__Svg_375hu, .Polaris-Icon__Img_375hq { position: relative; display: block; width: 100%; max-width: 100%; max-height: 100%; }
+
+.Polaris-Icon__Placeholder_w9ga3 { padding-bottom: 100%; background: currentColor; }

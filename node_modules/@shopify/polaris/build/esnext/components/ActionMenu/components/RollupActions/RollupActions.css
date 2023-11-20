@@ -1,0 +1,15 @@
+.Polaris-ActionMenu-RollupActions__RollupActivator_88nso { text-align: right; }
+
+.Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button'] { margin: 0; border: var(--p-border-width-1) solid var(--p-color-border-strong); }
+
+.Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button']:hover, .Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button']:active, .Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button']:focus { border: var(--p-border-width-1) solid var(--p-color-border-strong); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button'] { background: var(--p-color-bg-strong); border-radius: var(--p-border-radius-2); border: none; box-shadow: none; /* stylelint-disable-next-line selector-max-combinators -- se23 */ /* stylelint-disable-next-line selector-max-combinators -- se23 */ /* stylelint-disable-next-line selector-max-combinators -- se23 */ }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button']:hover { background: var(--p-color-bg-strong-hover); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button']:focus:not(:active) { /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 button overrides */ outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus); outline-offset: var(--p-space-05); background: var(--p-color-bg-strong-active); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button']:focus:not(:active)::after { content: none; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-RollupActions__RollupActivator_88nso button[type='button']:active { background: var(--p-color-bg-strong-active); }

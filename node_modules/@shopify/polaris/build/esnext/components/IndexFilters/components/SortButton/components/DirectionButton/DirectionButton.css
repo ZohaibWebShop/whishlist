@@ -1,0 +1,25 @@
+.Polaris-SortButton-DirectionButton_1lqxu { position: relative; border-radius: var(--p-border-radius-1); padding: var(--p-space-05); font-size: var(--p-font-size-100); display: flex; align-items: center; justify-content: flex-start; cursor: pointer; width: 100%; border: none; background: none; text-align: left; }
+
+.Polaris-SortButton-DirectionButton_1lqxu::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-SortButton-DirectionButton_1lqxu { position: relative; border-radius: var(--p-border-radius-2); padding: var(--p-space-1) var(--p-space-3) var(--p-space-1) var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-SortButton-DirectionButton_1lqxu::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-SortButton-DirectionButton_1lqxu:hover { background-color: var(--p-color-bg-transparent-hover-experimental); }
+
+.Polaris-SortButton-DirectionButton_1lqxu + .Polaris-SortButton-DirectionButton_1lqxu { margin-top: var(--p-space-1); }
+
+.Polaris-SortButton-DirectionButton_1lqxu:focus-visible { outline: 0; }
+
+.Polaris-SortButton-DirectionButton_1lqxu:focus-visible::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-SortButton-DirectionButton_1lqxu:focus-visible::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-SortButton-DirectionButton__DirectionButton--active_1n7us { background: var(--p-color-bg-interactive-selected); color: var(--p-color-text-interactive); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-SortButton-DirectionButton__DirectionButton--active_1n7us { color: var(--p-color-text); background: var(--p-color-bg-transparent-active-experimental); }
+
+.Polaris-SortButton-DirectionButton__Label_2vd36 { flex: 1 1; margin-left: var(--p-space-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-SortButton-DirectionButton__Label_2vd36 { color: var(--p-color-text); margin-left: var(--p-space-05); font-size: var(--p-font-size-75); font-weight: var(--p-font-weight-medium); line-height: var(--p-font-line-height-1); }

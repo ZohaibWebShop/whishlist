@@ -1,0 +1,30 @@
+import React, { useId } from 'react';
+import { DualThumb } from './components/DualThumb/DualThumb.esnext';
+import { SingleThumb } from './components/SingleThumb/SingleThumb.esnext';
+
+function RangeSlider({
+  min = 0,
+  max = 100,
+  step = 1,
+  value,
+  ...rest
+}) {
+  const id = useId();
+  const sharedProps = {
+    id,
+    min,
+    max,
+    step,
+    ...rest
+  };
+  return isDualThumb(value) ? /*#__PURE__*/React.createElement(DualThumb, Object.assign({
+    value: value
+  }, sharedProps)) : /*#__PURE__*/React.createElement(SingleThumb, Object.assign({
+    value: value
+  }, sharedProps));
+}
+function isDualThumb(value) {
+  return Array.isArray(value);
+}
+
+export { RangeSlider };

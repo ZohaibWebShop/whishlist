@@ -1,0 +1,107 @@
+import React from 'react';
+import { Item } from '../Item/Item.esnext';
+import { VerticalStack } from '../../../VerticalStack/VerticalStack.esnext';
+import { useFeatures } from '../../../../utilities/features/hooks.esnext';
+import { Box } from '../../../Box/Box.esnext';
+import { HorizontalStack } from '../../../HorizontalStack/HorizontalStack.esnext';
+import { Text } from '../../../Text/Text.esnext';
+
+function Section({
+  section,
+  hasMultipleSections,
+  isFirst,
+  actionRole,
+  onActionAnyItem
+}) {
+  const {
+    polarisSummerEditions2023
+  } = useFeatures();
+  const handleAction = itemOnAction => {
+    return () => {
+      if (itemOnAction) {
+        itemOnAction();
+      }
+      if (onActionAnyItem) {
+        onActionAnyItem();
+      }
+    };
+  };
+  const actionMarkup = section.items.map(({
+    content,
+    helpText,
+    onAction,
+    ...item
+  }, index) => {
+    const itemMarkup = /*#__PURE__*/React.createElement(Item, Object.assign({
+      content: content,
+      helpText: helpText,
+      role: actionRole,
+      onAction: handleAction(onAction)
+    }, item));
+    return /*#__PURE__*/React.createElement(Box, {
+      as: "li",
+      key: `${content}-${index}`,
+      role: actionRole === 'menuitem' ? 'presentation' : undefined
+    }, polarisSummerEditions2023 ? /*#__PURE__*/React.createElement(HorizontalStack, {
+      wrap: false
+    }, itemMarkup) : itemMarkup);
+  });
+  let titleMarkup = null;
+  if (section.title) {
+    titleMarkup = typeof section.title === 'string' ? /*#__PURE__*/React.createElement(Box, polarisSummerEditions2023 ? {
+      paddingBlockStart: '3',
+      paddingBlockEnd: '1',
+      paddingInlineStart: '3',
+      paddingInlineEnd: '3'
+    } : {
+      paddingBlockStart: '4',
+      paddingInlineStart: '4',
+      paddingBlockEnd: '2',
+      paddingInlineEnd: '4'
+    }, /*#__PURE__*/React.createElement(Text, {
+      as: "p",
+      variant: polarisSummerEditions2023 ? 'headingSm' : 'headingXs'
+    }, section.title)) : /*#__PURE__*/React.createElement(Box, {
+      padding: "2",
+      paddingInlineEnd: "1_5-experimental"
+    }, section.title);
+  }
+  let sectionRole;
+  switch (actionRole) {
+    case 'option':
+      sectionRole = 'presentation';
+      break;
+    case 'menuitem':
+      sectionRole = !hasMultipleSections ? 'menu' : 'presentation';
+      break;
+    default:
+      sectionRole = undefined;
+      break;
+  }
+  const sectionMarkup = /*#__PURE__*/React.createElement(React.Fragment, null, titleMarkup, /*#__PURE__*/React.createElement(Box, Object.assign({
+    as: polarisSummerEditions2023 ? 'div' : 'ul',
+    padding: polarisSummerEditions2023 ? '1_5-experimental' : '2'
+  }, hasMultipleSections && {
+    paddingBlockStart: '0'
+  }, sectionRole && !polarisSummerEditions2023 && {
+    role: sectionRole
+  }, {
+    tabIndex: !hasMultipleSections ? -1 : undefined
+  }), polarisSummerEditions2023 ? /*#__PURE__*/React.createElement(VerticalStack, Object.assign({
+    gap: "1",
+    as: "ul"
+  }, sectionRole && {
+    role: sectionRole
+  }), actionMarkup) : actionMarkup));
+  return hasMultipleSections ? /*#__PURE__*/React.createElement(Box, Object.assign({
+    as: "li",
+    role: "presentation",
+    borderColor: "border-subdued"
+  }, !isFirst && {
+    borderBlockStartWidth: '1'
+  }, !section.title && {
+    paddingBlockStart: polarisSummerEditions2023 ? '1_5-experimental' : '2'
+  }), sectionMarkup) : sectionMarkup;
+}
+
+export { Section };

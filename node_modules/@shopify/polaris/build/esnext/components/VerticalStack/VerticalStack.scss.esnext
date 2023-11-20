@@ -1,0 +1,9 @@
+import './VerticalStack.css';
+
+var styles = {
+  "VerticalStack": "Polaris-VerticalStack_1fqes",
+  "listReset": "Polaris-VerticalStack--listReset_1gz07",
+  "fieldsetReset": "Polaris-VerticalStack--fieldsetReset_1w49p"
+};
+
+export { styles as default };

@@ -1,0 +1,23 @@
+import React from 'react';
+import styles from '../../Popover.scss.esnext';
+import { Box } from '../../../Box/Box.esnext';
+import { useFeatures } from '../../../../utilities/features/hooks.esnext';
+
+function Section({
+  children
+}) {
+  const {
+    polarisSummerEditions2023
+  } = useFeatures();
+  return /*#__PURE__*/React.createElement("div", {
+    className: styles.Section
+  }, /*#__PURE__*/React.createElement(Box, {
+    padding: polarisSummerEditions2023 ? undefined : '4',
+    paddingInlineStart: polarisSummerEditions2023 ? '3' : undefined,
+    paddingInlineEnd: polarisSummerEditions2023 ? '3' : undefined,
+    paddingBlockStart: polarisSummerEditions2023 ? '2' : undefined,
+    paddingBlockEnd: polarisSummerEditions2023 ? '1_5-experimental' : undefined
+  }, children));
+}
+
+export { Section };

@@ -1,0 +1,14 @@
+var styles = {
+  "Pip": "Polaris-Badge-Pip",
+  "statusInfo": "Polaris-Badge-Pip--statusInfo",
+  "statusSuccess": "Polaris-Badge-Pip--statusSuccess",
+  "statusNew": "Polaris-Badge-Pip--statusNew",
+  "statusAttention": "Polaris-Badge-Pip--statusAttention",
+  "statusWarning": "Polaris-Badge-Pip--statusWarning",
+  "statusCritical": "Polaris-Badge-Pip--statusCritical",
+  "progressIncomplete": "Polaris-Badge-Pip--progressIncomplete",
+  "progressPartiallyComplete": "Polaris-Badge-Pip--progressPartiallyComplete",
+  "progressComplete": "Polaris-Badge-Pip--progressComplete"
+};
+
+export { styles as default };

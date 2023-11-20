@@ -1,0 +1,7 @@
+.Polaris-Modal-Section_1b1h1 { flex: 0 0 auto; }
+
+.Polaris-Modal-Section_1b1h1:not(:last-of-type) { border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued); }
+
+.Polaris-Modal-Section--titleHidden_14zrw { padding-right: calc(var(--p-space-12) + var(--p-space-1)); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Section--titleHidden_14zrw { /* Add a space to account for the button's absolute position offset */ padding-right: calc(var(--p-space-12) + var(--p-space-1) + var(--p-space-1)); }

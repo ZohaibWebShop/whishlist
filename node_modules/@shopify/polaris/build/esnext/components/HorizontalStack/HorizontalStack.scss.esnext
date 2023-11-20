@@ -1,0 +1,7 @@
+import './HorizontalStack.css';
+
+var styles = {
+  "HorizontalStack": "Polaris-HorizontalStack_dv6q6"
+};
+
+export { styles as default };

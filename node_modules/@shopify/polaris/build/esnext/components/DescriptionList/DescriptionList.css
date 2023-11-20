@@ -1,0 +1,21 @@
+.Polaris-DescriptionList_2sz2o { margin: 0; padding: 0; word-break: break-word; }
+
+@media (min-width: 30.625em) { .Polaris-DescriptionList_2sz2o { display: flex; flex-wrap: wrap; align-items: flex-start; } }
+
+.Polaris-DescriptionList__Term_yiyxp { font-weight: var(--p-font-weight-semibold); padding: var(--p-space-4) 0 var(--p-space-2); }
+
+.Polaris-DescriptionList--spacingTight_1o4d6 .Polaris-DescriptionList__Term_yiyxp { padding: var(--p-space-2) 0 var(--p-space-1); }
+
+@media (min-width: 30.625em) { .Polaris-DescriptionList__Term_yiyxp { flex: 0 1 25%; padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0; }
+  .Polaris-DescriptionList--spacingTight_1o4d6 .Polaris-DescriptionList__Term_yiyxp { padding: var(--p-space-2) var(--p-space-2) var(--p-space-2) 0; }
+  .Polaris-DescriptionList__Description_s1jgm + .Polaris-DescriptionList__Term_yiyxp + .Polaris-DescriptionList__Description_s1jgm { border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); } }
+
+.Polaris-DescriptionList__Description_s1jgm { margin-left: 0; padding: 0 0 var(--p-space-4); }
+
+.Polaris-DescriptionList--spacingTight_1o4d6 .Polaris-DescriptionList__Description_s1jgm { padding: 0 0 var(--p-space-2); }
+
+.Polaris-DescriptionList__Description_s1jgm + .Polaris-DescriptionList__Term_yiyxp { border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); }
+
+@media (min-width: 30.625em) { .Polaris-DescriptionList__Description_s1jgm { flex: 1 1 51%; padding: var(--p-space-4) 0; }
+  .Polaris-DescriptionList--spacingTight_1o4d6 .Polaris-DescriptionList__Description_s1jgm { padding: var(--p-space-2) 0; }
+  .Polaris-DescriptionList__Description_s1jgm + .Polaris-DescriptionList__Term_yiyxp + .Polaris-DescriptionList__Description_s1jgm { border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); } }

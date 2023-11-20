@@ -1,0 +1,36 @@
+import React from 'react';
+import { CancelMajor, MobileCancelMajor } from '@shopify/polaris-icons';
+import { classNames } from '../../../../utilities/css.esnext';
+import styles from './CloseButton.scss.esnext';
+import { useI18n } from '../../../../utilities/i18n/hooks.esnext';
+import { useFeatures } from '../../../../utilities/features/hooks.esnext';
+import { Button } from '../../../Button/Button.esnext';
+import { Icon } from '../../../Icon/Icon.esnext';
+
+function CloseButton({
+  pressed,
+  titleHidden = false,
+  onClick
+}) {
+  const i18n = useI18n();
+  const {
+    polarisSummerEditions2023
+  } = useFeatures();
+  return polarisSummerEditions2023 ? /*#__PURE__*/React.createElement(Button, {
+    primary: true,
+    plain: true,
+    pressed: pressed,
+    icon: CancelMajor,
+    onClick: onClick,
+    accessibilityLabel: i18n.translate('Polaris.Common.close')
+  }) : /*#__PURE__*/React.createElement("button", {
+    onClick: onClick,
+    className: classNames(styles.CloseButton, titleHidden && styles.titleHidden, pressed && styles.pressed),
+    "aria-label": i18n.translate('Polaris.Common.close')
+  }, /*#__PURE__*/React.createElement(Icon, {
+    source: MobileCancelMajor,
+    color: "base"
+  }));
+}
+
+export { CloseButton };

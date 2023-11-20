@@ -1,0 +1,9 @@
+import './Breadcrumbs.css';
+
+var styles = {
+  "Breadcrumb": "Polaris-Breadcrumbs__Breadcrumb_llsun",
+  "Icon": "Polaris-Breadcrumbs__Icon_yj27d",
+  "Content": "Polaris-Breadcrumbs__Content_xd1mk"
+};
+
+export { styles as default };

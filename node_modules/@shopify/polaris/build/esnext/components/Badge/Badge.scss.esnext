@@ -1,0 +1,24 @@
+import './Badge.css';
+
+var styles = {
+  "Badge": "Polaris-Badge_2qgie",
+  "statusSuccess": "Polaris-Badge--statusSuccess_pc5rl",
+  "statusSuccess-strong-experimental": "Polaris-Badge--statusSuccessStrongExperimental_ti0xb",
+  "statusInfo": "Polaris-Badge--statusInfo_knr66",
+  "statusInfo-strong-experimental": "Polaris-Badge--statusInfoStrongExperimental_4vzgo",
+  "statusAttention": "Polaris-Badge--statusAttention_i61kn",
+  "statusAttention-strong-experimental": "Polaris-Badge--statusAttentionStrongExperimental_19j8a",
+  "statusWarning": "Polaris-Badge--statusWarning_1x66d",
+  "statusWarning-strong-experimental": "Polaris-Badge--statusWarningStrongExperimental_fn2a1",
+  "statusCritical": "Polaris-Badge--statusCritical_1iy3d",
+  "statusCritical-strong-experimental": "Polaris-Badge--statusCriticalStrongExperimental_16m8d",
+  "statusNew": "Polaris-Badge--statusNew_cj8gz",
+  "statusRead-only-experimental": "Polaris-Badge--statusReadOnlyExperimental_1k71e",
+  "statusEnabled-experimental": "Polaris-Badge__statusEnabled--experimental_1lv4p",
+  "sizeLarge-experimental": "Polaris-Badge__sizeLarge--experimental_5gj07",
+  "withinFilter": "Polaris-Badge--withinFilter_11dcy",
+  "Icon": "Polaris-Badge__Icon_yj27d",
+  "PipContainer": "Polaris-Badge__PipContainer_dsjox"
+};
+
+export { styles as default };

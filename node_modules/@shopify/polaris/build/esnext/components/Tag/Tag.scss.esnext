@@ -1,0 +1,16 @@
+import './Tag.css';
+
+var styles = {
+  "Tag": "Polaris-Tag_375hg",
+  "disabled": "Polaris-Tag--disabled_hcuh9",
+  "clickable": "Polaris-Tag--clickable_1prth",
+  "removable": "Polaris-Tag--removable_1q527",
+  "linkable": "Polaris-Tag--linkable_1fdmd",
+  "TagText": "Polaris-Tag__TagText_lsfh6",
+  "Button": "Polaris-Tag__Button_r99lw",
+  "segmented": "Polaris-Tag--segmented_150jh",
+  "Link": "Polaris-Tag__Link_yj5sy",
+  "LinkText": "Polaris-Tag__LinkText_8qt8f"
+};
+
+export { styles as default };

@@ -1,0 +1,121 @@
+.Polaris-Badge_2qgie { --pc-badge-horizontal-padding: var(--p-space-2); --pc-badge-vertical-padding: var(--p-space-05); display: inline-flex; align-items: center; padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding); background-color: var(--p-color-bg-strong); border-radius: var(--p-border-radius-5); color: var(--p-color-text); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge_2qgie { background-color: var(--p-color-bg-transparent-subdued-experimental); color: var(--p-color-text-subdued); font-weight: var(--p-font-weight-medium); border-radius: var(--p-border-radius-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge_2qgie svg { fill: var(--p-color-text-subdued); }
+
+@media print { .Polaris-Badge_2qgie { border: solid var(--p-border-width-1) var(--p-color-border); } }
+
+.Polaris-Badge--statusSuccess_pc5rl { background-color: var(--p-color-bg-success); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusSuccess_pc5rl { color: var(--p-color-text-success); background-color: var(--p-color-bg-success); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusSuccess_pc5rl svg { fill: var(--p-color-icon-success); }
+
+.Polaris-Badge--statusSuccessStrongExperimental_ti0xb { color: var(--p-color-text-on-color); background-color: var(--p-color-bg-success-strong); }
+
+.Polaris-Badge--statusSuccessStrongExperimental_ti0xb svg { fill: var(--p-color-icon-on-color); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusSuccessStrongExperimental_ti0xb { color: var(--p-color-text-on-color); background-color: var(--p-color-bg-success-strong); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusSuccessStrongExperimental_ti0xb svg { fill: var(--p-color-icon-on-color); }
+
+.Polaris-Badge--statusInfo_knr66 { background-color: var(--p-color-bg-info); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusInfo_knr66 { color: var(--p-color-text-info); background-color: var(--p-color-bg-info); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusInfo_knr66 svg { fill: var(--p-color-icon-info); }
+
+.Polaris-Badge--statusInfoStrongExperimental_4vzgo { color: var(--p-color-text-info-strong); background-color: var(--p-color-bg-info-strong); }
+
+.Polaris-Badge--statusInfoStrongExperimental_4vzgo svg { fill: var(--p-color-text-info-strong); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusInfoStrongExperimental_4vzgo { color: var(--p-color-text-info-strong); background-color: var(--p-color-bg-info-strong); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusInfoStrongExperimental_4vzgo svg { fill: var(--p-color-text-info-strong); }
+
+.Polaris-Badge--statusAttention_i61kn { background-color: var(--p-color-bg-caution); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusAttention_i61kn { color: var(--p-color-text-caution); background-color: var(--p-color-bg-caution); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusAttention_i61kn svg { fill: var(--p-color-icon-caution); }
+
+.Polaris-Badge--statusAttentionStrongExperimental_19j8a { color: var(--p-color-text-caution-strong); background-color: var(--p-color-bg-caution-strong); }
+
+.Polaris-Badge--statusAttentionStrongExperimental_19j8a svg { fill: var(--p-color-text-caution); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusAttentionStrongExperimental_19j8a { color: var(--p-color-text-caution-strong); background-color: var(--p-color-bg-caution-strong); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusAttentionStrongExperimental_19j8a svg { fill: var(--p-color-text-caution); }
+
+.Polaris-Badge--statusWarning_1x66d { background-color: var(--p-color-bg-warning); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusWarning_1x66d { color: var(--p-color-text-warning-experimental); background-color: var(--p-color-bg-warning); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusWarning_1x66d svg { fill: var(--p-color-icon-warning); }
+
+.Polaris-Badge--statusWarningStrongExperimental_fn2a1 { color: var(--p-color-text-warning-experimental); background-color: var(--p-color-bg-warning-strong-experimental); }
+
+.Polaris-Badge--statusWarningStrongExperimental_fn2a1 svg { fill: var(--p-color-text-warning-experimental); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusWarningStrongExperimental_fn2a1 { color: var(--p-color-text-warning-experimental); background-color: var(--p-color-bg-warning-strong-experimental); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusWarningStrongExperimental_fn2a1 svg { fill: var(--p-color-text-warning-experimental); }
+
+.Polaris-Badge--statusCritical_1iy3d { background-color: var(--p-color-bg-critical); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusCritical_1iy3d { color: var(--p-color-text-critical); background-color: var(--p-color-bg-critical); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusCritical_1iy3d svg { fill: var(--p-color-icon-critical-strong-experimental); }
+
+.Polaris-Badge--statusCriticalStrongExperimental_16m8d { color: var(--p-color-text-on-color); background-color: var(--p-color-bg-critical-strong); }
+
+.Polaris-Badge--statusCriticalStrongExperimental_16m8d svg { fill: var(--p-color-icon-on-color); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusCriticalStrongExperimental_16m8d { color: var(--p-color-text-on-color); background-color: var(--p-color-bg-critical-strong); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusCriticalStrongExperimental_16m8d svg { fill: var(--p-color-icon-on-color); }
+
+.Polaris-Badge--statusNew_cj8gz { border: none; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusNew_cj8gz { background-color: var(--p-color-bg-transparent-subdued-experimental); color: var(--p-color-text-subdued); font-weight: var(--p-font-weight-bold); border-radius: var(--p-border-radius-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusNew_cj8gz svg { fill: var(--p-color-text-subdued); }
+
+.Polaris-Badge--statusReadOnlyExperimental_1k71e { color: var(--p-color-text-subdued); background-color: transparent; }
+
+.Polaris-Badge--statusReadOnlyExperimental_1k71e svg { fill: var(--p-color-icon-subdued); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusReadOnlyExperimental_1k71e { color: var(--p-color-text-subdued); background-color: transparent; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge--statusReadOnlyExperimental_1k71e svg { fill: var(--p-color-icon-subdued); }
+
+.Polaris-Badge__statusEnabled--experimental_1lv4p { color: var(--p-color-text); }
+
+.Polaris-Badge__statusEnabled--experimental_1lv4p svg { fill: var(--p-color-icon-success); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge__statusEnabled--experimental_1lv4p { color: var(--p-color-text); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge__statusEnabled--experimental_1lv4p svg { fill: var(--p-color-icon-success); }
+
+.Polaris-Badge__sizeLarge--experimental_5gj07 { padding: var(--p-space-1) var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge__sizeLarge--experimental_5gj07 { padding: var(--p-space-1) var(--p-space-2); }
+
+.Polaris-Badge--withinFilter_11dcy { border-radius: var(--p-border-radius-1); }
+
+.Polaris-Badge__Icon_yj27d { margin-left: calc((var(--p-space-1))*-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge__Icon_yj27d { margin: calc(var(--p-space-05)*-1) 0 calc(var(--p-space-05)*-1) calc(var(--p-space-2)*-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge__Icon_yj27d svg { display: inline-block; vertical-align: top; }
+
+.Polaris-Badge__sizeLarge--experimental_5gj07 .Polaris-Badge__Icon_yj27d { margin: 0 var(--p-space-1) 0 calc(var(--p-space-05)*-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge__sizeLarge--experimental_5gj07 .Polaris-Badge__Icon_yj27d { margin: 0 var(--p-space-1) 0 calc(var(--p-space-05)*-1); }
+
+.Polaris-Badge__Icon_yj27d + * { margin-left: var(--p-space-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge__Icon_yj27d + * { margin-left: 0; }
+
+.Polaris-Badge__PipContainer_dsjox { display: grid; align-items: center; margin-left: calc(var(--p-space-05)*-1); margin-right: var(--p-space-1); }

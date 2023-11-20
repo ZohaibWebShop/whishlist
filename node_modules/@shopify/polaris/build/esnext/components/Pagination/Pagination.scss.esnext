@@ -1,0 +1,7 @@
+import './Pagination.css';
+
+var styles = {
+  "Pagination": "Polaris-Pagination_1af4k"
+};
+
+export { styles as default };

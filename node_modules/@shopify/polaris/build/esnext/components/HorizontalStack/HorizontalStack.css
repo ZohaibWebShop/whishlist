@@ -1,0 +1,9 @@
+.Polaris-HorizontalStack_dv6q6 { --pc-horizontal-stack-gap-xs: initial; --pc-horizontal-stack-gap-sm: initial; --pc-horizontal-stack-gap-md: initial; --pc-horizontal-stack-gap-lg: initial; --pc-horizontal-stack-gap-xl: initial; gap: var(--pc-horizontal-stack-gap-xs); display: flex; flex-wrap: var(--pc-horizontal-stack-wrap); align-items: var(--pc-horizontal-stack-block-align); justify-content: var(--pc-horizontal-stack-align); }
+
+@media (min-width: 30.625em) { .Polaris-HorizontalStack_dv6q6 { gap: var(--pc-horizontal-stack-gap-sm, var(--pc-horizontal-stack-gap-xs)); } }
+
+@media (min-width: 48em) { .Polaris-HorizontalStack_dv6q6 { gap: var(--pc-horizontal-stack-gap-md, var(--pc-horizontal-stack-gap-sm, var(--pc-horizontal-stack-gap-xs))); } }
+
+@media (min-width: 65em) { .Polaris-HorizontalStack_dv6q6 { gap: var(--pc-horizontal-stack-gap-lg, var(--pc-horizontal-stack-gap-md, var(--pc-horizontal-stack-gap-sm, var(--pc-horizontal-stack-gap-xs)))); } }
+
+@media (min-width: 90em) { .Polaris-HorizontalStack_dv6q6 { gap: var(--pc-horizontal-stack-gap-xl, var(--pc-horizontal-stack-gap-lg, var(--pc-horizontal-stack-gap-md, var(--pc-horizontal-stack-gap-sm, var(--pc-horizontal-stack-gap-xs))))); } }

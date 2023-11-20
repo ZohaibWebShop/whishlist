@@ -1,0 +1,6 @@
+.Polaris-PageActions_fcnua { margin: 0 auto; padding: var(--p-space-5); border-top: var(--p-border-width-1) solid var(--p-color-border-subdued); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-PageActions_fcnua { border-top: 0; padding: var(--p-space-4); }
+
+@media (min-width: 30.625em) { .Polaris-PageActions_fcnua { padding: var(--p-space-5) 0; }
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-PageActions_fcnua { padding: var(--p-space-4) 0; } }

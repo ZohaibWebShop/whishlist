@@ -1,0 +1,85 @@
+.Polaris-ActionList__Item_yiyol { --pc-action-list-item-min-height: var(--p-space-10); --pc-action-list-item-vertical-padding: calc((var(--pc-action-list-item-min-height) - var(--p-font-line-height-2))/2); -webkit-appearance: none; appearance: none; margin: 0; padding: 0; background: none; border: none; font-size: inherit; line-height: inherit; color: inherit; cursor: pointer; position: relative; display: block; width: 100%; min-height: var(--pc-action-list-item-min-height); text-align: left; text-decoration: none; cursor: pointer; padding: var(--pc-action-list-item-vertical-padding) var(--p-space-2); border-radius: var(--p-border-radius-1); border-top: var(--p-border-width-1) solid transparent; color: inherit; }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--default_y9uu3 { --pc-action-list-image-size: 1.25rem; }
+
+.Polaris-ActionList__Item_yiyol:focus { outline: none; }
+
+.Polaris-ActionList__Item_yiyol::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol { position: relative; /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 */ --pc-action-list-item-min-height: var(--p-space-8); padding: var(--p-space-1_5-experimental); border-radius: var(--p-border-radius-2); align-items: center; display: flex; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-2); }
+
+@media (forced-colors: active) { .Polaris-ActionList__Item_yiyol { border: var(--p-border-width-1) solid transparent; } }
+
+.Polaris-ActionList__Item_yiyol:hover { background-color: var(--p-color-bg-hover); text-decoration: none; outline: var(--p-border-width-3) solid transparent; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol:hover { background-color: var(--p-color-bg-subdued-hover); }
+
+.Polaris-ActionList__Item_yiyol:active { background-color: var(--p-color-bg-active); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol:active { background-color: var(--p-color-bg-subdued-hover); }
+
+.Polaris-ActionList__Item_yiyol:active svg { fill: var(--p-color-icon-interactive); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol:active svg { fill: var(--p-color-icon); }
+
+.Polaris-ActionList__Item_yiyol:focus-visible:not(:active) { outline: var(--p-border-width-3) solid transparent; }
+
+.Polaris-ActionList__Item_yiyol:focus-visible:not(:active)::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol:focus-visible:not(:active) { background-color: var(--p-color-bg); outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol:focus-visible:not(:active)::after { content: none; }
+
+.Polaris-ActionList__Item_yiyol:visited { color: inherit; }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--active_jeq8y { background-color: var(--p-color-bg-interactive-selected); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--active_jeq8y { background-color: var(--p-color-bg-subdued-active); font-weight: var(--p-font-weight-semibold); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--active_jeq8y svg { fill: var(--p-color-icon-interactive); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--active_jeq8y svg { fill: var(--p-color-icon-primary); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--active_jeq8y::before { content: ''; background-color: var(--p-color-bg-interactive); position: absolute; top: 0; left: calc(var(--p-space-2)*-1); height: 100%; display: block; width: var(--p-border-width-3); border-top-right-radius: var(--p-border-radius-1); border-bottom-right-radius: var(--p-border-radius-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--active_jeq8y::before { display: none; }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5 { color: var(--p-color-text-critical); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5 svg { fill: var(--p-color-icon-critical); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5 svg { fill: var(--p-color-icon-critical); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5:hover { background-color: var(--p-color-bg-critical-subdued-hover); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5:hover { background-color: var(--p-color-bg-critical-subdued-hover); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5:active, .Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5.Polaris-ActionList--active_jeq8y { background-color: var(--p-color-bg-critical-subdued-active); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--destructive_zy6o5.Polaris-ActionList--active_jeq8y { background-color: var(--p-color-bg-critical-subdued-active); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--disabled_hcuh9 { background-image: none; color: var(--p-color-text-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--disabled_hcuh9 { cursor: default; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--disabled_hcuh9:hover { background-color: unset; }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--disabled_hcuh9 .Polaris-ActionList__Prefix_10fbz svg, .Polaris-ActionList__Item_yiyol.Polaris-ActionList--disabled_hcuh9 .Polaris-ActionList__Suffix_10fbu svg { fill: var(--p-color-icon-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--disabled_hcuh9 .Polaris-ActionList__Prefix_10fbz svg, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList__Item_yiyol.Polaris-ActionList--disabled_hcuh9 .Polaris-ActionList__Suffix_10fbu svg { fill: var(--p-color-icon-disabled); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--indented_mrmpf { --pc-action-list-image-size: 1.5rem; position: relative; margin-left: calc(var(--p-space-5) + var(--p-space-05)); max-width: calc(100% - var(--p-space-5) - var(--p-space-05)); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--indented_mrmpf::before { content: ''; position: absolute; top: calc(var(--p-space-3)*-1); bottom: 0; left: 0; border-left: var(--p-border-width-1) solid var(--p-color-border); margin-left: calc(var(--p-space-1_5-experimental)*-1); }
+
+.Polaris-ActionList__Item_yiyol.Polaris-ActionList--menu_yj4zy { --pc-action-list-image-size: 1.5rem; }
+
+.Polaris-ActionList__Prefix_10fbz { display: flex; flex: 0 0 auto; justify-content: center; align-items: center; height: var(--pc-action-list-image-size); width: var(--pc-action-list-image-size); border-radius: var(--p-border-radius-1); margin: calc(var(--pc-action-list-image-size)*-0.5) 0 calc(var(--pc-action-list-image-size)*-0.5) 0; background-size: cover; background-position: center center; }
+
+.Polaris-ActionList__Prefix_10fbz svg { fill: var(--p-color-icon); }
+
+.Polaris-ActionList__Suffix_10fbu svg { fill: var(--p-color-icon); }
+
+.Polaris-ActionList__Text_yj3uv { min-width: 0; max-width: 100%; flex: 1 1 auto; }

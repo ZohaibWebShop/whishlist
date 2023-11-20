@@ -1,0 +1,41 @@
+.Polaris-Listbox-TextOption_yqf1e { margin: var(--p-space-1) var(--p-space-2) 0; flex: 1 1; border-radius: var(--p-border-radius-1); padding: var(--p-space-2) var(--p-space-2); cursor: pointer; display: flex; position: relative; }
+
+.Polaris-Listbox-TextOption_yqf1e::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Listbox-TextOption_yqf1e { border-radius: var(--p-border-radius-2); padding: var(--p-space-1_5-experimental) var(--p-space-3); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--selected_mijeo::before { content: none; }
+
+.Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--allowMultiple_zywv7 { margin: var(--p-space-1) var(--p-space-2) 0; padding: var(--p-space-1) var(--p-space-2); }
+
+.Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--isAction_1op9y { margin-top: 0; padding: var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--isAction_1op9y { margin-top: var(--p-space-1); }
+
+.Polaris-Listbox-TextOption_yqf1e:hover { background-color: var(--p-color-bg-hover); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Listbox-TextOption_yqf1e:hover:not(.Polaris-Listbox-TextOption--disabled_hcuh9) { background-color: var(--p-color-bg-subdued-hover); }
+
+.Polaris-Listbox-TextOption_yqf1e:focus { outline: none; }
+
+.Polaris-Listbox-TextOption_yqf1e:active { background-color: var(--p-color-bg-active); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Listbox-TextOption_yqf1e:active:not(.Polaris-Listbox-TextOption--disabled_hcuh9) { background-color: var(--p-color-bg-subdued-active); }
+
+.Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--selected_mijeo { background-color: var(--p-color-bg-interactive-selected); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--selected_mijeo { background-color: var(--p-color-bg-subdued-active); font-weight: var(--p-font-weight-semibold); }
+
+.Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--selected_mijeo::before { content: ''; position: absolute; top: 0; bottom: 0; left: calc(var(--p-space-1)*-1); height: 100%; width: var(--p-border-radius-1); background-color: var(--p-color-bg-interactive); border-top-right-radius: var(--p-border-radius-1); border-bottom-right-radius: var(--p-border-radius-1); transform: translateX(-100%); }
+
+.Polaris-Listbox-TextOption_yqf1e.Polaris-Listbox-TextOption--disabled_hcuh9 { background-color: transparent; color: var(--p-color-text-disabled); cursor: default; }
+
+li:first-of-type > .Polaris-Listbox-TextOption_yqf1e { margin-top: 0; }
+
+[data-focused] .Polaris-Listbox-TextOption_yqf1e:not(.Polaris-Listbox-TextOption--disabled_hcuh9) { outline: none; background-color: var(--p-color-bg-interactive-selected); transition: background-color var(--p-motion-duration-400); }
+
+html[class~="Polaris-Summer-Editions-2023"] [data-focused] .Polaris-Listbox-TextOption_yqf1e:not(.Polaris-Listbox-TextOption--disabled_hcuh9) { background-color: var(--p-color-bg-subdued-active); }
+
+.Polaris-Listbox-TextOption__Content_xd1mk { flex: 1 1 auto; display: flex; }
+
+.Polaris-Listbox-TextOption__Checkbox_1d6zr { pointer-events: none; }

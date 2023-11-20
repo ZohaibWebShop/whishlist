@@ -1,0 +1,53 @@
+.Polaris-Frame-ContextualSaveBar_14m7v { /* stylelint-disable -- polaris: Used to apply dark theme to action buttons */ --p-color-bg: var(--p-color-bg-inverse); --p-color-text: var(--p-color-text-inverse); --p-color-bg-hover: var(--p-color-bg-inverse-hover); --p-color-bg-subdued-active: var(--p-color-bg-inverse-active); /* stylelint-enable */ display: flex; height: 3.5rem; background: var(--p-color-bg-inverse); box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15); }
+
+.Polaris-Frame-ContextualSaveBar_14m7v .Polaris-Frame-ContextualSaveBar__LogoContainer_szav1 { border-right: none; }
+
+.Polaris-Frame-ContextualSaveBar_14m7v .Polaris-Frame-ContextualSaveBar__ContextControl_3di0f { opacity: 0.3; pointer-events: none; }
+
+@media (forced-colors: active) { .Polaris-Frame-ContextualSaveBar_14m7v { border: var(--p-border-width-1) solid transparent; } }
+
+.Polaris-Frame-ContextualSaveBar__LogoContainer_szav1 { display: none; }
+
+@media (min-width: 48em) { .Polaris-Frame-ContextualSaveBar__LogoContainer_szav1 { display: flex; flex: 0 0 15rem; align-items: center; height: 100%; padding: 0 var(--p-space-4); background-color: transparent; } }
+
+.Polaris-Frame-ContextualSaveBar__Contents_1u1wn { display: flex; flex: 1 1 auto; align-items: center; justify-content: space-between; min-width: 0.0625rem; max-width: 62.375rem; height: 100%; margin: 0 auto; padding: 0 var(--p-space-4); }
+
+@media (min-width: 30.625em) { .Polaris-Frame-ContextualSaveBar__Contents_1u1wn { padding: 0 var(--p-space-5); } }
+
+@media (min-width: 48em) { .Polaris-Frame-ContextualSaveBar__Contents_1u1wn { padding: 0 var(--p-space-8); } }
+
+.Polaris-Frame-ContextualSaveBar--fullWidth_zyvh4 { max-width: none; padding: 0 var(--p-space-4); }
+
+.Polaris-Frame-ContextualSaveBar__MessageContainer_kexmj { display: flex; flex-direction: row; gap: var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__MessageContainer_kexmj [class*='Polaris-Icon__Svg'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__MessageContainer_kexmj [class*='Icon-Svg'] { fill: var(--p-color-text-inverse); }
+
+.Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr { flex-shrink: 0; /* stylelint-disable -- summer edition overrides */ /* stylelint-enable */ }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary'] { --pc-color-text: rgba(48, 48, 48, 1); --pc-button-text: var(--pc-color-text); --pc-button-color: rgba(255, 255, 255, 1); --pc-button-color-hover: rgba(250, 250, 250, 1); --pc-button-color-active: rgba(247, 247, 247, 1); --pc-button-color-depressed: rgba(247, 247, 247, 1); --pc-button-color-disabled:  rgba(255, 255, 255, 0.2); --pc-button-shadow-inset: 0 0.125rem 0.0625rem 0 rgba(26, 26, 26, 0.2) inset, 0.0625rem 0 0.0625rem 0 rgba(26, 26, 26, 0.12) inset, -0.0625rem 0 0.0625rem 0 rgba(26, 26, 26, 0.12) inset; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary']::before, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary']::before { top: 0; right: 0; bottom: 0; left: 0; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary']:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary']:hover { --pc-button-text: var(--pc-color-text); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary']:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary']:active { --pc-button-text: var(--pc-color-text); box-shadow: var(--pc-button-shadow-inset); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary'][class*='Polaris-Button--pressed'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary'][class*='Button-pressed'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary'][class*='Polaris-Button--pressed'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary'][class*='Button-pressed'] { box-shadow: var(--pc-button-shadow-inset); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary'][class*='Polaris-Button--disabled'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primary'][class*='Button-disabled'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary'][class*='Polaris-Button--disabled'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primary'][class*='Button-disabled'] { --pc-button-text: var(--p-color-text-subdued); background: var(--pc-button-color-disabled); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primaryPlain'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primaryPlain'] { --pc-button-color: var(--p-color-bg-inset-strong); --pc-button-color-hover: var(--p-color-bg-inverse-hover); --pc-button-color-active: var(--p-color-bg-inverse-active); --pc-button-text: var(--p-color-text-inverse); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primaryPlain']::after, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primaryPlain']::after { content: none; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primaryPlain']:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primaryPlain']:hover { --pc-button-text: var(--p-color-text-inverse); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primaryPlain']:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primaryPlain']:active { --pc-button-text: var(--p-color-text-inverse); box-shadow: none; }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primaryPlain'][class*='Polaris-Button--disabled'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Polaris-Button--primaryPlain'][class*='Button-disabled'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primaryPlain'][class*='Polaris-Button--disabled'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar__ActionContainer_hk0rr [class*='Button-primaryPlain'][class*='Button-disabled'] { --pc-button-text: var(--p-color-text-subdued); background: var(--pc-button-color); }
+
+.Polaris-Frame-ContextualSaveBar__Action_r96cs { margin-left: var(--p-space-2); }
+
+.Polaris-Frame-ContextualSaveBar__ContextControl_3di0f { display: none; }
+
+@media (min-width: 48em) { .Polaris-Frame-ContextualSaveBar__ContextControl_3di0f { display: block; width: 15rem; } }

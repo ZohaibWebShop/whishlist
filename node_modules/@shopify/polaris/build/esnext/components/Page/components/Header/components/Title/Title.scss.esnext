@@ -1,0 +1,12 @@
+import './Title.css';
+
+var styles = {
+  "Title": "Polaris-Header-Title_2qj8j",
+  "TitleWithSubtitle": "Polaris-Header-Title__TitleWithSubtitle_1wspp",
+  "SubTitle": "Polaris-Header-Title__SubTitle_1j5vz",
+  "SubtitleCompact": "Polaris-Header-Title__SubtitleCompact_1fq2b",
+  "TitleWithMetadataWrapper": "Polaris-Header-Title__TitleWithMetadataWrapper_pdqv7",
+  "TitleMetadata": "Polaris-Header-Title__TitleMetadata_19y17"
+};
+
+export { styles as default };

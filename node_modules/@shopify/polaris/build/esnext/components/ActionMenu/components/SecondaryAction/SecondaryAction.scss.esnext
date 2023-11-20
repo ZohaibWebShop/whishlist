@@ -1,0 +1,8 @@
+import './SecondaryAction.css';
+
+var styles = {
+  "SecondaryAction": "Polaris-ActionMenu-SecondaryAction_1dl4i",
+  "destructive": "Polaris-ActionMenu-SecondaryAction--destructive_zy6o5"
+};
+
+export { styles as default };

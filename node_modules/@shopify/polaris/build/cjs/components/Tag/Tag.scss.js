@@ -1,0 +1,18 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var styles = {
+  "Tag": "Polaris-Tag",
+  "disabled": "Polaris-Tag--disabled",
+  "clickable": "Polaris-Tag--clickable",
+  "removable": "Polaris-Tag--removable",
+  "linkable": "Polaris-Tag--linkable",
+  "TagText": "Polaris-Tag__TagText",
+  "Button": "Polaris-Tag__Button",
+  "segmented": "Polaris-Tag--segmented",
+  "Link": "Polaris-Tag__Link",
+  "LinkText": "Polaris-Tag__LinkText"
+};
+
+exports.default = styles;

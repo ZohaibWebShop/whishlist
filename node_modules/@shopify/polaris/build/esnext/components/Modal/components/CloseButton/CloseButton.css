@@ -1,0 +1,15 @@
+.Polaris-Modal-CloseButton_bl13t { -webkit-appearance: none; appearance: none; margin: 0; padding: 0; background: none; border: none; font-size: inherit; line-height: inherit; color: inherit; cursor: pointer; position: relative; margin-left: var(--p-space-5); margin-right: calc(var(--p-space-2)*-1); padding: var(--p-space-2); border-radius: var(--p-border-radius-2); }
+
+.Polaris-Modal-CloseButton_bl13t:focus { outline: none; }
+
+.Polaris-Modal-CloseButton_bl13t::after { content: ''; position: absolute; z-index: 1; top: -0.0625rem; right: -0.0625rem; bottom: -0.0625rem; left: -0.0625rem; display: block; pointer-events: none; box-shadow: 0 0 0 -0.0625rem var(--p-color-border-interactive-focus); border-radius: var(--p-border-radius-1); }
+
+.Polaris-Modal-CloseButton_bl13t:hover { background: var(--p-color-bg-hover); }
+
+.Polaris-Modal-CloseButton_bl13t:hover svg { fill: var(--p-color-icon-hover); }
+
+.Polaris-Modal-CloseButton_bl13t:active, .Polaris-Modal-CloseButton_bl13t.Polaris-Modal-CloseButton--pressed_17w8v { background: var(--p-color-bg-active); }
+
+.Polaris-Modal-CloseButton_bl13t:focus-visible:not(:active)::after { box-shadow: 0 0 0 0.125rem var(--p-color-border-interactive-focus); outline: var(--p-border-width-1) solid transparent; }
+
+.Polaris-Modal-CloseButton_bl13t.Polaris-Modal-CloseButton--titleHidden_14zrw { margin: var(--p-space-2); }

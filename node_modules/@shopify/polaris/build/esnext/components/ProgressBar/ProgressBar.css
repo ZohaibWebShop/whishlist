@@ -1,0 +1,31 @@
+.Polaris-ProgressBar_17609 { overflow: hidden; width: 100%; background-color: var(--pc-progress-bar-background); border-radius: var(--p-border-radius-1); }
+
+@media (forced-colors: active) { .Polaris-ProgressBar_17609 { border: var(--p-border-width-1) solid transparent; } }
+
+.Polaris-ProgressBar--sizeSmall_7647q { height: 0.5rem; }
+
+.Polaris-ProgressBar--sizeMedium_5f35p { height: 1rem; }
+
+.Polaris-ProgressBar--sizeLarge_61dxo { height: 2rem; }
+
+.Polaris-ProgressBar--colorHighlight_2qv4t { --pc-progress-bar-background: var(--p-color-bg-strong); --pc-progress-bar-indicator: var(--p-color-border-info); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ProgressBar--colorHighlight_2qv4t { --pc-progress-bar-indicator: var(--p-color-bg-info-strong); }
+
+.Polaris-ProgressBar--colorPrimary_4ruww { --pc-progress-bar-background: var(--p-color-bg-strong); --pc-progress-bar-indicator: var(--p-color-bg-primary); }
+
+.Polaris-ProgressBar--colorSuccess_k0sue { --pc-progress-bar-background: var(--p-color-bg-strong); --pc-progress-bar-indicator: var(--p-color-border-success); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ProgressBar--colorSuccess_k0sue { --pc-progress-bar-indicator: var(--p-color-bg-success-strong); }
+
+.Polaris-ProgressBar--colorCritical_glskc { --pc-progress-bar-background: var(--p-color-bg-strong); --pc-progress-bar-indicator: var(--p-color-bg-critical); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ProgressBar--colorCritical_glskc { --pc-progress-bar-indicator: var(--p-color-bg-critical-strong); }
+
+.Polaris-ProgressBar__Indicator_dw7mr { height: inherit; background-color: var(--pc-progress-bar-indicator); transition: transform var(--pc-progress-bar-duration) var(--p-motion-ease); transform: scaleX(0); transform-origin: 0 50%; }
+
+@media screen and (-ms-high-contrast: active) { .Polaris-ProgressBar__Indicator_dw7mr { border: 1rem solid highlight; } }
+
+.Polaris-ProgressBar__IndicatorAppearActive_ziqta, .Polaris-ProgressBar__IndicatorAppearDone_10ohs { transform: scaleX(var(--pc-progress-bar-percent)); }
+
+.Polaris-ProgressBar__Progress_ixe53, .Polaris-ProgressBar__Label_2vd36 { position: absolute !important; top: 0; width: 0.0625rem !important; height: 0.0625rem !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; clip-path: inset(50%) !important; border: 0 !important; white-space: nowrap !important; }

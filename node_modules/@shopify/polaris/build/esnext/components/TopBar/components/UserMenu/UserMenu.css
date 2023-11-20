@@ -1,0 +1,9 @@
+.Polaris-TopBar-UserMenu__Details_1bdkj { max-width: 10rem; margin-right: var(--p-space-2); }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-TopBar-UserMenu__Details_1bdkj { margin-right: 0; /* stylelint-disable-next-line -- se23 */ padding: 0 var(--p-space-2) 0 0.625rem; /* stylelint-disable-next-line selector-max-combinators -- se23 */ }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-TopBar-UserMenu__Details_1bdkj > p { font-size: var(--p-font-size-75); line-height: var(--p-font-line-height-1); }
+
+@media (max-width: 47.9975em) { .Polaris-TopBar-UserMenu__Details_1bdkj { display: none; } }
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-TopBar-UserMenu__Message_1u7n0 > p { color: var(--p-color-text-inverse-subdued); font-size: var(--p-font-size-70-experimental); line-height: var(--p-font-line-height-075-experimental); }

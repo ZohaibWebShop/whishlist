@@ -1,0 +1,9 @@
+import './CloseButton.css';
+
+var styles = {
+  "CloseButton": "Polaris-Modal-CloseButton_bl13t",
+  "pressed": "Polaris-Modal-CloseButton--pressed_17w8v",
+  "titleHidden": "Polaris-Modal-CloseButton--titleHidden_14zrw"
+};
+
+export { styles as default };

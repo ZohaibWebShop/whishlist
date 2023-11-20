@@ -1,0 +1,7 @@
+import './HorizontalGrid.css';
+
+var styles = {
+  "HorizontalGrid": "Polaris-HorizontalGrid_titug"
+};
+
+export { styles as default };

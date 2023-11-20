@@ -1,0 +1,14 @@
+import './BannerExperimental.css';
+
+var styles = {
+  "icon-on-color": "Polaris-Banner-BannerExperimental--iconOnColor_q28sx",
+  "icon-success-strong-experimental": "Polaris-Banner-BannerExperimental--iconSuccessStrongExperimental_bfcva",
+  "text-warning-strong": "Polaris-Banner-BannerExperimental--textWarningStrong_1asft",
+  "icon-warning-strong-experimental": "Polaris-Banner-BannerExperimental--iconWarningStrongExperimental_lk8fc",
+  "icon-critical-strong-experimental": "Polaris-Banner-BannerExperimental--iconCriticalStrongExperimental_wbz71",
+  "text-info-strong": "Polaris-Banner-BannerExperimental--textInfoStrong_93c5b",
+  "icon-info-strong-experimental": "Polaris-Banner-BannerExperimental--iconInfoStrongExperimental_9vmo0",
+  "icon-subdued": "Polaris-Banner-BannerExperimental__icon--subdued_gvo5o"
+};
+
+export { styles as default };
