@@ -54,7 +54,7 @@ class CustomersDeleteJob implements ShouldQueue
         try {
             // Convert domain
             $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
-            info("customer_id ".json_encode($this-data));
+            info("customer_id ".json_encode($this->shopDomain));
 
 
             // Do what you wish with the data
