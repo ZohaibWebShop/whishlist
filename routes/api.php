@@ -40,7 +40,7 @@ Route::post('/makeWishlistDefault', [WishlistController::class, 'setWishlistDefa
 Route::post('/deleteWishlist', [WishlistController::class, 'DeleteWishlist']);
 Route::post('/update-expiration', [WishlistController::class, 'updateWishlistExpireDate']);
 Route::post('/clear-all', [WishlistController::class, 'clearAllWishlist']);
-
+Route::get('/webchecker', [FrontWishlistController::class, 'WebChecker'])->name('front.checker');
 
 Route::prefix('front')->group(function(){
     Route::get('/customers', [FrontWishlistController::class, 'GetCustomers'])->name('front.customer');
