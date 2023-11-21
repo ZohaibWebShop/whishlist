@@ -41,12 +41,7 @@ class CustomersDeleteJob implements ShouldQueue
 
     }
 
-    public function failed(Exception $exception)
-    {
-
-        info("Error Customer Delete");
-        // Send user notification of failure, etc...
-    }
+   
 
     /**
      * Execute the job.
@@ -55,12 +50,25 @@ class CustomersDeleteJob implements ShouldQueue
      */
     public function handle()
     {
-        // Convert domain
-        $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
-        Log::info("customer_id ".json_encode($this-data));
+
+        try {
+            // Convert domain
+            $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
+            Log::info("customer_id ".json_encode($this-data));
 
 
-        // Do what you wish with the data
-        // Access domain name as $this->shopDomain->toNative()
+            // Do what you wish with the data
+            // Access domain name as $this->shopDomain->toNative()
+        } catch (\Exception $th) {
+            info('Error');
+        }
+       
+    }
+
+    public function failed(Exception $exception)
+    {
+
+        info("Error Customer Delete");
+        // Send user notification of failure, etc...
     }
 }
