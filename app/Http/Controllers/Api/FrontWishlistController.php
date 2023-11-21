@@ -79,6 +79,15 @@ class FrontWishlistController extends Controller
         return $wishlists;
     }
 
+    function WebChecker(Request $request)  {
+        $user = User::where('name', $request->shop)->first();
+        $webhook = $user->api()->rest('GET', '/admin/api/2023-10/webhooks.json');
+        return \response()->json([
+            'webhooks'=>$webhook,
+            'shop'=>$user
+        ]);
+    }
+
     function getWishlists(Request $request, $customer_id) {
         $shop = $request->shop;
         $isRegisterd = WishlistToken::where('customer_id', $customer_id)->first();
