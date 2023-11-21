@@ -64,11 +64,5 @@ class CustomersDeleteJob implements ShouldQueue
         }
        
     }
-
-    public function failed(Exception $exception)
-    {
-
-        info("Error Customer Delete");
-        // Send user notification of failure, etc...
-    }
+  
 }
