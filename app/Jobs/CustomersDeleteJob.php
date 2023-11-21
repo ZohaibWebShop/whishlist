@@ -1,5 +1,10 @@
 <?php namespace App\Jobs;
 
+
+use App\Models\WishlistToken;
+use App\Models\WishlistProduct;
+use App\Models\Wishlist;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -7,6 +12,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Osiset\ShopifyApp\Objects\Values\ShopDomain;
 use stdClass;
+
+
 
 class CustomersDeleteJob implements ShouldQueue
 {
@@ -52,9 +59,36 @@ class CustomersDeleteJob implements ShouldQueue
     {
 
         try {
+
+            // use App\Models\WishlistToken;
+            // use App\Models\WishlistProduct;
+            // use App\Models\Wishlist;
+
             // Convert domain
             $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
-            info("customer_id ".json_encode($this->data->id));
+            $customer_id = $this->data->id;
+
+            $wishlistToken = WishlistToken::where('customer_id', $customer_id)->first();
+            if ($wishlistToken) {
+                $wishlists = Wishlist::where('wishlist_token_id', $wishlistToken->id)->get();
+
+                foreach ($wishlists as $wishlist) {
+                    // Delete WishlistProducts first
+                    WishlistProduct::where('wishlist_id', $wishlist->id)->delete();
+                }
+
+                // Delete Wishlists
+                Wishlist::where('wishlist_token_id', $wishlistToken->id)->delete();
+
+                // Delete WishlistToken
+                $wishlistToken->delete();
+                info("Delete All data assigned with this customer_id ".json_encode($this->data->id));
+            }else{
+                info("Customer dos'nt register with our database ".json_encode($this->data->id));
+            }
+
+
+           
 
 
             // Do what you wish with the data
