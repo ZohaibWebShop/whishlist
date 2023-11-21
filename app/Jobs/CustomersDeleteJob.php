@@ -88,9 +88,6 @@ class CustomersDeleteJob implements ShouldQueue
             }
 
 
-           
-
-
             // Do what you wish with the data
             // Access domain name as $this->shopDomain->toNative()
         } catch (\Exception $th) {
