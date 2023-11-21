@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\WishlistController;
 use App\Http\Controllers\Api\FrontWishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes

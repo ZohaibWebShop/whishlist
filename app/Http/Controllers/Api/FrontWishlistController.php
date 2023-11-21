@@ -11,6 +11,7 @@ use App\Http\Resources\WishlistTokenCollection;
 use App\Http\Resources\WishlistCollection;
 use App\Http\Resources\WishlistProductCollection;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class FrontWishlistController extends Controller
 {
