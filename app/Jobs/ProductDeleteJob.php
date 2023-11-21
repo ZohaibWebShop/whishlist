@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Osiset\ShopifyApp\Objects\Values\ShopDomain;
 use stdClass;
+use App\Models\WishlistProduct;
 
 class ProductDeleteJob implements ShouldQueue
 {
@@ -48,7 +49,21 @@ class ProductDeleteJob implements ShouldQueue
     public function handle()
     {
         // Convert domain
-        $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
+        try {
+            $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
+            $product_id = $this->data->id;
+            $WishlistProduct = WishlistProduct::where('product_id', $product_id)->first();
+    
+            if($WishlistProduct){
+                WishlistProduct::where('product_id', $product_id)->first();
+                info('product data dlelete from our database');
+            }else{
+                info("product coul'nt find in our database");
+            }
+        } catch (\Exception $th) {
+            //throw $th;
+            info("Exception Error");
+        }
 
         // Do what you wish with the data
         // Access domain name as $this->shopDomain->toNative()
